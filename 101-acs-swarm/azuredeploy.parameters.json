@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "dnsNamePrefix": {
-      "value": "GEN-UNIQUE"
+      "value": "ttadtttadfad"
     },
     "agentCount": {
       "value": 1
@@ -21,7 +21,7 @@
       "value": 3
     },
     "sshRSAPublicKey": {
-      "value": "GEN-SSH-PUB-KEY"
+      "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9zN/P6pQ6FIjb4USxUMglhmiKUtbO3m/BFQtuDwXOXlhIeNtFbv31ozw5QRwWJGAZt5ETSbAdSjX+ETdfdg0xkTCTVO/RDrErIvPx1MrJtoO8RD+6saejjeGW+eQngFCBJsE0XHYwlFZNWttSVHKH/aynYdimVDvpylmxsiSlBcdSnQ8s1KiIRCpZzYzUH0vwkZ7TLf8+l750oOcImONF8uuW0OVkobDHyoa0xOlBa0SBtm9Et3fzEXCEEuAGGXc1dwuawg8OY5H4d7NgbKMdA3lPKrFNeOLbMZcyGyxcRwTq/gpRDbdhDQ9FSo8MOE/MyTUzGKiORlqGJcSRWUOd info@lean-soft.cn leansoft master key"
     }
   }
 }
