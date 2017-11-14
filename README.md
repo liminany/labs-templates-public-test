@@ -1,4 +1,4 @@
-# Azure Resource Manager QuickStart Templates
+# Azure Resource Manager QuickStart Templates.
 
 This repo contains all currently available Azure Resource Manager templates contributed by the community. A searchable template index is maintained at https://azure.microsoft.com/en-us/documentation/templates/.
 The following information is relevant to get started with contributing to this repository.
@@ -8,7 +8,7 @@ The following information is relevant to get started with contributing to this r
 + [**Git tutorial**](/1-CONTRIBUTION-GUIDE/git-tutorial.md#git-tutorial). Step by step to get you started with Git.
 + [**Useful Tools**](/1-CONTRIBUTION-GUIDE/useful-tools.md#useful-tools). Useful resources and tools for Azure development.
 
-## Deploying Samples
+## Deploying Samples.
 
 You can deploy these samples directly through the Azure Portal or by using the scripts supplied in the root of the repo.
 
