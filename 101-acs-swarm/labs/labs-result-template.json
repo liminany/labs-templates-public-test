@@ -1,3 +1,44 @@
 {
-    
+     "enviroments": [
+        {
+            "displayname": "swarm-master-0",
+            "protocol": "ssh",
+            "hostname": "#hostname",
+            "username": "#username",
+            "password": "#password",
+            "private-key":"#privateKey",
+            "port": 22,
+            "external": true
+        },
+        {
+            "displayname": "swarm-master-1",
+            "protocol": "ssh",
+            "hostname": "#hostname",
+            "username": "#username",
+            "password": "#password",
+            "private-key":"#privateKey",
+            "port": 22,
+            "external": true
+        },
+        {
+            "displayname": "swarm-master-2",
+            "protocol": "ssh",
+            "hostname": "#hostname",
+            "username": "#username",
+            "password": "#password",
+            "private-key":"#privateKey",
+            "port": 22,
+            "external": true
+        },
+        {
+            "displayname": "swarm-agent",
+            "protocol": "ssh",
+            "hostname": "#hostname",
+            "username": "#username",
+            "password": "#password",
+            "private-key":"#privateKey",
+            "port": 22,
+            "external": true
+        }
+     ]
 }
