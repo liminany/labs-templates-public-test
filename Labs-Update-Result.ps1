@@ -14,9 +14,20 @@
   "Authorization" = " Bearer " + $ResponseJSON.access_token
   }
 
+
+  #List all vms in specific azure resouce group
+
+  Function GetVMList()
+  {
+  $Uri = "https://management.azure.com/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Compute/virtualmachines?api-version=2016-04-30-preview" -f $subscriptionID, $azureRMGroupName
+  $data = Invoke-RestMethod -Method Get -Headers $requestheader -Uri $uri
+  echo $data | ConvertTo-Json
+  }
+
+
   Function GetVMInfo()
   {
-  $Uri = "https://management.azure.com/subscriptions/be7ae223-262c-4fde-bee6-3b8ed6e6e896/resourceGroups/101-acs-swarm-1560/providers/Microsoft.Compute/virtualmachines?api-version=2016-04-30-preview"
+  $Uri = "https://management.azure.com/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Compute/virtualMachines/swarm-master-AFE96F9C-0?api-version=2016-04-30-preview" -f $subscriptionID, $azureRMGroupName
   $data = Invoke-RestMethod -Method Get -Headers $requestheader -Uri $uri
   echo $data | ConvertTo-Json
   }
