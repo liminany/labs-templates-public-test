@@ -8,7 +8,7 @@ Param(
     [string]$azureAccountName,
     [string]$azurePasswordString,
     [string]$subscriptionID,
-    [int]$buildId
+    [int]$buildId,
     [string] [Parameter(Mandatory=$true)] $ArtifactStagingDirectory,
     [string] [Parameter(Mandatory=$true)] $ResourceGroupLocation,
     [string] $ResourceGroupName = $ArtifactStagingDirectory.replace('.\',''), #remove .\ if present
