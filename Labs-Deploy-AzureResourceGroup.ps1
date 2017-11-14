@@ -5,6 +5,10 @@
 
 
 Param(
+    [string]$azureAccountName,
+    [string]$azurePasswordString,
+    [string]$subscriptionID,
+    [int]$buildId
     [string] [Parameter(Mandatory=$true)] $ArtifactStagingDirectory,
     [string] [Parameter(Mandatory=$true)] $ResourceGroupLocation,
     [string] $ResourceGroupName = $ArtifactStagingDirectory.replace('.\',''), #remove .\ if present
@@ -18,6 +22,11 @@ Param(
     [string] $DebugOptions = "None",
     [switch] $Dev
 )
+
+$azurePassword = ConvertTo-SecureString $azurePasswordString -AsPlainText -Force
+$psCred = New-Object System.Management.Automation.PSCredential($azureAccountName, $azurePassword)
+Login-AzureRmAccount -Credential $psCred
+Set-AzureRmContext -SubscriptionID $subscriptionID
 
 try {
     [Microsoft.Azure.Common.Authentication.AzureSession]::ClientFactory.AddUserAgent("VSAzureTools-$UI$($host.name)".replace(" ","_"), "AzureRMSamples")
