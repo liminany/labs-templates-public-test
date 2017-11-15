@@ -9,7 +9,14 @@
             "password": "#password",
             "private-key":"#privateKey",
             "port": 22,
-            "external": true
+            "external": true,
+            "master": true,
+            "apps": [
+                {
+                    "name": "jenkins",
+                    "port": 80
+                }
+            ]
         }
      ]
 }
