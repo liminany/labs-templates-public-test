@@ -151,12 +151,7 @@ else {
     $result = Get-Content $resultTemplateFilePath | Out-String 
     ForEach ($i in $outputsObj.psobject.properties) 
     {
-        echo "ls-foreach-i:"
-        echo $i
-        echo "ls-foreach-i-value:"
-        echo $i.Value
-        echo "ls-foreach-i-value-value:"
-        echo $i.Value.Value;
+       
         $replacePara="#"+$i.Name;
         $replaceValue=$i.Value.Value;
         $result=$result.Replace("$replacePara", $replaceValue);
