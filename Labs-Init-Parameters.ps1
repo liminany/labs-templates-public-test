@@ -142,7 +142,7 @@ function New-SWRandomPassword {
 #generate 8 length random password
 echo "ArtifactStagingDirectory="
 echo $ArtifactStagingDirectory)
-$parametersFilePath=$ArtifactStagingDirectory)+'\labs\labs-azuredeploy.parameters.json'
+$parametersFilePath=$ArtifactStagingDirectory+'\labs\labs-azuredeploy.parameters.json'
 $parametersFilePath=[System.IO.Path]::GetFullPath([System.IO.Path]::Combine($PSScriptRoot, $parametersFilePath))
 echo "parametersFilePath="
 echo $parametersFilePath
