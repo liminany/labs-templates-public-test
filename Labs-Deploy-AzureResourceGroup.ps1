@@ -158,7 +158,7 @@ else {
         echo "ls-foreach-i-value-value:"
         echo $i.Value.Value;
         $replacePara="#"+$i.Name;
-        $replaceValue=$i.Value;
+        $replaceValue=$i.Value.Value;
         $result=$result.Replace("$replacePara", $replaceValue);
     
     }
