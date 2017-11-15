@@ -1,4 +1,7 @@
-[string] [Parameter(Mandatory=$true)] $ArtifactStagingDirectory
+Param(
+   [string] [Parameter(Mandatory=$true)] $ArtifactStagingDirectory
+)
+
 
 function New-SWRandomPassword {
     <#
