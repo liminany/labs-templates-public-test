@@ -9,7 +9,7 @@ Param(
     [switch] $UploadArtifacts,
     [string] $StorageAccountName,
     [string] $StorageContainerName = $ResourceGroupName.ToLowerInvariant() + '-stageartifacts',
-    [string] $TemplateFile = $ArtifactStagingDirectory + '\azuredeploy.json',
+    [string] $TemplateFile = $ArtifactStagingDirectory + '\labs\azuredeploy.json',
     [string] $TemplateParametersFile = $ArtifactStagingDirectory + '.\labs\labs-azuredeploy.parameters.json',
     [string] $DSCSourceFolder = $ArtifactStagingDirectory + '.\DSC',
     [switch] $ValidateOnly,
