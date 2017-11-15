@@ -144,14 +144,19 @@ else {
     #replace all output string
     $resultTemplateFilePath=$ArtifactStagingDirectory + '\labs\labs-result-template.json'
     $resultFilePath=$ArtifactStagingDirectory + '\labs\result.json'
-    $outputs=$result.Outputs
-    echo "ls-outputs:"
+    $outputs=$result.Outputs | ConvertTo-Json
+    echo "outputs json"
     echo $outputs
+    $outputsObj=$outputs | ConvertFrom-Json
     $result = Get-Content $resultTemplateFilePath | Out-String 
-    ForEach ($i in $outputs.psobject.properties) 
+    ForEach ($i in $outputsObj.psobject.properties) 
     {
         echo "ls-foreach-i:"
         echo $i
+        echo "ls-foreach-i-value:"
+        echo $i.Value
+        echo "ls-foreach-i-value-value:"
+        echo $i.Value.Value;
         $replacePara="#"+$i.Name;
         $replaceValue=$i.Value;
         $result=$result.Replace("$replacePara", $replaceValue);
