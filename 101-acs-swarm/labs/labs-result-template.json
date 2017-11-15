@@ -3,7 +3,7 @@
         {
             "displayname": "swarm-master-0",
             "protocol": "ssh",
-            "hostname": "#hostname",
+            "hostname": "#masterFQDN",
             "username": "#username",
             "password": "#password",
             "private-key":"#privateKey",
@@ -13,7 +13,7 @@
         {
             "displayname": "swarm-agent",
             "protocol": "ssh",
-            "hostname": "#hostname",
+            "hostname": "#agentFQDN",
             "username": "#username",
             "password": "#password",
             "private-key":"#privateKey",
