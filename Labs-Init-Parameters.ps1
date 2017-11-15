@@ -151,6 +151,6 @@ echo "parametersFilePath="
 echo $parametersFilePath
 $password=New-SWRandomPassword -InputStrings abcdefghijkmnpqrstuvwxyz, ABCEFGHJKLMNPQRSTUVWXYZ, 1234567890 -PasswordLength 8 -FirstChar abcdefghijkmnpqrstuvwxyzABCEFGHJKLMNPQRSTUVWXYZ;
 $parametersFileContent = Get-Content $parametersFilePath | Out-String 
-$parametersFileContent=$parametersFileContent.Replace("#{adminPassword}#", $password);
+$parametersFileContent=$parametersFileContent.Replace("%{adminPassword}%", $password);
 echo $parametersFileContent
 out-File -FilePath $parametersFilePath -InputObject $parametersFileContent
