@@ -1,5 +1,6 @@
 Param(
-   [string] [Parameter(Mandatory=$true)] $ArtifactStagingDirectory
+   [string] [Parameter(Mandatory=$true)] $ArtifactStagingDirectory,
+   [int]$buildId
 )
 
 
@@ -152,5 +153,14 @@ echo $parametersFilePath
 $password=New-SWRandomPassword -InputStrings abcdefghijkmnpqrstuvwxyz, ABCEFGHJKLMNPQRSTUVWXYZ, 1234567890 -PasswordLength 8 -FirstChar abcdefghijkmnpqrstuvwxyzABCEFGHJKLMNPQRSTUVWXYZ;
 $parametersFileContent = Get-Content $parametersFilePath | Out-String 
 $parametersFileContent=$parametersFileContent.Replace("%{adminPassword}%", $password);
+
+
+
+#generte unique dns name
+$dns=New-SWRandomPassword -InputStrings abcdefghijkmnpqrstuvwxyz -PasswordLength 8 -FirstChar abcdefghijkmnpqrstuvwxyzABCEFGHJKLMNPQRSTUVWXYZ;
+$dns=$dns+$buildId
+$parametersFileContent=$parametersFileContent.Replace("%{dnsLabelPrefix}%", $dns);
+
+#save file
 echo $parametersFileContent
 out-File -FilePath $parametersFilePath -InputObject $parametersFileContent
