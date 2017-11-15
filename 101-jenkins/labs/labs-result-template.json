@@ -1,0 +1,15 @@
+{
+     "enviroments": [
+
+        {
+            "displayname": "jenkins",
+            "protocol": "ssh",
+            "hostname": "#hostname",
+            "username": "#adminUsername",
+            "password": "#password",
+            "private-key":"#privateKey",
+            "port": 22,
+            "external": true
+        }
+     ]
+}
