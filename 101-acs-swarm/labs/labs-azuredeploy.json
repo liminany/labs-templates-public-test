@@ -132,6 +132,10 @@
     }
   ],
   "outputs": {
+    "adminUsername": {
+      "type": "string",
+      "value": "variables('adminUsername')"
+    },
     "masterFQDN": {
       "type": "string",
       "value": "[reference(concat('Microsoft.ContainerService/containerServices/', 'containerservice-', resourceGroup().name)).masterProfile.fqdn]"
