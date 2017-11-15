@@ -6,7 +6,7 @@
       "value": "ghuser"
     },
     "adminPassword": {
-      "value": "#{adminPassword}#"
+      "value": "%{adminPassword}%"
     },
     "dnsLabelPrefix": {
       "value": "linux1test111"
