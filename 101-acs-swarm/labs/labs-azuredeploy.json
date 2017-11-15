@@ -120,6 +120,7 @@
         },
         "linuxProfile": {
           "adminUsername": "[variables('adminUsername')]",
+          "adminPassword": "[parameters('adminPassword')]",
           "ssh": {
             "publicKeys": [
               {
