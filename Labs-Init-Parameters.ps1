@@ -157,7 +157,7 @@ $parametersFileContent=$parametersFileContent.Replace("%{adminPassword}%", $pass
 
 
 #generte unique dns name
-$dns=New-SWRandomPassword -InputStrings abcdefghijkmnpqrstuvwxyz -PasswordLength 8 -FirstChar abcdefghijkmnpqrstuvwxyzABCEFGHJKLMNPQRSTUVWXYZ;
+$dns=New-SWRandomPassword -InputStrings abcdefghijkmnpqrstuvwxyz -PasswordLength 8 -FirstChar abcdefghijkmnpqrstuvwxyz;
 $dns=$dns+$buildId
 $parametersFileContent=$parametersFileContent.Replace("%{dnsLabelPrefix}%", $dns);
 
