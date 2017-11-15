@@ -6,10 +6,10 @@
       "value": "azureuser"
     },
     "adminPassword": {
-      "value": "GEN-PASSWORD"
+      "value": "P2ssw0rd@123"
     },
     "jenkinsDnsPrefix": {
-      "value": "GEN-UNIQUE"
+      "value": "jenkinsdens111"
     },
     "jenkinsReleaseType": {
       "value": "LTS"
