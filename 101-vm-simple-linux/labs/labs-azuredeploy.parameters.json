@@ -9,7 +9,7 @@
       "value": "%{adminPassword}%"
     },
     "dnsLabelPrefix": {
-      "value": "%dnsLabelPrefix%"
+      "value": "%{dnsLabelPrefix}%"
     }
   }
 }
