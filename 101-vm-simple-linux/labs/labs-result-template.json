@@ -6,7 +6,7 @@
             "protocol": "ssh",
             "hostname": "#hostname",
             "username": "#adminUsername",
-            "password": "#password",
+            "password": "#adminPassword",
             "private-key":"#privateKey",
             "port": 2200,
             "external": true
