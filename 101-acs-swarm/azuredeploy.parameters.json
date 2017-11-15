@@ -18,7 +18,7 @@
       "value": "Swarm"
     },
     "masterCount": {
-      "value": 1
+      "value": 3
     },
     "sshRSAPublicKey": {
       "value": "GEN-SSH-PUB-KEY"
