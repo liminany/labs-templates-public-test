@@ -141,8 +141,22 @@ else {
                                        @OptionalParameters `
                                        -Force -Verbose `
                                        -ErrorVariable ErrorMessages
-    $outputs=$result.Outputs | ConvertTo-Json
-    echo $outputs
+    #replace all output string
+    $resultTemplateFilePath=$ArtifactStagingDirectory + '\labs\labs-result-template.json'
+    $resultFilePath=$ArtifactStagingDirectory + '\labs\result.json'
+    $outputs=$result.Outputs
+    $result = Get-Content $resultTemplateFilePath | Out-String 
+    ForEach ($i in $outputs.psobject.properties) 
+    {
+        $replacePara="#"+$i.Name;
+        $replaceValue=$i.Value.Value;
+        $result=$result.Replace("$replacePara", $replaceValue);
+    
+    }
+    
+    out-File -FilePath $resultFilePath -InputObject $result
+    echo $result
+
     if ($ErrorMessages) {
         Write-Output '', 'Template deployment returned the following errors:', @(@($ErrorMessages) | ForEach-Object { $_.Exception.Message.TrimEnd("`r`n") })
     }
