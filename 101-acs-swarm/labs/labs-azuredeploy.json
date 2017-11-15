@@ -134,7 +134,7 @@
   "outputs": {
     "adminUsername": {
       "type": "string",
-      "value": "variables('adminUsername')"
+      "value": "[variables('adminUsername')]"
     },
     "masterFQDN": {
       "type": "string",
