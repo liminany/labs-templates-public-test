@@ -140,11 +140,13 @@ function New-SWRandomPassword {
 
 
 #generate 8 length random password
-$ArtifactStagingDirectory = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine($PSScriptRoot, $ArtifactStagingDirectory))
-echo $ArtifactStagingDirectory
-$password=New-SWRandomPassword -InputStrings abcdefghijkmnpqrstuvwxyz, ABCEFGHJKLMNPQRSTUVWXYZ, 1234567890 -PasswordLength 8 -FirstChar abcdefghijkmnpqrstuvwxyzABCEFGHJKLMNPQRSTUVWXYZ;
-$parametersFilePath=$ArtifactStagingDirectory + '\labs\labs-azuredeploy.parameters.json'
+echo "ArtifactStagingDirectory="
+echo $ArtifactStagingDirectory)
+$parametersFilePath=$ArtifactStagingDirectory)+'\labs\labs-azuredeploy.parameters.json'
+$parametersFilePath=[System.IO.Path]::GetFullPath([System.IO.Path]::Combine($PSScriptRoot, $parametersFilePath))
+echo "parametersFilePath="
 echo $parametersFilePath
+$password=New-SWRandomPassword -InputStrings abcdefghijkmnpqrstuvwxyz, ABCEFGHJKLMNPQRSTUVWXYZ, 1234567890 -PasswordLength 8 -FirstChar abcdefghijkmnpqrstuvwxyzABCEFGHJKLMNPQRSTUVWXYZ;
 $parametersFileContent = Get-Content $parametersFilePath | Out-String 
 $parametersFileContent=$parametersFileContent.Replace("#{adminPassword}#", $password);
 echo $parametersFileContent
