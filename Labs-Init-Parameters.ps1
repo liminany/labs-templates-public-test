@@ -161,6 +161,36 @@ $dns=New-SWRandomPassword -InputStrings abcdefghijkmnpqrstuvwxyz -PasswordLength
 $dns=$dns+$buildId
 $parametersFileContent=$parametersFileContent.Replace("%{dnsLabelPrefix}%", $dns);
 
+#generate ssh key and replace
+
+$isRequiredSSH=$parametersFileContent.Contains("%{sshRSAPublicKey}%")
+
+if($isRequiredSSH)
+{
+      $sshkeyFolderPath = $ArtifactStagingDirectory+'\labs\sshkey';
+      $sshkeyFolderPath=[System.IO.Path]::GetFullPath([System.IO.Path]::Combine($PSScriptRoot, $sshkeyFolderPath))
+      $existing = [System.Boolean](Test-Path $sshkeyFolderPath)
+      if($existing)
+      {
+          Remove-Item $sshkeyFolderPath -recurse
+      }
+      New-Item $sshkeyFolderPath -type directory
+      $Email = "info@lean-soft.cn"
+      $sshKeyFileName = $sshkeyFolderPath + "\id_rsa"
+      & 'C:\Program Files\Git\usr\bin\ssh-keygen.exe'  -t rsa -C $Email -f $sshKeyFileName -P """"
+
+      $sshkeyPubFileName = $sshKeyFileName+".pub"
+      $publicKeyContent = [IO.File]::ReadAllText($sshkeyPubFileName)
+      $privateKeyContent = [IO.File]::ReadAllText($sshKeyFileName)
+      Write-Host " publick key : " + $publicKeyContent
+      Write-Host " private key : " + $privateKeyContent
+
+      $parametersFileContent=$parametersFileContent.Replace("%{sshRSAPublicKey}%", $publicKeyContent);
+
+
+}
+
+
 #save file
 echo $parametersFileContent
 out-File -FilePath $parametersFilePath -InputObject $parametersFileContent
