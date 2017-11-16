@@ -10,7 +10,9 @@ this repo is based on https://github.com/Azure/azure-quickstart-templates
 labs-azuredeploy.parameters.json
 
 DNS：%{dnsLabelPrefix}%
+
 KEY：%{sshRSAPublicKey}%
+
 PASSWORD：%{adminPassword}%
 
 ## Deploying Samples
