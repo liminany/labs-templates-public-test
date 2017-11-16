@@ -10,9 +10,6 @@
     },
     "dnsLabelPrefix": {
       "value": "%{dnsLabelPrefix}%"
-    },
-    "sshRSAPublicKey": {
-      "value": "#{sshRSAPublicKey}#"
     }
   }
 }
