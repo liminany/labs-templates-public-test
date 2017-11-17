@@ -1,5 +1,5 @@
 {
-  "itemDisplayName": "Jenkins on Azure (password)",
+  "itemDisplayName": "Jenkins on Azure",
   "icon": "ubuntu",
   "description": "This template allows you to deploy a secure Jenkins instance on a DS1_v2 size Linux Ubuntu 14.04 LTS VM.",
   "summary": "This template allows you to deploy a secure Jenkins instance on a DS1_v2 size Linux Ubuntu 14.04 LTS VM.",
