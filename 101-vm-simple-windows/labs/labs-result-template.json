@@ -8,7 +8,7 @@
             "username": "#adminUsername",
             "password": "#adminPassword",
             "private-key":"",
-            "port": 22,
+            "port": 3389,
             "master":true,
             "external": true
         }
