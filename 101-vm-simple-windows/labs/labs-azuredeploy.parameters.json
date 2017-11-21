@@ -3,13 +3,13 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "adminUsername": {
-      "value": "GEN-USER"
+      "value": "leansoft"
     },
     "adminPassword": {
-      "value": "GEN-PASSWORD"
+      "value": "%{adminPassword}%"
     },
     "dnsLabelPrefix": {
-      "value": "GEN-UNIQUE"
+      "value": "%{dnsLabelPrefix}%"
     }
   }
 }

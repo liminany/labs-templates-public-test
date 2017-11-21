@@ -1,0 +1,16 @@
+{
+     "enviroments": [
+
+        {
+            "displayname": "windows",
+            "protocol": "rdp",
+            "hostname": "#hostname",
+            "username": "#adminUsername",
+            "password": "#adminPassword",
+            "private-key":"",
+            "port": 22,
+            "master":true,
+            "external": true
+        }
+     ]
+}
