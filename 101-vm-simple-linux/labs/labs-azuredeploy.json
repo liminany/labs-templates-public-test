@@ -180,6 +180,10 @@
       "type":"string",
       "value":"[resourceGroup().name]"
     },
+    "resourceGroupLocation":{
+      "type":"string",
+      "value":"[resourceGroup().location]"
+    },
     "vmName":{
       "type":"string",
       "value":"[variables('vmName')]"
