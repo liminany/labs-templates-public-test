@@ -176,6 +176,10 @@
     }
   ],
   "outputs": {
+    "resourceGroupName":{
+      "type":"string",
+      "value":"[resourceGroup().name]"
+    },
     "adminUsername": {
       "type": "string",
       "value": "[parameters('adminUsername')]"

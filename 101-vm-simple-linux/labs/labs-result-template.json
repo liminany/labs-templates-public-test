@@ -7,6 +7,7 @@
             "hostname": "#hostname",
             "username": "#adminUsername",
             "password": "#adminPassword",
+            "resourceGroupName":"#resourceGroupName",
             "private-key":"",
             "port": 22,
             "master":true,
