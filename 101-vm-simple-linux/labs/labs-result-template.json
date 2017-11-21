@@ -8,6 +8,7 @@
             "username": "#adminUsername",
             "password": "#adminPassword",
             "resourceGroupName":"#resourceGroupName",
+            "vmName":"#vmName",
             "private-key":"",
             "port": 22,
             "master":true,

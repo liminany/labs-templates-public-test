@@ -180,6 +180,10 @@
       "type":"string",
       "value":"[resourceGroup().name]"
     },
+    "vmName":{
+      "type":"string",
+      "value":"[variables('vmName')]"
+    },
     "adminUsername": {
       "type": "string",
       "value": "[parameters('adminUsername')]"
