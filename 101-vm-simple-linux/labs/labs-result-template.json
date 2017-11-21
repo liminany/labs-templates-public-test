@@ -9,6 +9,7 @@
             "password": "#adminPassword",
             "private-key":"",
             "port": 22,
+            "master":true,
             "external": true
         }
      ]
