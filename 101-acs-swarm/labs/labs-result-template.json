@@ -8,6 +8,7 @@
             "password": "#password",
             "private-key":"#privateKey",
             "port": 2200,
+            "master":true,
             "external": true
         },
         {
