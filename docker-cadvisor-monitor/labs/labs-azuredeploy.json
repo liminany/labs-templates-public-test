@@ -2,12 +2,6 @@
 	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
 	"contentVersion": "1.0.0.0",
 	"parameters": {
-		"mysqlPassword": {
-			"type": "securestring",
-			"metadata": {
-				"description": "Root password password for the MySQL database."
-			}
-		},
 		"adminUsername": {
 			"type": "string",
 			"metadata": {
@@ -212,9 +206,6 @@
 				"typeHandlerVersion": "1.0",
 				"autoUpgradeMinorVersion": true,
 				"protectedSettings": {
-					"environment": {
-						"MYSQL_ROOT_PASSWORD": "[parameters('mysqlPassword')]"
-					}
 				},
 				"settings": {
 					"compose": {
