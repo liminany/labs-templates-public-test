@@ -13,8 +13,8 @@
         "apps": [
 
             {
-                "name": "gitlab",
-                "port": 80
+                "name": "cadvisor",
+                "port": 8080
             }
         ]
 	}],
