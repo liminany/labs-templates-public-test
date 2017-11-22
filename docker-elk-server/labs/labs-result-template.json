@@ -9,7 +9,14 @@
 		"port": 22,
 		"master": true,
 		"external": true,
-        "vmName":"#vmName"
+        "vmName":"#vmName",
+        "apps": [
+
+            {
+                "name": "cadvisor",
+                "port": 8080
+            }
+        ]
 	}],
 	"Info": {
 		"ResourceGroup": {

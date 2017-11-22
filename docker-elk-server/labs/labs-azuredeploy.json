@@ -5,7 +5,7 @@
 		"adminUsername": {
 			"type": "string",
 			"metadata": {
-				"description": "User name for the Virtual Machine."
+				"description": "Username for the Virtual Machine."
 			}
 		},
 		"adminPassword": {
@@ -14,23 +14,10 @@
 				"description": "Password for the Virtual Machine."
 			}
 		},
-		"dnsLabelPrefix": {
+		"dnsNameForPublicIP": {
 			"type": "string",
 			"metadata": {
 				"description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
-			}
-		},
-		"ubuntuOSVersion": {
-			"type": "string",
-			"defaultValue": "16.04.0-LTS",
-			"allowedValues": [
-				"12.04.5-LTS",
-				"14.04.5-LTS",
-				"15.10",
-				"16.04.0-LTS"
-			],
-			"metadata": {
-				"description": "The Ubuntu version for the VM. This will pick a fully patched image of this given Ubuntu version."
 			}
 		}
 	},
@@ -38,48 +25,54 @@
 		"storageAccountName": "[concat(uniquestring(resourceGroup().id), 'salinuxvm')]",
 		"imagePublisher": "Canonical",
 		"imageOffer": "UbuntuServer",
+		"ubuntuOSVersion": "16.04.0-LTS",
+		"OSDiskName": "osdiskfordockersimple",
+		"nsgName": "myNSG",
 		"nicName": "myVMNic",
+		"extensionName": "DockerExtension",
 		"addressPrefix": "10.0.0.0/16",
 		"subnetName": "Subnet",
 		"subnetPrefix": "10.0.0.0/24",
 		"storageAccountType": "Standard_LRS",
 		"publicIPAddressName": "myPublicIP",
 		"publicIPAddressType": "Dynamic",
-		"vmName": "MyUbuntuVM",
-		"vmExtensionName": "MyUbuntuVM_DockerExtension",
-		"vmSize": "Standard_A1",
+		"vmStorageAccountContainerName": "vhds",
+		"vmName": "MyDockerVM",
+		"vmSize": "Standard_D1",
 		"virtualNetworkName": "MyVNET",
 		"vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
+		"nsgID": "[resourceId('Microsoft.Network/networkSecurityGroups',variables('nsgName'))]",
 		"subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]"
 	},
 	"resources": [{
 			"type": "Microsoft.Storage/storageAccounts",
 			"name": "[variables('storageAccountName')]",
-			"apiVersion": "2017-06-01",
+			"apiVersion": "2015-05-01-preview",
 			"location": "[resourceGroup().location]",
-			"sku": {
-				"name": "[variables('storageAccountType')]"
-			},
-			"kind": "Storage",
-			"properties": {}
+			"properties": {
+				"accountType": "[variables('storageAccountType')]"
+			}
 		},
 		{
-			"apiVersion": "2017-04-01",
+			"apiVersion": "2015-05-01-preview",
 			"type": "Microsoft.Network/publicIPAddresses",
 			"name": "[variables('publicIPAddressName')]",
 			"location": "[resourceGroup().location]",
 			"properties": {
 				"publicIPAllocationMethod": "[variables('publicIPAddressType')]",
 				"dnsSettings": {
-					"domainNameLabel": "[parameters('dnsLabelPrefix')]"
+					"domainNameLabel": "[parameters('dnsNameForPublicIP')]"
 				}
 			}
 		},
 		{
-			"apiVersion": "2017-04-01",
+			"apiVersion": "2015-05-01-preview",
 			"type": "Microsoft.Network/virtualNetworks",
 			"name": "[variables('virtualNetworkName')]",
 			"location": "[resourceGroup().location]",
+			"dependsOn": [
+				"[variables('nsgID')]"
+			],
 			"properties": {
 				"addressSpace": {
 					"addressPrefixes": [
@@ -89,19 +82,22 @@
 				"subnets": [{
 					"name": "[variables('subnetName')]",
 					"properties": {
-						"addressPrefix": "[variables('subnetPrefix')]"
+						"addressPrefix": "[variables('subnetPrefix')]",
+						"networkSecurityGroup": {
+							"id": "[variables('nsgID')]"
+						}
 					}
 				}]
 			}
 		},
 		{
-			"apiVersion": "2017-04-01",
+			"apiVersion": "2015-05-01-preview",
 			"type": "Microsoft.Network/networkInterfaces",
 			"name": "[variables('nicName')]",
 			"location": "[resourceGroup().location]",
 			"dependsOn": [
-				"[resourceId('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]",
-				"[resourceId('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
+				"[concat('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]",
+				"[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
 			],
 			"properties": {
 				"ipConfigurations": [{
@@ -119,13 +115,50 @@
 			}
 		},
 		{
-			"apiVersion": "2017-03-30",
+			"apiVersion": "2015-05-01-preview",
+			"type": "Microsoft.Network/networkSecurityGroups",
+			"name": "[variables('nsgName')]",
+			"location": "[resourceGroup().location]",
+			"properties": {
+				"securityRules": [{
+						"name": "http",
+						"properties": {
+							"description": "Allow HTTP",
+							"protocol": "Tcp",
+							"sourcePortRange": "*",
+							"destinationPortRange": "8080",
+							"sourceAddressPrefix": "Internet",
+							"destinationAddressPrefix": "*",
+							"access": "Allow",
+							"priority": 100,
+							"direction": "Inbound"
+						}
+					},
+					{
+						"name": "ssh",
+						"properties": {
+							"description": "Allow SSH",
+							"protocol": "Tcp",
+							"sourcePortRange": "*",
+							"destinationPortRange": "22",
+							"sourceAddressPrefix": "Internet",
+							"destinationAddressPrefix": "*",
+							"access": "Allow",
+							"priority": 110,
+							"direction": "Inbound"
+						}
+					}
+				]
+			}
+		},
+		{
+			"apiVersion": "2015-05-01-preview",
 			"type": "Microsoft.Compute/virtualMachines",
 			"name": "[variables('vmName')]",
 			"location": "[resourceGroup().location]",
 			"dependsOn": [
-				"[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
-				"[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+				"[concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
+				"[concat('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
 			],
 			"properties": {
 				"hardwareProfile": {
@@ -135,60 +168,74 @@
 					"computerName": "[variables('vmName')]",
 					"adminUsername": "[parameters('adminUsername')]",
 					"adminPassword": "[parameters('adminPassword')]"
-
 				},
 				"storageProfile": {
 					"imageReference": {
 						"publisher": "[variables('imagePublisher')]",
 						"offer": "[variables('imageOffer')]",
-						"sku": "[parameters('ubuntuOSVersion')]",
+						"sku": "[variables('ubuntuOSVersion')]",
 						"version": "latest"
 					},
 					"osDisk": {
+						"name": "osdisk1",
+						"vhd": {
+							"uri": "[concat('http://',variables('storageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('OSDiskName'),'.vhd')]"
+						},
+						"caching": "ReadWrite",
 						"createOption": "FromImage"
-					},
-					"dataDisks": [{
-						"diskSizeGB": 1023,
-						"lun": 0,
-						"createOption": "Empty"
-					}]
+					}
 				},
 				"networkProfile": {
 					"networkInterfaces": [{
 						"id": "[resourceId('Microsoft.Network/networkInterfaces',variables('nicName'))]"
 					}]
-				},
-				"diagnosticsProfile": {
-					"bootDiagnostics": {
-						"enabled": true,
-						"storageUri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2016-01-01').primaryEndpoints.blob)]"
-					}
 				}
-			},
-			"resources": [{
-				"type": "extensions",
-				"name": "[variables('vmExtensionName')]",
-				"apiVersion": "2015-06-15",
-				"location": "[resourceGroup().location]",
-				"dependsOn": [
-					"[resourceId('Microsoft.Compute/virtualMachines', variables('vmName'))]"
-				],
-				"properties": {
-					"publisher": "Microsoft.Azure.Extensions",
-					"type": "CustomScript",
-					"typeHandlerVersion": "2.0",
-					"autoUpgradeMinorVersion": true,
-					"settings": {
-						"fileUris": [
-							"https://raw.githubusercontent.com/lean-soft/labs-templates/master/docker-elk-server/labs/scripts/elk.sh"
-						],
-						"commandToExecute": "elk.sh"
+			}
+		},
+		{
+			"type": "Microsoft.Compute/virtualMachines/extensions",
+			"name": "[concat(variables('vmName'),'/', variables('extensionName'))]",
+			"apiVersion": "2015-05-01-preview",
+			"location": "[resourceGroup().location]",
+			"dependsOn": [
+				"[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
+			],
+			"properties": {
+				"publisher": "Microsoft.Azure.Extensions",
+				"type": "DockerExtension",
+				"typeHandlerVersion": "1.0",
+				"autoUpgradeMinorVersion": true,
+				"protectedSettings": {},
+				"settings": {
 
-					},
-					"protectedSettings": {}
 				}
-			}]
+			}
+
+		},
+		{
+			"type": "extensions",
+			"name": "[variables('vmExtensionName')]",
+			"apiVersion": "2015-06-15",
+			"location": "[resourceGroup().location]",
+			"dependsOn": [
+				"[resourceId('Microsoft.Compute/virtualMachines', variables('vmName'))]"
+			],
+			"properties": {
+				"publisher": "Microsoft.Azure.Extensions",
+				"type": "CustomScript",
+				"typeHandlerVersion": "2.0",
+				"autoUpgradeMinorVersion": true,
+				"settings": {
+					"fileUris": [
+						"https://raw.githubusercontent.com/lean-soft/labs-templates/master/docker-elk-server/labs/scripts/elk.sh"
+					],
+					"commandToExecute": "elk.sh"
+
+				},
+				"protectedSettings": {}
+			}
 		}
+
 	],
 	"outputs": {
 		"resourceGroupName": {
@@ -203,6 +250,10 @@
 			"type": "string",
 			"value": "[variables('vmName')]"
 		},
+		"SSH": {
+			"type": "string",
+			"value": "[concat('ssh -L 8080:localhost:8080 ', parameters('adminUsername'), '@', reference(variables('publicIPAddressName')).dnsSettings.fqdn)]"
+		},
 		"adminUsername": {
 			"type": "string",
 			"value": "[parameters('adminUsername')]"
@@ -214,10 +265,6 @@
 		"hostname": {
 			"type": "string",
 			"value": "[reference(variables('publicIPAddressName')).dnsSettings.fqdn]"
-		},
-		"sshCommand": {
-			"type": "string",
-			"value": "[concat('ssh ', parameters('adminUsername'), '@', reference(variables('publicIPAddressName')).dnsSettings.fqdn)]"
 		}
 	}
 }
