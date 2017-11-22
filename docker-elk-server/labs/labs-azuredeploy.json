@@ -46,7 +46,7 @@
 		"publicIPAddressName": "myPublicIP",
 		"publicIPAddressType": "Dynamic",
 		"vmName": "MyUbuntuVM",
-    "vmExtensionName": "MyUbuntuVM_DockerExtension",
+		"vmExtensionName": "MyUbuntuVM_DockerExtension",
 		"vmSize": "Standard_A1",
 		"virtualNetworkName": "MyVNET",
 		"vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
@@ -182,11 +182,10 @@
 						"fileUris": [
 							"https://raw.githubusercontent.com/lean-soft/labs-templates/master/docker-elk-server/labs/scripts/elk.sh"
 						],
-            "commandToExecute": "elk.sh"
+						"commandToExecute": "elk.sh"
 
 					},
-					"protectedSettings": {
-					}
+					"protectedSettings": {}
 				}
 			}]
 		}
