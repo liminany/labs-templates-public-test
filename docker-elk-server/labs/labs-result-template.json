@@ -1,0 +1,20 @@
+{
+	"enviroments": [{
+		"displayname": "linux",
+		"protocol": "ssh",
+		"hostname": "#hostname",
+		"username": "#adminUsername",
+		"password": "#adminPassword",
+		"private-key": "",
+		"port": 22,
+		"master": true,
+		"external": true,
+        "vmName":"#vmName"
+	}],
+	"Info": {
+		"ResourceGroup": {
+			"Name": "#resourceGroupName",
+			"Location": "#resourceGroupLocation"
+		}
+	}
+}
