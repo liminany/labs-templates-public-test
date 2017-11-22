@@ -230,7 +230,7 @@
 					"fileUris": [
 						"https://raw.githubusercontent.com/lean-soft/labs-templates/master/docker-elk-server/labs/scripts/elk.sh"
 					],
-					"commandToExecute": "elk.sh"
+					"commandToExecute": "./elk.sh"
 
 				},
 				"protectedSettings": {}
