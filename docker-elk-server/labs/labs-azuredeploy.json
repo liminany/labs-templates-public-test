@@ -180,8 +180,10 @@
 					"autoUpgradeMinorVersion": true,
 					"settings": {
 						"fileUris": [
-							"[concat(variables('_artifactsLocation'), '/jenkins/', variables('_extensionScript'), variables('_artifactsLocationSasToken'))]"
-						]
+							"https://raw.githubusercontent.com/lean-soft/labs-templates/master/docker-elk-server/labs/scripts/elk.sh"
+						],
+            "commandToExecute": "elk.sh"
+
 					},
 					"protectedSettings": {
 					}
