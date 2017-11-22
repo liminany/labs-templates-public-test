@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "username": {
+      "value": "leansoft"
+    },
+    "password": {
+      "value": "%{adminPassword}%"
+    },
+    "vmSize": {
+      "value": "Standard_D1"
+    },
+    "dnsLabelPrefix": {
+      "value": "%{dnsLabelPrefix}%"
+    },
+    "fileUris": {
+      "value": "https://lscustomscripts.file.core.windows.net/leansoft/elk.sh"
+    },
+    "commandToExecute": {
+      "value": "./elk.sh"
+    },
+    "customScriptStorageAccountName":{
+      "value":"#{customScriptStorageAccountName}#"
+    },
+    "customScriptStorageAccountKey":{
+      "value":"#{customScriptStorageAccountKey}#"
+    }
+  }
+}
