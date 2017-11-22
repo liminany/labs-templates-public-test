@@ -13,9 +13,14 @@
         "apps": [
 
             {
-                "name": "cadvisor",
-                "port": 8080
+                "name": "elastic",
+                "port": 9200
+            },
+			{
+                "name": "kabana",
+                "port": 5601
             }
+			
         ]
 	}],
 	"Info": {
