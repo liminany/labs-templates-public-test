@@ -132,7 +132,7 @@
 							"description": "Allow HTTP",
 							"protocol": "Tcp",
 							"sourcePortRange": "*",
-							"destinationPortRange": "80",
+							"destinationPortRange": "8080",
 							"sourceAddressPrefix": "Internet",
 							"destinationAddressPrefix": "*",
 							"access": "Allow",
@@ -218,27 +218,24 @@
 				},
 				"settings": {
 					"compose": {
-						"web": {
-							"image": "gitlab/gitlab-ce:latest",
+						"cadvisor": {
+							"image": "google/cadvisor:latest",
 							"restart": "always",
-							"hostname": "[reference(variables('publicIPAddressName')).dnsSettings.fqdn]",
-							"environment": {
-								"GITLAB_OMNIBUS_CONFIG": "external_url '[reference(variables('publicIPAddressName')).dnsSettings.fqdn]'"
-							},
 							"ports": [
-								"80:80",
-								"443:443",
-								"22:22"
+								"8080:8080"
 							],
 							"volumes": [
-								"/srv/gitlab/config:/etc/gitlab",
-								"/srv/gitlab/logs:/var/log/gitlab",
-								"/srv/gitlab/data:/var/opt/gitlab"
+								"/:/rootfs:ro",
+								"/var/run:/var/run:rw",
+								"/sys:/sys:ro",
+								"/var/lib/docker/:/var/lib/docker:ro",
+								"/dev/disk/:/dev/disk:ro"
 							]
 						}
 					}
 				}
 			}
+
 		}
 	],
 	"outputs": {
