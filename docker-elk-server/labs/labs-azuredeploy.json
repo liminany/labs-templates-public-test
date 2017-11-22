@@ -22,6 +22,7 @@
 		}
 	},
 	"variables": {
+	    "vmExtensionName": "InstallELK",
 		"storageAccountName": "[concat(uniquestring(resourceGroup().id), 'salinuxvm')]",
 		"imagePublisher": "Canonical",
 		"imageOffer": "UbuntuServer",
@@ -213,7 +214,7 @@
 
 		},
 		{
-			"type": "extensions",
+			"type": "Microsoft.Compute/virtualMachines/extensions",
 			"name": "[variables('vmExtensionName')]",
 			"apiVersion": "2015-06-15",
 			"location": "[resourceGroup().location]",
