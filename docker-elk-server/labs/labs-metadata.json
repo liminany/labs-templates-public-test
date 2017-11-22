@@ -1,7 +1,7 @@
 {
-  "itemDisplayName": "Cadvisor",
-  "description": "Analyzes resource usage and performance characteristics of running containers.",
-  "summary": "Analyzes resource usage and performance characteristics of running containers.",
+  "itemDisplayName": "Elastic search",
+  "description": "Reliably and securely take data from any source, in any format, and search, analyze, and visualize it in real time.",
+  "summary": "Reliably and securely take data from any source, in any format, and search, analyze, and visualize it in real time.",
   "githubUsername": "zhouwenyang",
   "dateUpdated": "2017-11-20"
 }
