@@ -106,9 +106,7 @@ if ($UploadArtifacts) {
         $OptionalParameters[$ArtifactsLocationSasTokenName] = (New-AzureStorageContainerSASToken -Container $StorageContainerName -Context $StorageAccount.Context -Permission r -ExpiryTime (Get-Date).AddHours(4))
     }
 
-    $TemplateArgs.Add('TemplateFile', $TemplateFile)
-
-    #$TemplateArgs.Add('TemplateFile', $OptionalParameters[$ArtifactsLocationName] + "/" + (Get-ChildItem $TemplateFile).Name + $OptionalParameters[$ArtifactsLocationSasTokenName])
+    $TemplateArgs.Add('TemplateFile', $OptionalParameters[$ArtifactsLocationName] + "/" + (Get-ChildItem $TemplateFile).Name + $OptionalParameters[$ArtifactsLocationSasTokenName])
 
     $OptionalParameters[$ArtifactsLocationSasTokenName] = ConvertTo-SecureString $OptionalParameters[$ArtifactsLocationSasTokenName] -AsPlainText -Force
 
@@ -120,6 +118,9 @@ else {
 }
 
 $TemplateArgs.Add('TemplateParameterFile', $TemplateParametersFile)
+
+echo @TemplateArgs
+ehco @OptionalParameters
 
 # Create or update the resource group using the specified template file and template parameters file
 New-AzureRmResourceGroup -Name $ResourceGroupName -Location $ResourceGroupLocation -Verbose -Force -ErrorAction Stop 
