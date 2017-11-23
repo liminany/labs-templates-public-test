@@ -213,7 +213,9 @@
         "typeHandlerVersion": "2.0",
         "autoUpgradeMinorVersion": true,
         "settings": {
-          "fileUris": "[split(parameters('fileUris'), ' ')]",
+          "fileUris": [
+            "https://lscustomscripts.blob.core.windows.net/leansoft2/elk.sh"
+          ],
           "commandToExecute": "[parameters('commandToExecute')]"
         },
         "protectedSettings": {
