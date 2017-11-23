@@ -95,7 +95,7 @@ if ($UploadArtifacts) {
     #}
 
     # leansoft - zip script folder
-    $ScriptsFolder = $ArtifactStagingDirectory + '.\labs\scripts',
+    $ScriptsFolder = $ArtifactStagingDirectory + '.\labs\scripts'
     Compress-Archive -DestinationPath $ScriptsFolder
     echo $ScriptsFolder
 
