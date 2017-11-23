@@ -101,57 +101,18 @@ if ($UploadArtifacts) {
     foreach ($SourcePath in $ArtifactFilePaths) {
        Set-AzureStorageBlobContent -File $SourcePath -Blob $SourcePath.Substring($ArtifactStagingDirectory.length + 1) -Container $StorageContainerName -Context $StorageAccount.Context -Force
     }
+    # Generate a 4 hour SAS token for the artifacts location if one was not provided in the parameters file
+    #if ($OptionalParameters[$ArtifactsLocationSasTokenName] -eq $null) {
+    #    $OptionalParameters[$ArtifactsLocationSasTokenName] = (New-AzureStorageContainerSASToken -Container $StorageContainerName -Context $StorageAccount.Context -Permission r -ExpiryTime (Get-Date).AddHours(4))
+    #}
+
+    #$TemplateArgs.Add('TemplateFile', $OptionalParameters[$ArtifactsLocationName] + "/" + (Get-ChildItem $TemplateFile).Name + $OptionalParameters[$ArtifactsLocationSasTokenName])
+
+    #$OptionalParameters[$ArtifactsLocationSasTokenName] = ConvertTo-SecureString $OptionalParameters[$ArtifactsLocationSasTokenName] -AsPlainText -Force
+
 }
 else {
 
     $TemplateArgs.Add('TemplateFile', $TemplateFile)
 
-}
-
-$TemplateArgs.Add('TemplateParameterFile', $TemplateParametersFile)
-
-# Create or update the resource group using the specified template file and template parameters file
-New-AzureRmResourceGroup -Name $ResourceGroupName -Location $ResourceGroupLocation -Verbose -Force -ErrorAction Stop 
-
-if ($ValidateOnly) {
-    $ErrorMessages = Format-ValidationOutput (Test-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName `
-                                                                                  @TemplateArgs `
-                                                                                  @OptionalParameters)
-    if ($ErrorMessages) {
-        Write-Output '', 'Validation returned the following errors:', @($ErrorMessages), '', 'Template is invalid.'
-    }
-    else {
-        Write-Output '', 'Template is valid.'
-    }
-}
-else {
-    $result=New-AzureRmResourceGroupDeployment -Name ((Get-ChildItem $TemplateFile).BaseName + '-' + ((Get-Date).ToUniversalTime()).ToString('MMdd-HHmm')) `
-                                       -ResourceGroupName $ResourceGroupName `
-                                       @TemplateArgs `
-                                       @OptionalParameters `
-                                       -Force -Verbose `
-                                       -ErrorVariable ErrorMessages
-    #replace all output string
-    $resultTemplateFilePath=$ArtifactStagingDirectory + '\labs\labs-result-template.json'
-    $resultFilePath=$ArtifactStagingDirectory + '\labs\result.json'
-    $outputs=$result.Outputs | ConvertTo-Json
-    echo "outputs json"
-    echo $outputs
-    $outputsObj=$outputs | ConvertFrom-Json
-    $result = Get-Content $resultTemplateFilePath | Out-String 
-    ForEach ($i in $outputsObj.psobject.properties) 
-    {
-       
-        $replacePara="#"+$i.Name;
-        $replaceValue=$i.Value.Value;
-        $result=$result.Replace("$replacePara", $replaceValue);
-    
-    }
-    
-    out-File -FilePath $resultFilePath -InputObject $result
-    echo $result
-
-    if ($ErrorMessages) {
-        Write-Output '', 'Template deployment returned the following errors:', @(@($ErrorMessages) | ForEach-Object { $_.Exception.Message.TrimEnd("`r`n") })
-    }
 }
