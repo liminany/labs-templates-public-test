@@ -90,19 +90,14 @@ if ($UploadArtifacts) {
     }
 
 
-    # leansoft - zip script folder
-    $ScriptsFolder = $ArtifactStagingDirectory + '\labs\scripts'
-
-    if (Test-Path $ScriptsFolder) {
-        $ZipDestination = $ArtifactStagingDirectory +"\labs.zip"
-        Compress-Archive -Path $ScriptsFolder -DestinationPath $ZipDestination
-        echo $ScriptsFolder
-        # Copy files from the local storage staging location to the storage account container
-        New-AzureStorageContainer -Name $StorageContainerName -Permission Container -Context $StorageAccount.Context -ErrorAction SilentlyContinue *>&1
-        Set-AzureStorageBlobContent -File $ZipDestination -Blob $ZipDestination.Substring($ArtifactStagingDirectory.length + 1) -Container $StorageContainerName -Context $StorageAccount.Context -Force
-
+ 
+    $ScriptsFolder=$ArtifactStagingDirectory+"\labs\scripts"
+    # Copy files from the local storage staging location to the storage account container
+    New-AzureStorageContainer -Name $StorageContainerName -Permission Container -Context $StorageAccount.Context -ErrorAction SilentlyContinue *>&1
+    $ArtifactFilePaths = Get-ChildItem $ScriptsFolder -Recurse -File | ForEach-Object -Process {$_.FullName}
+    foreach ($SourcePath in $ArtifactFilePaths) {
+       Set-AzureStorageBlobContent -File $SourcePath -Blob $SourcePath.Substring($ArtifactStagingDirectory.length + 1) -Container $StorageContainerName -Context $StorageAccount.Context -Force
     }
-
 
    
     $TemplateArgs.Add('TemplateFile', $TemplateFile)
