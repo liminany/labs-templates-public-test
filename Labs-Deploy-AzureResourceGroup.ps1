@@ -119,8 +119,6 @@ else {
 
 $TemplateArgs.Add('TemplateParameterFile', $TemplateParametersFile)
 
-echo @TemplateArgs
-ehco @OptionalParameters
 
 # Create or update the resource group using the specified template file and template parameters file
 New-AzureRmResourceGroup -Name $ResourceGroupName -Location $ResourceGroupLocation -Verbose -Force -ErrorAction Stop 
@@ -137,7 +135,7 @@ if ($ValidateOnly) {
     }
 }
 else {
-    $result=New-AzureRmResourceGroupDeployment -Name ((Get-ChildItem $TemplateFile).BaseName + '-' + ((Get-Date).ToUniversalTime()).ToString('MMdd-HHmm')) `
+    New-AzureRmResourceGroupDeployment -Name ((Get-ChildItem $TemplateFile).BaseName + '-' + ((Get-Date).ToUniversalTime()).ToString('MMdd-HHmm')) `
                                        -ResourceGroupName $ResourceGroupName `
                                        @TemplateArgs `
                                        @OptionalParameters `
