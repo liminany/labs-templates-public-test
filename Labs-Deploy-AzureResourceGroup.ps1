@@ -92,11 +92,13 @@ if ($UploadArtifacts) {
 
  
     $ScriptsFolder=$ArtifactStagingDirectory+"\labs\scripts"
-    # Copy files from the local storage staging location to the storage account container
-    New-AzureStorageContainer -Name $StorageContainerName -Permission Container -Context $StorageAccount.Context -ErrorAction SilentlyContinue *>&1
-    $ArtifactFilePaths = Get-ChildItem $ScriptsFolder -Recurse -File | ForEach-Object -Process {$_.FullName}
-    foreach ($SourcePath in $ArtifactFilePaths) {
-       Set-AzureStorageBlobContent -File $SourcePath -Blob $SourcePath.Substring($ArtifactStagingDirectory.length + 1) -Container $StorageContainerName -Context $StorageAccount.Context -Force
+    if (Test-Path $ScriptsFolder) {
+        # Copy files from the local storage staging location to the storage account container
+        New-AzureStorageContainer -Name $StorageContainerName -Permission Container -Context $StorageAccount.Context -ErrorAction SilentlyContinue *>&1
+        $ArtifactFilePaths = Get-ChildItem $ScriptsFolder -Recurse -File | ForEach-Object -Process {$_.FullName}
+        foreach ($SourcePath in $ArtifactFilePaths) {
+        Set-AzureStorageBlobContent -File $SourcePath -Blob $SourcePath.Substring($ArtifactStagingDirectory.length + 1) -Container $StorageContainerName -Context $StorageAccount.Context -Force
+        }
     }
 
    
