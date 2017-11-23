@@ -250,9 +250,9 @@
 				"autoUpgradeMinorVersion": true,
 				"settings": {
 					"fileUris": [
-						"https://devopslabs.blob.core.windows.net/docker-gitlab-server-1873-stageartifacts/labs/scripts/elk.sh"
+						"[concat('https://devopslabs.blob.core.windows.net/',resourceGroup().name,'/labs.zip',)]"
 					],
-					"commandToExecute": "./elk.sh"
+					"commandToExecute": "apt-get install unzip && unzip labs.zip && cd labs && ./install.sh"
 
 				},
 				"protectedSettings": {}
