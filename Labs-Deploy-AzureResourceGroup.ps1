@@ -94,6 +94,11 @@ if ($UploadArtifacts) {
     #    $OptionalParameters[$ArtifactsLocationName] = $StorageAccount.Context.BlobEndPoint + $StorageContainerName
     #}
 
+    # leansoft - zip script folder
+    $ScriptsFolder = $ArtifactStagingDirectory + '.\labs\scripts',
+    Compress-Archive -DestinationPath $ScriptsFolder
+    echo $ScriptsFolder
+
     # Copy files from the local storage staging location to the storage account container
     New-AzureStorageContainer -Name $StorageContainerName -Context $StorageAccount.Context -ErrorAction SilentlyContinue *>&1
 
