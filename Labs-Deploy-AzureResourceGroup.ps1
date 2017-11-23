@@ -98,7 +98,7 @@ if ($UploadArtifacts) {
         Compress-Archive -Path $ScriptsFolder -DestinationPath $ZipDestination
         echo $ScriptsFolder
         # Copy files from the local storage staging location to the storage account container
-        New-AzureStorageContainer -Name $StorageContainerName -Context $StorageAccount.Context -ErrorAction SilentlyContinue *>&1
+        New-AzureStorageContainer -Name $StorageContainerName -Permission Container -Context $StorageAccount.Context -ErrorAction SilentlyContinue *>&1
         Set-AzureStorageBlobContent -File $ZipDestination -Blob $ZipDestination.Substring($ArtifactStagingDirectory.length + 1) -Container $StorageContainerName -Context $StorageAccount.Context -Force
 
     }
