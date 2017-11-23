@@ -250,7 +250,7 @@
 				"autoUpgradeMinorVersion": true,
 				"settings": {
 					"fileUris": [
-						"https://raw.githubusercontent.com/lean-soft/labs-templates/master/docker-elk-server/labs/scripts/elk.sh"
+						"https://devopslabs.blob.core.windows.net/docker-gitlab-server-1873-stageartifacts/labs/scripts/elk.sh"
 					],
 					"commandToExecute": "./elk.sh"
 
