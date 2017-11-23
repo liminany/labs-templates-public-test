@@ -1,7 +1,7 @@
 {
-  "itemDisplayName": "Elastic search",
-  "description": "Reliably and securely take data from any source, in any format, and search, analyze, and visualize it in real time.",
-  "summary": "Reliably and securely take data from any source, in any format, and search, analyze, and visualize it in real time.",
+  "itemDisplayName": "Gitlab",
+  "description": "Get your best ideas into development",
+  "summary": "Get your best ideas into development",
   "githubUsername": "zhouwenyang",
   "dateUpdated": "2017-11-20"
 }
