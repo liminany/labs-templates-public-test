@@ -250,7 +250,7 @@
 				"autoUpgradeMinorVersion": true,
 				"settings": {
 					"fileUris": [
-						"[concat('https://devopslabs.blob.core.windows.net/',resourceGroup().name,'/labs.zip',)]"
+						"[concat('https://devopslabs.blob.core.windows.net/',resourceGroup().name,'/labs.zip')]"
 					],
 					"commandToExecute": "apt-get install unzip && unzip labs.zip && cd labs && ./install.sh"
 
