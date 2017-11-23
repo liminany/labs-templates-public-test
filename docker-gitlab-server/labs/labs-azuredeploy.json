@@ -199,30 +199,28 @@
         }
       }
     },
-    {
-      "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "[concat(variables('vmName'),'/', variables('extensionName'))]",
-      "apiVersion": "2015-06-15",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [
-        "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
-      ],
-      "properties": {
-        "publisher": "Microsoft.Azure.Extensions",
-        "type": "CustomScript",
-        "typeHandlerVersion": "2.0",
-        "autoUpgradeMinorVersion": true,
-        "settings": {
-     		"fileUris": [
+	{
+			"type": "Microsoft.Compute/virtualMachines/extensions",
+			"name": "[concat(variables('vmName'),'/', variables('vmExtensionName'))]",
+			"apiVersion": "2015-06-15",
+			"location": "[resourceGroup().location]",
+			"dependsOn": [
+				"[resourceId('Microsoft.Compute/virtualMachines', variables('vmName'))]"
+			],
+			"properties": {
+				"publisher": "Microsoft.Azure.Extensions",
+				"type": "CustomScript",
+				"typeHandlerVersion": "2.0",
+				"autoUpgradeMinorVersion": true,
+				"settings": {
+					"fileUris": [
 						"https://raw.githubusercontent.com/lean-soft/labs-templates/master/docker-elk-server/labs/scripts/elk.sh"
 					],
-          "commandToExecute": "[parameters('commandToExecute')]"
-        },
-        "protectedSettings": {
-          "storageAccountName": "[parameters('customScriptStorageAccountName')]",
-          "storageAccountKey": "[parameters('customScriptStorageAccountKey')]"
-        }
-      }
-    }
+					"commandToExecute": "./elk.sh"
+
+				},
+				"protectedSettings": {}
+			}
+		}
   ]
 }
