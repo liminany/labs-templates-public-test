@@ -89,31 +89,22 @@ if ($UploadArtifacts) {
         $StorageAccount = New-AzureRmStorageAccount -StorageAccountName $StorageAccountName -Type 'Standard_LRS' -ResourceGroupName $StorageResourceGroupName -Location "$ResourceGroupLocation"
     }
 
-    # Generate the value for artifacts location if it is not provided in the parameter file
-    #if ($OptionalParameters[$ArtifactsLocationName] -eq $null) {
-    #    $OptionalParameters[$ArtifactsLocationName] = $StorageAccount.Context.BlobEndPoint + $StorageContainerName
-    #}
 
     # leansoft - zip script folder
     $ScriptsFolder = $ArtifactStagingDirectory + '\labs\scripts'
-    $ZipDestination = $ArtifactStagingDirectory +"\labs.zip"
-    Compress-Archive -Path $ScriptsFolder -DestinationPath $ZipDestination
-    echo $ScriptsFolder
 
-    # Copy files from the local storage staging location to the storage account container
-    New-AzureStorageContainer -Name $StorageContainerName -Context $StorageAccount.Context -ErrorAction SilentlyContinue *>&1
+    if (Test-Path $ScriptsFolder) {
+        $ZipDestination = $ArtifactStagingDirectory +"\labs.zip"
+        Compress-Archive -Path $ScriptsFolder -DestinationPath $ZipDestination
+        echo $ScriptsFolder
+        # Copy files from the local storage staging location to the storage account container
+        New-AzureStorageContainer -Name $StorageContainerName -Context $StorageAccount.Context -ErrorAction SilentlyContinue *>&1
+        Set-AzureStorageBlobContent -File $ZipDestination -Blob $ZipDestination.Substring($ArtifactStagingDirectory.length + 1) -Container $StorageContainerName -Context $StorageAccount.Context -Force
 
-    Set-AzureStorageBlobContent -File $ZipDestination -Blob $ZipDestination.Substring($ArtifactStagingDirectory.length + 1) -Container $StorageContainerName -Context $StorageAccount.Context -Force
+    }
 
-    # Generate a 4 hour SAS token for the artifacts location if one was not provided in the parameters file
-    #if ($OptionalParameters[$ArtifactsLocationSasTokenName] -eq $null) {
-    #    $OptionalParameters[$ArtifactsLocationSasTokenName] = (New-AzureStorageContainerSASToken -Container $StorageContainerName -Context $StorageAccount.Context -Permission r -ExpiryTime (Get-Date).AddHours(4))
-    #}
 
-    #$TemplateArgs.Add('TemplateFile', $OptionalParameters[$ArtifactsLocationName] + "/" + (Get-ChildItem $TemplateFile).Name + $OptionalParameters[$ArtifactsLocationSasTokenName])
-
-    #$OptionalParameters[$ArtifactsLocationSasTokenName] = ConvertTo-SecureString $OptionalParameters[$ArtifactsLocationSasTokenName] -AsPlainText -Force
-    
+   
     $TemplateArgs.Add('TemplateFile', $TemplateFile)
 
 
