@@ -213,9 +213,9 @@
         "typeHandlerVersion": "2.0",
         "autoUpgradeMinorVersion": true,
         "settings": {
-          "fileUris": [
-            "https://lscustomscripts.blob.core.windows.net/leansoft2/elk.sh"
-          ],
+     		"fileUris": [
+						"https://raw.githubusercontent.com/lean-soft/labs-templates/master/docker-elk-server/labs/scripts/elk.sh"
+					],
           "commandToExecute": "[parameters('commandToExecute')]"
         },
         "protectedSettings": {
