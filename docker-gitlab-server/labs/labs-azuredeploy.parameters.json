@@ -15,7 +15,7 @@
       "value": "%{dnsLabelPrefix}%"
     },
     "fileUris": {
-      "value": "https://lscustomscripts.blob.core.windows.net/leansoft/elk.sh"
+      "value": "https://lscustomscripts.blob.core.windows.net/leansoft2/elk.sh"
     },
     "commandToExecute": {
       "value": "./elk.sh"
