@@ -106,7 +106,9 @@ if ($UploadArtifacts) {
         $OptionalParameters[$ArtifactsLocationSasTokenName] = (New-AzureStorageContainerSASToken -Container $StorageContainerName -Context $StorageAccount.Context -Permission r -ExpiryTime (Get-Date).AddHours(4))
     }
 
-    $TemplateArgs.Add('TemplateFile', $OptionalParameters[$ArtifactsLocationName] + "/" + (Get-ChildItem $TemplateFile).Name + $OptionalParameters[$ArtifactsLocationSasTokenName])
+    $TemplateArgs.Add('TemplateFile', $TemplateFile)
+
+    #$TemplateArgs.Add('TemplateFile', $OptionalParameters[$ArtifactsLocationName] + "/" + (Get-ChildItem $TemplateFile).Name + $OptionalParameters[$ArtifactsLocationSasTokenName])
 
     $OptionalParameters[$ArtifactsLocationSasTokenName] = ConvertTo-SecureString $OptionalParameters[$ArtifactsLocationSasTokenName] -AsPlainText -Force
 
@@ -140,7 +142,25 @@ else {
                                        @OptionalParameters `
                                        -Force -Verbose `
                                        -ErrorVariable ErrorMessages
-
+    #replace all output string
+    $resultTemplateFilePath=$ArtifactStagingDirectory + '\labs\labs-result-template.json'
+    $resultFilePath=$ArtifactStagingDirectory + '\labs\result.json'
+    $outputs=$result.Outputs | ConvertTo-Json
+    echo "outputs json"
+    echo $outputs
+    $outputsObj=$outputs | ConvertFrom-Json
+    $result = Get-Content $resultTemplateFilePath | Out-String 
+    ForEach ($i in $outputsObj.psobject.properties) 
+    {
+       
+        $replacePara="#"+$i.Name;
+        $replaceValue=$i.Value.Value;
+        $result=$result.Replace("$replacePara", $replaceValue);
+    
+    }
+    
+    out-File -FilePath $resultFilePath -InputObject $result
+    echo $result
 
     if ($ErrorMessages) {
         Write-Output '', 'Template deployment returned the following errors:', @(@($ErrorMessages) | ForEach-Object { $_.Exception.Message.TrimEnd("`r`n") })
