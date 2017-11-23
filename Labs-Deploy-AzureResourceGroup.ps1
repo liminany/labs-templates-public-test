@@ -8,7 +8,7 @@ Param(
     [string] $ResourceGroupName = $ArtifactStagingDirectory.replace('.\','')+ "-" +$buildId.ToString(), #remove .\ if present
     [switch] $UploadArtifacts,
     [string] $StorageAccountName,
-    [string] $StorageContainerName = $ResourceGroupName.ToLowerInvariant() + '-stageartifacts',
+    [string] $StorageContainerName = $ResourceGroupName.ToLowerInvariant(),
     [string] $TemplateFile = $ArtifactStagingDirectory + '\labs\labs-azuredeploy.json',
     [string] $TemplateParametersFile = $ArtifactStagingDirectory + '.\labs\labs-azuredeploy.parameters.json',
     [string] $DSCSourceFolder = $ArtifactStagingDirectory + '.\DSC',
