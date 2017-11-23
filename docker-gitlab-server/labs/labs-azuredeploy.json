@@ -252,7 +252,7 @@
 					"fileUris": [
 						"[concat('https://devopslabs.blob.core.windows.net/',resourceGroup().name,'/labs.zip')]"
 					],
-					"commandToExecute": "apt-get install unzip && unzip labs.zip && cd scripts && ./install.sh"
+					"commandToExecute": "apt-get install unzip dos2unix && unzip labs.zip && cd scripts && chmod a+x install.sh && dos2unix install.sh && ./install.sh"
 
 				},
 				"protectedSettings": {}
