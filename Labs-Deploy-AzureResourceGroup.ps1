@@ -96,7 +96,8 @@ if ($UploadArtifacts) {
 
     # leansoft - zip script folder
     $ScriptsFolder = $ArtifactStagingDirectory + '\labs\scripts'
-    Compress-Archive -Path $ScriptsFolder -DestinationPath labs.zip
+    $ZipDestination = $ArtifactStagingDirectory +"\labs.zip"
+    Compress-Archive -Path $ScriptsFolder -DestinationPath $ZipDestination
     echo $ScriptsFolder
 
     # Copy files from the local storage staging location to the storage account container
