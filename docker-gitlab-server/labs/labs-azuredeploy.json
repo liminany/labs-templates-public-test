@@ -250,7 +250,7 @@
 				"autoUpgradeMinorVersion": true,
 				"settings": {
 					"fileUris": [
-						"[concat('https://devopslabs.blob.core.windows.net/',resourceGroup().name,'/install.sh')]"
+						"[concat('https://devopslabs.blob.core.windows.net/',resourceGroup().name,'/labs/scripts/install.sh')]"
 					],
 					"commandToExecute": "./install.sh"
 
