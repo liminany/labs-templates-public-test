@@ -13,12 +13,8 @@
         "apps": [
 
             {
-                "name": "elastic",
-                "port": 9200
-            },
-			{
-                "name": "kabana",
-                "port": 5601
+                "name": "gitlabs",
+                "port": 80
             }
 			
         ]

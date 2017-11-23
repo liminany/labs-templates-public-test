@@ -127,53 +127,11 @@
 							"description": "Allow HTTP",
 							"protocol": "Tcp",
 							"sourcePortRange": "*",
-							"destinationPortRange": "8080",
+							"destinationPortRange": "80",
 							"sourceAddressPrefix": "Internet",
 							"destinationAddressPrefix": "*",
 							"access": "Allow",
 							"priority": 100,
-							"direction": "Inbound"
-						}
-					},
-					{
-						"name": "elastic",
-						"properties": {
-							"description": "Allow elastic",
-							"protocol": "Tcp",
-							"sourcePortRange": "*",
-							"destinationPortRange": "9200",
-							"sourceAddressPrefix": "Internet",
-							"destinationAddressPrefix": "*",
-							"access": "Allow",
-							"priority": 101,
-							"direction": "Inbound"
-						}
-					},
-					{
-						"name": "kabana",
-						"properties": {
-							"description": "Allow kabana",
-							"protocol": "Tcp",
-							"sourcePortRange": "*",
-							"destinationPortRange": "5601",
-							"sourceAddressPrefix": "Internet",
-							"destinationAddressPrefix": "*",
-							"access": "Allow",
-							"priority": 102,
-							"direction": "Inbound"
-						}
-					},
-					{
-						"name": "logstash",
-						"properties": {
-							"description": "Allow logstash",
-							"protocol": "Tcp",
-							"sourcePortRange": "*",
-							"destinationPortRange": "5000",
-							"sourceAddressPrefix": "Internet",
-							"destinationAddressPrefix": "*",
-							"access": "Allow",
-							"priority": 103,
 							"direction": "Inbound"
 						}
 					},
