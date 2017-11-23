@@ -208,7 +208,9 @@
 				"autoUpgradeMinorVersion": true,
 				"settings": {
 					"fileUris": [
-						"[concat('https://devopslabs.blob.core.windows.net/',resourceGroup().name,'/labs/scripts/install.sh')]"
+						"[concat('https://devopslabs.blob.core.windows.net/',resourceGroup().name,'/labs/scripts/install.sh')]",
+						"[concat('https://devopslabs.blob.core.windows.net/',resourceGroup().name,'/labs/scripts/docker-compose.yml')]"
+
 					],
 					"commandToExecute": "./install.sh"
 
