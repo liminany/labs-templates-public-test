@@ -103,7 +103,7 @@ if ($UploadArtifacts) {
     # Copy files from the local storage staging location to the storage account container
     New-AzureStorageContainer -Name $StorageContainerName -Context $StorageAccount.Context -ErrorAction SilentlyContinue *>&1
 
-    Set-AzureStorageBlobContent -File $ZipDestination -Blob $SourcePath.Substring($ArtifactStagingDirectory.length + 1) -Container $StorageContainerName -Context $StorageAccount.Context -Force
+    Set-AzureStorageBlobContent -File $ZipDestination -Blob $ZipDestination.Substring($ArtifactStagingDirectory.length + 1) -Container $StorageContainerName -Context $StorageAccount.Context -Force
 
     # Generate a 4 hour SAS token for the artifacts location if one was not provided in the parameters file
     #if ($OptionalParameters[$ArtifactsLocationSasTokenName] -eq $null) {
