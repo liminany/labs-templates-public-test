@@ -1,26 +1,18 @@
-# A sample to run scripts in private Azure Storage using CustomScript Extension
+# Deployment of WordPress+MySQL Containers with Docker Compose
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-customscript-extension-azure-storage-on-ubuntu%2Fazuredeploy.json" target="_blank">
-    <img src="http://azuredeploy.net/deploybutton.png"/>
+
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fdocker-wordpress-mysql%2Fazuredeploy.json" target="_blank">
+	<img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
-<a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-customscript-extension-azure-storage-on-ubuntu%2Fazuredeploy.json" target="_blank">
+<a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fdocker-wordpress-mysql%2Fazuredeploy.json" target="_blank">
     <img src="http://armviz.io/visualizebutton.png"/>
 </a>
 
-[CustomScript Extension](https://github.com/Azure/azure-linux-extensions/tree/master/CustomScript) allows the owner of the Azure Virtual Machines to run customized scripts in the VM.
+This template allows you to deploy an Ubuntu Server 16.04.0-LTS VM with Docker (using the [Docker Extension][ext])
+and starts a WordPress container listening an port 80 which uses MySQL database running
+in a separate but linked Docker container, which are created using [Docker Compose][compose]
+capabilities of the [Azure Docker Extension][ext].
 
-This template shows a simple example to run scripts which are stored in private Azure Storage.
 
-## Deploy
-
-1. Using Azure CLI
-
-  https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-azure-resource-manager/
-
-2. Using Azure Powershell
-
-  https://azure.microsoft.com/en-us/documentation/articles/powershell-azure-resource-manager/
-
-3. Using Azure Portal
-
-  Click the "Deploy to Azure" button.
+[ext]: https://github.com/Azure/azure-docker-extension
+[compose]: https://docs.docker.com/compose

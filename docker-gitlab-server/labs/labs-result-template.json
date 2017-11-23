@@ -11,9 +11,14 @@
 		"external": true,
         "vmName":"#vmName",
         "apps": [
+
             {
-                "name": "gitlab",
-                "port": 8080
+                "name": "elastic",
+                "port": 9200
+            },
+			{
+                "name": "kabana",
+                "port": 5601
             }
 			
         ]
