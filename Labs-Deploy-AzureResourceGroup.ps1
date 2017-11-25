@@ -51,11 +51,12 @@ if (!$ValidateOnly) {
 
 $TemplateFile = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine($PSScriptRoot, $TemplateFile))
 $TemplateParametersFile = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine($PSScriptRoot, $TemplateParametersFile))
+
+$ArtifactStagingDirectory = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine($PSScriptRoot, $ArtifactStagingDirectory))
 $ScriptsFolder=$ArtifactStagingDirectory+"\labs\scripts"
 
 if ($UploadArtifacts) {
     # Convert relative paths to absolute paths if needed
-    $ArtifactStagingDirectory = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine($PSScriptRoot, $ArtifactStagingDirectory))
     $DSCSourceFolder = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine($PSScriptRoot, $DSCSourceFolder))
     # Parse the parameter file and update the values of artifacts location and artifacts location SAS token if they are present
     $JsonParameters = Get-Content $TemplateParametersFile -Raw | ConvertFrom-Json
