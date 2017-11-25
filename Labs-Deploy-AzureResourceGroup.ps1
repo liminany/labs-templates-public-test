@@ -164,8 +164,8 @@ else {
 
 
 # Remove AzureStorageContainer
-$TempStorageAccount = (Get-AzureRmStorageAccount | Where-Object{$_.StorageAccountName -eq $StorageAccountName})
+#$TempStorageAccount = (Get-AzureRmStorageAccount | Where-Object{$_.StorageAccountName -eq $StorageAccountName})
 
-if (Test-Path $ScriptsFolder) {
-    Remove-AzureStorageContainer -Name $StorageContainerName -Context $TempStorageAccount.Context 
-}
+#if (Test-Path $ScriptsFolder) {
+#    Remove-AzureStorageContainer -Name $StorageContainerName -Context $TempStorageAccount.Context 
+#}
