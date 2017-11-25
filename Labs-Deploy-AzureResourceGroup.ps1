@@ -51,6 +51,7 @@ if (!$ValidateOnly) {
 
 $TemplateFile = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine($PSScriptRoot, $TemplateFile))
 $TemplateParametersFile = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine($PSScriptRoot, $TemplateParametersFile))
+$ScriptsFolder=$ArtifactStagingDirectory+"\labs\scripts"
 
 if ($UploadArtifacts) {
     # Convert relative paths to absolute paths if needed
@@ -91,7 +92,6 @@ if ($UploadArtifacts) {
 
 
  
-    $ScriptsFolder=$ArtifactStagingDirectory+"\labs\scripts"
     if (Test-Path $ScriptsFolder) {
         # Copy files from the local storage staging location to the storage account container
         New-AzureStorageContainer -Name $StorageContainerName -Permission Container -Context $StorageAccount.Context -ErrorAction SilentlyContinue *>&1
@@ -159,4 +159,10 @@ else {
     if ($ErrorMessages) {
         Write-Output '', 'Template deployment returned the following errors:', @(@($ErrorMessages) | ForEach-Object { $_.Exception.Message.TrimEnd("`r`n") })
     }
+}
+
+
+# Remove AzureStorageContainer
+if (Test-Path $ScriptsFolder) {
+    Remove-AzureStorageContainer -Name $StorageContainerName
 }
