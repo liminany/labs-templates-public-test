@@ -19,6 +19,12 @@
 			"metadata": {
 				"description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
 			}
+		},
+		"StorageAccountName":{
+			"type": "string",
+			"metadata": {
+				"description": "StorageAccountName"
+			}
 		}
 	},
 	"variables": {
@@ -208,8 +214,8 @@
 				"autoUpgradeMinorVersion": true,
 				"settings": {
 					"fileUris": [
-						"[concat('https://devopslabs.blob.core.windows.net/',resourceGroup().name,'/labs/scripts/install.sh')]",
-						"[concat('https://devopslabs.blob.core.windows.net/',resourceGroup().name,'/labs/scripts/docker-compose.yml')]"
+						"[concat('https://',parameters('StorageAccountName'),'.blob.core.windows.net/',resourceGroup().name,'/labs/scripts/install.sh')]",
+						"[concat('https://',parameters('StorageAccountName'),'.blob.core.windows.net/',resourceGroup().name,'/labs/scripts/docker-compose.yml')]"
 
 					],
 					"commandToExecute": "./install.sh"
