@@ -3,6 +3,7 @@ Param(
     [string]$azurePasswordString,
     [string]$subscriptionID,
     [int]$buildId,
+    [string]$StorageResourceGroupName,
     [string] [Parameter(Mandatory=$true)] $ArtifactStagingDirectory,
     [string] [Parameter(Mandatory=$true)] $ResourceGroupLocation,
     [string] $ResourceGroupName = $ArtifactStagingDirectory.replace('.\','')+ "-" +$buildId.ToString(), #remove .\ if present
@@ -86,7 +87,6 @@ if ($UploadArtifacts) {
 
     # Create the storage account if it doesn't already exist
     if ($StorageAccount -eq $null) {
-        $StorageResourceGroupName = 'ARM_Deploy_Staging'
         New-AzureRmResourceGroup -Location "$ResourceGroupLocation" -Name $StorageResourceGroupName -Force
         $StorageAccount = New-AzureRmStorageAccount -StorageAccountName $StorageAccountName -Type 'Standard_LRS' -ResourceGroupName $StorageResourceGroupName -Location "$ResourceGroupLocation"
     }
