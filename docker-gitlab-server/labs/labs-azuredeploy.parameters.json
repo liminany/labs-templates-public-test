@@ -10,6 +10,9 @@
         },
         "dnsNameForPublicIP": {
             "value": "%{dnsLabelPrefix}%"
+        },
+        "StorageAccountName":{
+            "value":"#{StorageAccountName}#"
         }
     }
 }
