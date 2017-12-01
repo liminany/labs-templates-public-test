@@ -1,8 +1,8 @@
 {
-  "itemDisplayName": "Simple Linux VM",
+  "itemDisplayName": "Docker Swarm集群环境",
   "icon": "ubuntu",
-  "description": "This template allows you to deploy a simple Linux VM using a few different options for the Ubuntu version, using the latest patched version. This will deploy a A1 size VM in the resource group location and return the FQDN of the VM.",
-  "summary": "This template takes a minimum amount of parameters and deploys a Linux VM, using the latest patched version.",
-  "githubUsername": "bmoore-msft",
-  "dateUpdated": "2016-12-15"
+  "description": "Docker Swarm集群环境，提供1个Master节点，2个Node节点，以及2台Linux客户端",
+  "summary": "Docker Swarm集群环境，提供1个Master节点，2个Node节点，以及2台Linux客户端",
+  "githubUsername": "zhouwenyang",
+  "dateUpdated": "2017-12-01"
 }
