@@ -140,6 +140,10 @@
       "type":"string",
       "value":"[resourceGroup().name]"
     },
+    "resourceGroupLocation":{
+      "type":"string",
+      "value":"[resourceGroup().location]"
+    },
     "adminUsername": {
       "type": "string",
       "value": "[variables('adminUsername')]"

@@ -227,13 +227,17 @@
 
 	],
 	"outputs": {
-		"resourceGroupName": {
-			"type": "string",
-			"value": "[resourceGroup().name]"
+		"subscriptionId":{
+			"type":"string",
+			"value":"[subscription().subscriptionId]"
 		},
-		"resourceGroupLocation": {
-			"type": "string",
-			"value": "[resourceGroup().location]"
+		"resourceGroupName":{
+			"type":"string",
+			"value":"[resourceGroup().name]"
+		},
+		"resourceGroupLocation":{
+			"type":"string",
+			"value":"[resourceGroup().location]"
 		},
 		"vmName": {
 			"type": "string",

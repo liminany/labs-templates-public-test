@@ -11,7 +11,10 @@
 		"external": true,
         "vmName":"#vmName"
 	}],
-	"Info": {
+     "Info": {
+		"Subscription":{
+			"Id":"#subscriptionId"
+		},
 		"ResourceGroup": {
 			"Name": "#resourceGroupName",
 			"Location": "#resourceGroupLocation"

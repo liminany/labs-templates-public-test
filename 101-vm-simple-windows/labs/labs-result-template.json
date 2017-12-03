@@ -12,5 +12,14 @@
             "master":true,
             "external": true
         }
-     ]
+     ],
+     "Info": {
+		"Subscription":{
+			"Id":"#subscriptionId"
+		},
+		"ResourceGroup": {
+			"Name": "#resourceGroupName",
+			"Location": "#resourceGroupLocation"
+		}
+	}
 }

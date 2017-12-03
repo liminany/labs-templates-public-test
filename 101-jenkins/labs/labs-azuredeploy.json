@@ -249,6 +249,10 @@
       "type":"string",
       "value":"[resourceGroup().name]"
     },
+    "resourceGroupLocation":{
+      "type":"string",
+      "value":"[resourceGroup().location]"
+    },
     "jenkinsURL": {
       "type": "string",
       "value": "[concat('http://', reference(variables('publicIPAddressName')).dnsSettings.fqdn)]"
