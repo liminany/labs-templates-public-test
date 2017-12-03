@@ -132,6 +132,14 @@
     }
   ],
   "outputs": {
+    "subscriptionId":{
+      "type":"string",
+      "value":"[subscription().subscriptionId]"
+    },
+    "resourceGroupName":{
+      "type":"string",
+      "value":"[resourceGroup().name]"
+    },
     "adminUsername": {
       "type": "string",
       "value": "[variables('adminUsername')]"

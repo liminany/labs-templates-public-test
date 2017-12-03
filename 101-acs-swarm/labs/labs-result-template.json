@@ -21,5 +21,14 @@
             "port": 2200,
             "external": true
         }
-     ]
+     ],
+     "Info": {
+		"Subscription":{
+			"Id":"#subscriptionId"
+		},
+		"ResourceGroup": {
+			"Name": "#resourceGroupName",
+			"Location": "#resourceGroupLocation"
+		}
+	}
 }
