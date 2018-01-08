@@ -1,0 +1,8 @@
+{
+  "itemDisplayName": "微软研发云（TFS）",
+  "icon": "ubuntu",
+  "description": "基于微软云计算平台Microsoft Azure，微软开发工具平台Visual Studio及Team Services / Team Foundation Server和容器技术Docker，所提供的端到端的DevOps开发工具链支持能力",
+  "summary": "基于微软云计算平台Microsoft Azure，微软开发工具平台Visual Studio及Team Services / Team Foundation Server和容器技术Docker，所提供的端到端的DevOps开发工具链支持能力",
+  "githubUsername": "azure-devops",
+  "dateUpdated": "2017-06-21"
+}
