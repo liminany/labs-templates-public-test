@@ -1,0 +1,8 @@
+{
+  "itemDisplayName": "Docker Swarm集群环境",
+  "icon": "ubuntu",
+  "description": "Docker Swarm集群环境，提供1个Master节点，2个Node节点，以及2台Linux客户端",
+  "summary": "Docker Swarm集群环境，提供1个Master节点，2个Node节点，以及2台Linux客户端",
+  "githubUsername": "zhouwenyang",
+  "dateUpdated": "2017-12-01"
+}
