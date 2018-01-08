@@ -5,7 +5,7 @@
 		"hostname": "#hostname",
 		"username": "#adminUsername",
 		"password": "#adminPassword",
-		"private-key": "",
+		"privatekey": "",
 		"port": 22,
 		"master": true,
 		"external": true,
