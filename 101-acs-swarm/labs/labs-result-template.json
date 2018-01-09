@@ -6,7 +6,7 @@
             "hostname": "#masterFQDN",
             "username": "#adminUsername",
             "password": "#password",
-            "private-key":"#privateKey",
+            "privatekey":"#privateKey",
             "port": 2200,
             "master":true,
             "external": true
@@ -17,7 +17,7 @@
             "hostname": "#agentFQDN",
             "username": "#adminUsername",
             "password": "#password",
-            "private-key":"#privateKey",
+            "privatekey":"#privateKey",
             "port": 2200,
             "external": true
         }
