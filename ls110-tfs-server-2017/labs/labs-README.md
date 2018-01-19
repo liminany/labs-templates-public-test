@@ -7,11 +7,11 @@
 | Winodows构建代理  | Windows Server 2012构建代理，已装VS2015 && VS2017  |
 |Linux构建代理 | 已连接至TFS服务器 |
 
-**环境使用前准备：**
+#### 环境使用前准备
 
 为保证环境的正常使用，请先登陆到TFS服务器，关闭window防火墙。
 
-**Team Foundation Server：**
+#### Team Foundation Server
 
 ![](https://github.com/lean-soft/labs-templates/raw/master/ls110-tfs-server-2017/labs/images/image1.png)
 ![](https://github.com/lean-soft/labs-templates/raw/master/ls110-tfs-server-2017/labs/images/image2.png)
