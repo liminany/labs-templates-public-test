@@ -1,5 +1,11 @@
 # Team Foundation Server
 
-针对整个团队的协作软件开发工具
-Team Foundation Server 提供一组协作软件开发工具，它与你现有的 IDE 或编辑器集成，从而使你的跨功能团队可以在所有大小的软件项目上高效工作。
+## 介绍：
 
+本环境提供一套标准的Team Foundation Server 2017 Update 3 测试环境。
+
+| 环境名称  | 环境说明  |
+| ------------ | ------------ |
+| TFS 服务器  | 应用层以及数据库服务器（SQL 2016）  |
+| Winodows构建代理  | Windows Server 2012构建代理，已装VS2015 && VS2017  |
+|Linux构建代理 | 已连接至TFS服务器 |
