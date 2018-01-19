@@ -1,15 +1,19 @@
-</br>
+
 本环境提供一套标准的Team Foundation Server 2017 Update 3 测试环境。
-</br>
+
 | 环境名称  | 环境说明  |
 | ------------ | ------------ |
 | TFS 服务器  | 应用层以及数据库服务器（SQL 2016企业版）  |
 | Winodows构建代理  | Windows Server 2012构建代理，已装VS2015 && VS2017  |
 |Linux构建代理 | 已连接至TFS服务器 |
-</br>
 
 **环境使用前准备：**
-</br>
+
 为保证环境的正常使用，请先登陆到TFS服务器，关闭window防火墙。
 
+**Team Foundation Server：**
 
+![](images/image1.png)
+![](images/image2.png)
+![](images/image3.png)
+![](images/image4.png)
