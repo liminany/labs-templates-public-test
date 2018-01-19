@@ -1,6 +1,4 @@
-# Team Foundation Server
-
-## 介绍：
+# Team Foundation Server 环境
 
 本环境提供一套标准的Team Foundation Server 2017 Update 3 测试环境。
 
