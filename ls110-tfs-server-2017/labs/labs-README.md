@@ -13,7 +13,7 @@
 
 **Team Foundation Server：**
 
-![](images/image1.png)
-![](images/image2.png)
-![](images/image3.png)
-![](images/image4.png)
+![](https://github.com/lean-soft/labs-templates/raw/master/ls110-tfs-server-2017/labs/images/image1.png)
+![](https://github.com/lean-soft/labs-templates/raw/master/ls110-tfs-server-2017/labs/images/image2.png)
+![](https://github.com/lean-soft/labs-templates/raw/master/ls110-tfs-server-2017/labs/images/image3.png)
+![](https://github.com/lean-soft/labs-templates/raw/master/ls110-tfs-server-2017/labs/images/image4.png)
