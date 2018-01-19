@@ -1,7 +1,5 @@
-# Azure DevOps Boot Camp
+# Team Foundation Server
 
-【Azure DevOps Boot Camp】环境是由LEANSOFT提供的一套基于微软工具链的DevOps研发环境。
+针对整个团队的协作软件开发工具
+Team Foundation Server 提供一组协作软件开发工具，它与你现有的 IDE 或编辑器集成，从而使你的跨功能团队可以在所有大小的软件项目上高效工作。
 
-## 环境列表
-1. Linux
-2. Windows
