@@ -1,0 +1,25 @@
+{
+     "enviroments": [
+
+        {
+            "displayname": "windows",
+            "protocol": "rdp",
+            "hostname": "#hostname",
+            "username": "#adminUsername",
+            "password": "#adminPassword",
+            "privatekey":"",
+            "port": 3389,
+            "master":true,
+            "external": true
+        }
+     ],
+     "Info": {
+		"Subscription":{
+			"Id":"#subscriptionId"
+		},
+		"ResourceGroup": {
+			"Name": "#resourceGroupName",
+			"Location": "#resourceGroupLocation"
+		}
+	}
+}
