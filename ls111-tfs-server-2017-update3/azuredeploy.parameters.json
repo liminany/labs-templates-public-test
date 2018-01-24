@@ -1,15 +1,57 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "adminUsername": {
-      "value": "GEN-USER"
-    },
-    "adminPassword": {
-      "value": "GEN-PASSWORD"
-    },
-    "dnsLabelPrefix": {
-      "value": "GEN-UNIQUE"
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "chinanorth"
+        },
+        "virtualMachineName": {
+            "value": "ls-tfs"
+        },
+        "virtualMachineSize": {
+            "value": "Standard_DS2"
+        },
+        "adminUsername": {
+            "value": "azureuser"
+        },
+        "virtualNetworkName": {
+            "value": "ls-tfs-test-vnet"
+        },
+        "networkInterfaceName": {
+            "value": "ls-tfs808"
+        },
+        "networkSecurityGroupName": {
+            "value": "ls-tfs-nsg"
+        },
+        "adminPassword": {
+            "value": null
+        },
+        "diagnosticsStorageAccountName": {
+            "value": "lstfstestdiag117"
+        },
+        "diagnosticsStorageAccountType": {
+            "value": "Standard_LRS"
+        },
+        "diagnosticsStorageAccountId": {
+            "value": "Microsoft.Storage/storageAccounts/lstfstestdiag117"
+        },
+        "addressPrefix": {
+            "value": "10.0.1.0/24"
+        },
+        "subnetName": {
+            "value": "default"
+        },
+        "subnetPrefix": {
+            "value": "10.0.1.0/24"
+        },
+        "publicIpAddressName": {
+            "value": "ls-tfs-ip"
+        },
+        "publicIpAddressType": {
+            "value": "Dynamic"
+        },
+        "publicIpAddressSku": {
+            "value": "Basic"
+        }
     }
-  }
 }
