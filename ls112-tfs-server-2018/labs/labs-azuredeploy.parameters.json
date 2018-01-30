@@ -15,7 +15,7 @@
             "value": "azureuser"
         },
         "virtualNetworkName": {
-            "value": "tfs2018-test-01-vnet"
+            "value": "tfs2018-vnet"
         },
         "networkInterfaceName": {
             "value": "tfs2018633"
@@ -46,48 +46,6 @@
         },
         "dnsLabelPrefix": {
             "value": "%{dnsLabelPrefix}%"
-        },
-        "locationLinux": {
-            "value": "chinanorth"
-        },
-        "virtualMachineNameLinux": {
-            "value": "linux"
-        },
-        "virtualMachineSizeLinux": {
-            "value": "Standard_DS1_v2"
-        },
-        "adminUsernameLinux": {
-            "value": "azureuser"
-        },
-        "virtualNetworkNameLinux": {
-            "value": "linux-test-2-vnet"
-        },
-        "networkInterfaceNameLinux": {
-            "value": "linux730"
-        },
-        "networkSecurityGroupNameLinux": {
-            "value": "linux-nsg"
-        },
-        "adminPasswordLinux": {
-            "value": "P2ssw0rd@123"
-        },
-        "addressPrefixLinux": {
-            "value": "10.1.2.0/24"
-        },
-        "subnetNameLinux": {
-            "value": "default"
-        },
-        "subnetPrefixLinux": {
-            "value": "10.1.2.0/24"
-        },
-        "publicIpAddressNameLinux": {
-            "value": "linux-ip"
-        },
-        "publicIpAddressTypeLinux": {
-            "value": "Dynamic"
-        },
-        "publicIpAddressSkuLinux": {
-            "value": "Basic"
         }
     }
 }
