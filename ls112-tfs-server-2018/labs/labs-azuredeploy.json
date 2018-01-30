@@ -43,6 +43,12 @@
         },
         "publicIpAddressSku": {
             "type": "string"
+        },
+          "dnsLabelPrefix": {
+            "type": "string",
+            "metadata": {
+                "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
+            }
         }
     },
     "variables": {
@@ -143,16 +149,17 @@
             }
         },
         {
-            "apiVersion": "2016-03-30",
-            "type": "Microsoft.Network/publicIPAddresses",
-            "name": "[variables('publicIPAddressName')]",
-            "location": "[resourceGroup().location]",
-            "properties": {
+            "name": "[parameters('publicIpAddressName')]",
+            "type": "Microsoft.Network/publicIpAddresses",
+            "apiVersion": "2017-08-01",
+            "location": "[parameters('location')]",
+             "properties": {
                 "publicIPAllocationMethod": "Dynamic",
                 "dnsSettings": {
                 "domainNameLabel": "[parameters('dnsLabelPrefix')]"
                 }
             }
+            
         },
         {
             "name": "[parameters('networkSecurityGroupName')]",

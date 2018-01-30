@@ -43,6 +43,9 @@
         },
         "publicIpAddressSku": {
             "value": "Basic"
+        },
+        "dnsLabelPrefix": {
+            "value": "%{dnsLabelPrefix}%"
         }
     }
 }
