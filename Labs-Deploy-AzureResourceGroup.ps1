@@ -19,7 +19,7 @@ Param(
 
 $azurePassword = ConvertTo-SecureString $azurePasswordString -AsPlainText -Force
 $psCred = New-Object System.Management.Automation.PSCredential($azureAccountName, $azurePassword)
-Login-AzureRmAccount -Enviroment AzureChinaCloud -Credential $psCred
+Login-AzureRmAccount -EnvironmentName AzureChinaCloud -Credential $psCred
 
 Set-AzureRmContext -SubscriptionID $subscriptionID
 
