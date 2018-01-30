@@ -178,10 +178,30 @@
             }
         }
     ],
-    "outputs": {
-        "adminUsername": {
-            "type": "string",
-            "value": "[parameters('adminUsername')]"
-        }
+ "outputs": {
+    "subscriptionId":{
+      "type":"string",
+      "value":"[subscription().subscriptionId]"
+    },
+    "resourceGroupName":{
+      "type":"string",
+      "value":"[resourceGroup().name]"
+    },
+    "resourceGroupLocation":{
+      "type":"string",
+      "value":"[resourceGroup().location]"
+    },
+    "adminUsername": {
+      "type": "string",
+      "value": "[parameters('adminUsername')]"
+    },
+    "adminPassword": {
+      "type": "string",
+      "value": "[parameters('adminPassword')]"
+    },
+    "hostname": {
+      "type": "string",
+      "value": "[reference(parameters('publicIpAddressName')).dnsSettings.fqdn]"
     }
+  }
 }
