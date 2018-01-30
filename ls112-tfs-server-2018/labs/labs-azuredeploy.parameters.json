@@ -26,12 +26,6 @@
         "adminPassword": {
             "value": "P2ssw0rd@123"
         },
-        "diagnosticsStorageAccountName": {
-            "value": "tfs2018test01diag384"
-        },
-        "diagnosticsStorageAccountType": {
-            "value": "Standard_LRS"
-        },
         "addressPrefix": {
             "value": "10.1.1.0/24"
         },
