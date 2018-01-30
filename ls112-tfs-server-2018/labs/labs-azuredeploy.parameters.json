@@ -32,9 +32,6 @@
         "diagnosticsStorageAccountType": {
             "value": "Standard_LRS"
         },
-        "diagnosticsStorageAccountId": {
-            "value": "Microsoft.Storage/storageAccounts/tfs2018test01diag384"
-        },
         "addressPrefix": {
             "value": "10.1.1.0/24"
         },
