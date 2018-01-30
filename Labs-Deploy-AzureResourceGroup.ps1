@@ -14,12 +14,20 @@ Param(
     [string] $DSCSourceFolder = $ArtifactStagingDirectory + '.\DSC',
     [switch] $ValidateOnly,
     [string] $DebugOptions = "None",
-    [switch] $Dev
+    [switch] $Dev,
+    [string] $EnvironmentName
+
 )
 
 $azurePassword = ConvertTo-SecureString $azurePasswordString -AsPlainText -Force
 $psCred = New-Object System.Management.Automation.PSCredential($azureAccountName, $azurePassword)
-Login-AzureRmAccount -EnvironmentName AzureChinaCloud -Credential $psCred
+
+if($EnvironmentName eq 'china'){
+    Login-AzureRmAccount -EnvironmentName AzureChinaCloud -Credential $psCred
+}
+else{
+    Login-AzureRmAccount -Credential $psCred
+}
 
 Set-AzureRmContext -SubscriptionID $subscriptionID
 
