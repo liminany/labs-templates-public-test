@@ -143,15 +143,15 @@
             }
         },
         {
-            "name": "[parameters('publicIpAddressName')]",
-            "type": "Microsoft.Network/publicIpAddresses",
-            "apiVersion": "2017-08-01",
-            "location": "[parameters('location')]",
+            "apiVersion": "2016-03-30",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "name": "[variables('publicIPAddressName')]",
+            "location": "[resourceGroup().location]",
             "properties": {
-                "publicIpAllocationMethod": "[parameters('publicIpAddressType')]"
-            },
-            "sku": {
-                "name": "[parameters('publicIpAddressSku')]"
+                "publicIPAllocationMethod": "Dynamic",
+                "dnsSettings": {
+                "domainNameLabel": "[parameters('dnsLabelPrefix')]"
+                }
             }
         },
         {
