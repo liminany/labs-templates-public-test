@@ -14,8 +14,7 @@ Param(
     [string] $DSCSourceFolder = $ArtifactStagingDirectory + '.\DSC',
     [switch] $ValidateOnly,
     [string] $DebugOptions = "None",
-    [switch] $Dev,
-    [string] $Enviroment
+    [switch] $Dev
 )
 
 $azurePassword = ConvertTo-SecureString $azurePasswordString -AsPlainText -Force
