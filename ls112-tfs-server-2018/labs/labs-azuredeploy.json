@@ -245,7 +245,7 @@
 			"apiVersion": "2016-04-30-preview",
 			"location": "[parameters('location')]",
 			"dependsOn": [
-				"[concat('Microsoft.Network/networkInterfaces/', parameters('networkInterfaceName'))]"			],
+				"[concat('Microsoft.Network/networkInterfaces/', parameters('networkInterfaceNameLinux'))]"			],
 			"properties": {
 				"osProfile": {
 					"computerName": "[parameters('virtualMachineNameLinux')]",
