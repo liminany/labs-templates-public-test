@@ -49,6 +49,48 @@
             "metadata": {
                 "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
             }
+        },
+        "locationLinux": {
+            "type": "string"
+        },
+        "virtualMachineNameLinux": {
+            "type": "string"
+        },
+        "virtualMachineSizeLinux": {
+            "type": "string"
+        },
+        "adminUsernameLinux": {
+            "type": "string"
+        },
+        "virtualNetworkNameLinux": {
+            "type": "string"
+        },
+        "networkInterfaceNameLinux": {
+            "type": "string"
+        },
+        "networkSecurityGroupNameLinux": {
+            "type": "string"
+        },
+        "adminPasswordLinux": {
+            "type": "securestring"
+        },
+        "addressPrefixLinux": {
+            "type": "string"
+        },
+        "subnetNameLinux": {
+            "type": "string"
+        },
+        "subnetPrefixLinux": {
+            "type": "string"
+        },
+        "publicIpAddressNameLinux": {
+            "type": "string"
+        },
+        "publicIpAddressTypeLinux": {
+            "type": "string"
+        },
+        "publicIpAddressSkuLinux": {
+            "type": "string"
         }
     },
     "variables": {
@@ -196,7 +238,123 @@
                     }
                 ]
             }
-        }
+        },
+        {
+			"name": "[parameters('virtualMachineNameLinux')]",
+			"type": "Microsoft.Compute/virtualMachines",
+			"apiVersion": "2016-04-30-preview",
+			"location": "[parameters('location')]",
+			"dependsOn": [
+				"[concat('Microsoft.Network/networkInterfaces/', parameters('networkInterfaceName'))]",
+				"[concat('Microsoft.Storage/storageAccounts/', parameters('diagnosticsStorageAccountName'))]"
+			],
+			"properties": {
+				"osProfile": {
+					"computerName": "[parameters('virtualMachineNameLinux')]",
+					"adminUsername": "[parameters('adminUsernameLinux')]",
+					"adminPassword": "[parameters('adminPasswordLinux')]"
+				},
+				"hardwareProfile": {
+					"vmSize": "[parameters('virtualMachineSizeLinux')]"
+				},
+				"storageProfile": {
+					"imageReference": {
+						"id": "/subscriptions/72c9703f-60d5-47aa-b7a7-ec0fc7ce1a43/resourceGroups/tfs-2018-images/providers/Microsoft.Compute/images/linux-image-20180130212951"
+					},
+					"osDisk": {
+						"createOption": "fromImage",
+						"managedDisk": {
+							"storageAccountType": "Premium_LRS"
+						}
+					}
+				},
+				"networkProfile": {
+					"networkInterfaces": [{
+						"id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaceNameLinux'))]"
+					}]
+				}
+			}
+		},
+        {
+			"name": "[parameters('virtualNetworkNameLinux')]",
+			"type": "Microsoft.Network/virtualNetworks",
+			"apiVersion": "2017-08-01",
+			"location": "[parameters('locationLinux')]",
+			"properties": {
+				"addressSpace": {
+					"addressPrefixes": [
+						"[parameters('addressPrefixLinux')]"
+					]
+				},
+				"subnets": [{
+					"name": "[parameters('subnetNameLinux')]",
+					"properties": {
+						"addressPrefix": "[parameters('subnetPrefixLinux')]"
+					}
+				}]
+			}
+		},
+        {
+			"name": "[parameters('networkInterfaceName')]",
+			"type": "Microsoft.Network/networkInterfaces",
+			"apiVersion": "2016-09-01",
+			"location": "[parameters('location')]",
+			"dependsOn": [
+				"[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkNameLinux'))]",
+				"[concat('Microsoft.Network/publicIpAddresses/', parameters('publicIpAddressNameLinux'))]",
+				"[concat('Microsoft.Network/networkSecurityGroups/', parameters('networkSecurityGroupNameLinux'))]"
+			],
+			"properties": {
+				"ipConfigurations": [{
+					"name": "ipconfig1",
+					"properties": {
+						"subnet": {
+							"id": "[variables('subnetRef')]"
+						},
+						"privateIPAllocationMethod": "Dynamic",
+						"publicIpAddress": {
+							"id": "[resourceId('Microsoft.Network/publicIpAddresses', parameters('publicIpAddressNameLinux'))]"
+						}
+					}
+				}],
+				"networkSecurityGroup": {
+					"id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupNameLinux'))]"
+				}
+			}
+		},
+        {
+			"name": "[parameters('publicIpAddressNameLinux')]",
+			"type": "Microsoft.Network/publicIpAddresses",
+			"apiVersion": "2017-08-01",
+			"location": "[parameters('locationLinux')]",
+			"properties": {
+				"publicIpAllocationMethod": "[parameters('publicIpAddressTypeLinux')]"
+			},
+			"sku": {
+				"name": "[parameters('publicIpAddressSkuLinux')]"
+			}
+		},
+        {
+			"name": "[parameters('networkSecurityGroupNameLinux')]",
+			"type": "Microsoft.Network/networkSecurityGroups",
+			"apiVersion": "2017-06-01",
+			"location": "[parameters('locationLinux')]",
+			"properties": {
+				"securityRules": [{
+					"name": "default-allow-ssh",
+					"properties": {
+						"priority": 1000,
+						"protocol": "TCP",
+						"access": "Allow",
+						"direction": "Inbound",
+						"sourceAddressPrefix": "*",
+						"sourcePortRange": "*",
+						"destinationAddressPrefix": "*",
+						"destinationPortRange": "22"
+					}
+				}]
+			}
+		}
     ],
  "outputs": {
     "subscriptionId":{
