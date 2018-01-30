@@ -26,15 +26,6 @@
         "adminPassword": {
             "type": "securestring"
         },
-        "diagnosticsStorageAccountName": {
-            "type": "string"
-        },
-        "diagnosticsStorageAccountId": {
-            "type": "string"
-        },
-        "diagnosticsStorageAccountType": {
-            "type": "string"
-        },
         "addressPrefix": {
             "type": "string"
         },
