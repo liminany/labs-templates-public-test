@@ -15,11 +15,18 @@ Param(
     [switch] $ValidateOnly,
     [string] $DebugOptions = "None",
     [switch] $Dev
+    [string] $Enviroment
 )
 
 $azurePassword = ConvertTo-SecureString $azurePasswordString -AsPlainText -Force
 $psCred = New-Object System.Management.Automation.PSCredential($azureAccountName, $azurePassword)
-Login-AzureRmAccount -Credential $psCred
+if($Enviroment=="china")
+{
+    Login-AzureRmAccount -Enviroment $Enviroment -Credential $psCred
+}
+else{
+    Login-AzureRmAccount -Credential $psCred
+}
 Set-AzureRmContext -SubscriptionID $subscriptionID
 
 try {
