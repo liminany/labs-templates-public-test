@@ -14,7 +14,7 @@ Param(
     [string] $DSCSourceFolder = $ArtifactStagingDirectory + '.\DSC',
     [switch] $ValidateOnly,
     [string] $DebugOptions = "None",
-    [switch] $Dev
+    [switch] $Dev,
     [string] $Enviroment
 )
 
