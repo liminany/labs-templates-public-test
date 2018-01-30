@@ -49,7 +49,10 @@
             "metadata": {
                 "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
             }
-        }
+        },
+        "networkSecurityGroupNameLinux": {
+			"type": "string"
+		}
     },
     "variables": {
         "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
@@ -196,7 +199,28 @@
                     }
                 ]
             }
-        }
+        },
+        {
+			"name": "[parameters('networkSecurityGroupNameLinux')]",
+			"type": "Microsoft.Network/networkSecurityGroups",
+			"apiVersion": "2017-06-01",
+			"location": "[parameters('location')]",
+			"properties": {
+				"securityRules": [{
+					"name": "default-allow-ssh",
+					"properties": {
+						"priority": 1000,
+						"protocol": "TCP",
+						"access": "Allow",
+						"direction": "Inbound",
+						"sourceAddressPrefix": "*",
+						"sourcePortRange": "*",
+						"destinationAddressPrefix": "*",
+						"destinationPortRange": "22"
+					}
+				}]
+			}
+		}
     ],
  "outputs": {
     "subscriptionId":{

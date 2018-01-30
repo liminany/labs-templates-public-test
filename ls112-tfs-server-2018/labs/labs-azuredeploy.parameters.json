@@ -46,6 +46,9 @@
         },
         "dnsLabelPrefix": {
             "value": "%{dnsLabelPrefix}%"
+        },
+        "networkSecurityGroupNameLinux": {
+            "value": "tfs2018-nsg"
         }
     }
 }
