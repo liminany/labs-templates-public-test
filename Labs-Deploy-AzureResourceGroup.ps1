@@ -20,9 +20,9 @@ Param(
 
 $azurePassword = ConvertTo-SecureString $azurePasswordString -AsPlainText -Force
 $psCred = New-Object System.Management.Automation.PSCredential($azureAccountName, $azurePassword)
-if($Enviroment -eq "china")
+if($Enviroment -eq 'china')
 {
-    Login-AzureRmAccount -Enviroment $Enviroment -Credential $psCred
+    Login-AzureRmAccount -Enviroment AzureChinaCloud -Credential $psCred
 }
 else{
     Login-AzureRmAccount -Credential $psCred
