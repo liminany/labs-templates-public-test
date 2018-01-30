@@ -199,28 +199,7 @@
                     }
                 ]
             }
-        },
-        {
-			"name": "[parameters('networkSecurityGroupNameLinux')]",
-			"type": "Microsoft.Network/networkSecurityGroups",
-			"apiVersion": "2017-06-01",
-			"location": "[parameters('location')]",
-			"properties": {
-				"securityRules": [{
-					"name": "default-allow-ssh",
-					"properties": {
-						"priority": 1000,
-						"protocol": "TCP",
-						"access": "Allow",
-						"direction": "Inbound",
-						"sourceAddressPrefix": "*",
-						"sourcePortRange": "*",
-						"destinationAddressPrefix": "*",
-						"destinationPortRange": "22"
-					}
-				}]
-			}
-		}
+        }
     ],
  "outputs": {
     "subscriptionId":{
