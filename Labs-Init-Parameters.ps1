@@ -148,18 +148,35 @@ echo "ArtifactStagingDirectory="
 echo $ArtifactStagingDirectory
 $parametersFilePath=$ArtifactStagingDirectory+'\labs\labs-azuredeploy.parameters.json'
 $parametersFilePath=[System.IO.Path]::GetFullPath([System.IO.Path]::Combine($PSScriptRoot, $parametersFilePath))
+
+$parametersFilePath2=$ArtifactStagingDirectory+'\labs\labs-azuredeploy2.parameters.json'
+$parametersFilePath2=[System.IO.Path]::GetFullPath([System.IO.Path]::Combine($PSScriptRoot, $parametersFilePath2))
+
+
 echo "parametersFilePath="
 echo $parametersFilePath
 $password=New-SWRandomPassword -InputStrings abcdefghijkmnpqrstuvwxyz, ABCEFGHJKLMNPQRSTUVWXYZ, 1234567890 -PasswordLength 8 -FirstChar abcdefghijkmnpqrstuvwxyzABCEFGHJKLMNPQRSTUVWXYZ;
 $parametersFileContent = Get-Content $parametersFilePath | Out-String 
 $parametersFileContent=$parametersFileContent.Replace("%{adminPassword}%", $password);
 
+if (Test-Path $parametersFilePath2)
+{
+    $parametersFileContent2 = Get-Content $parametersFilePath | Out-String 
+    $parametersFileContent2=$parametersFileContent.Replace("%{adminPassword}%", $password);
+}
 
 
 #generte unique dns name
 $dns=New-SWRandomPassword -InputStrings abcdefghijkmnpqrstuvwxyz -PasswordLength 8 -FirstChar abcdefghijkmnpqrstuvwxyz;
 $dns=$dns+$buildId
 $parametersFileContent=$parametersFileContent.Replace("%{dnsLabelPrefix}%", $dns);
+
+if (Test-Path $parametersFilePath2) {
+    $dns2=New-SWRandomPassword -InputStrings abcdefghijkmnpqrstuvwxyz -PasswordLength 8 -FirstChar abcdefghijkmnpqrstuvwxyz;
+    $dns2=$dns+$buildId
+    $parametersFileContent2=$parametersFileContent.Replace("%{dnsLabelPrefix}%", $dns2);
+}
+
 
 #generate ssh key and replace
 
@@ -194,3 +211,4 @@ if($isRequiredSSH)
 #save file
 echo $parametersFileContent
 out-File -FilePath $parametersFilePath -InputObject $parametersFileContent
+out-File -FilePath $parametersFilePath2 -InputObject $parametersFileContent2
