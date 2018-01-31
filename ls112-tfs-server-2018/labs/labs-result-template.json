@@ -21,9 +21,9 @@
         {
 			"displayname": "linuxAgent",
 			"protocol": "ssh",
-			"hostname": "#hostnameLinux",
-			"username": "#adminUsernameLinux",
-			"password": "#adminPasswordLinux",
+			"hostname": "#LinuxHostname",
+			"username": "#LinuxAdminUsername",
+			"password": "#LinuxAdminPassword",
 			"privatekey": "",
 			"port": 22
 		}

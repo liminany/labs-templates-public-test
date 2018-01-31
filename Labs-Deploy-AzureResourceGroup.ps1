@@ -202,9 +202,9 @@ else {
           ForEach ($i in $outputsObj2.psobject.properties) 
           {
             
-                $replacePara2="#"+$i.Name;
-                $replaceValue2=$i.Value.Value;
-                $result=$result.Replace("$replacePara2", $replaceValue2);
+                $replacePara="#"+$i.Name;
+                $replaceValue=$i.Value.Value;
+                $result=$result.Replace("$replacePara", $replaceValue);
             
           }
     }
