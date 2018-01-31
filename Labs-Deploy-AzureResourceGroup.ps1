@@ -13,6 +13,9 @@ Param(
     [string] $TemplateParametersFile = $ArtifactStagingDirectory + '.\labs\labs-azuredeploy.parameters.json',
     [string] $TemplateFile2 = $ArtifactStagingDirectory + '\labs\labs-azuredeploy2.json',
     [string] $TemplateParametersFile2 = $ArtifactStagingDirectory + '.\labs\labs-azuredeploy2.parameters.json',
+    [string] $TemplateFile3 = $ArtifactStagingDirectory + '\labs\labs-azuredeploy3.json',
+    [string] $TemplateParametersFile3 = $ArtifactStagingDirectory + '.\labs\labs-azuredeploy3.parameters.json',
+   
     [string] $DSCSourceFolder = $ArtifactStagingDirectory + '.\DSC',
     [switch] $ValidateOnly,
     [string] $DebugOptions = "None",
@@ -49,6 +52,7 @@ function Format-ValidationOutput {
 $OptionalParameters = New-Object -TypeName Hashtable
 $TemplateArgs = New-Object -TypeName Hashtable
 $TemplateArgs2 = New-Object -TypeName Hashtable
+$TemplateArgs3 = New-Object -TypeName Hashtable
 
 
 if ($Dev) {
