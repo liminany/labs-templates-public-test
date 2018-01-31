@@ -47,9 +47,6 @@
         "dnsLabelPrefix": {
             "value": "%{dnsLabelPrefix}%"
         },
-        "locationLinux": {
-            "value": "chinanorth"
-        },
         "virtualMachineNameLinux": {
             "value": "linuxagent"
         },
@@ -84,7 +81,7 @@
             "value": "Basic"
         },
         "dnsLabelPrefixLinux": {
-            "value": "%{dnsLabelPrefixLinux}%"
+            "value": "%{dnsLabelPrefix2}%"
         }
     }
 }

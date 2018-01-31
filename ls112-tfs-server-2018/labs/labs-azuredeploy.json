@@ -50,9 +50,6 @@
                 "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
             }
         },
-        "locationLinux": {
-            "type": "string"
-        },
         "virtualMachineNameLinux": {
             "type": "string"
         },
@@ -243,7 +240,7 @@
             "name": "[parameters('virtualMachineNameLinux')]",
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2016-04-30-preview",
-            "location": "[parameters('locationLinux')]",
+            "location": "[parameters('location')]",
             "dependsOn": [
                 "[concat('Microsoft.Network/networkInterfaces/', parameters('networkInterfaceNameLinux'))]"
             ],
@@ -281,7 +278,7 @@
             "name": "[parameters('networkInterfaceNameLinux')]",
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2016-09-01",
-            "location": "[parameters('locationLinux')]",
+            "location": "[parameters('location')]",
             "dependsOn": [
                 "[concat('Microsoft.Network/publicIpAddresses/', parameters('publicIpAddressNameLinux'))]",
                 "[concat('Microsoft.Network/networkSecurityGroups/', parameters('networkSecurityGroupNameLinux'))]"
@@ -310,7 +307,7 @@
             "name": "[parameters('publicIpAddressNameLinux')]",
             "type": "Microsoft.Network/publicIpAddresses",
             "apiVersion": "2017-08-01",
-            "location": "[parameters('locationLinux')]",
+            "location": "[parameters('location')]",
              "properties": {
                 "publicIPAllocationMethod": "Dynamic",
                 "dnsSettings": {

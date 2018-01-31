@@ -159,7 +159,12 @@ $parametersFileContent=$parametersFileContent.Replace("%{adminPassword}%", $pass
 #generte unique dns name
 $dns=New-SWRandomPassword -InputStrings abcdefghijkmnpqrstuvwxyz -PasswordLength 8 -FirstChar abcdefghijkmnpqrstuvwxyz;
 $dns=$dns+$buildId
+
+$dns2=New-SWRandomPassword -InputStrings abcdefghijkmnpqrstuvwxyz -PasswordLength 8 -FirstChar abcdefghijkmnpqrstuvwxyz;
+$dns2=$dns2+$buildId
+
 $parametersFileContent=$parametersFileContent.Replace("%{dnsLabelPrefix}%", $dns);
+$parametersFileContent=$parametersFileContent.Replace("%{dnsLabelPrefix2}%", $dns2);
 
 #generate ssh key and replace
 
