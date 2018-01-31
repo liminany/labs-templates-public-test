@@ -25,6 +25,7 @@
 			"username": "#linuxAdminUsername",
 			"password": "#linuxAdminPassword",
 			"privatekey": "",
+            "external": true,
 			"port": 22
 		}
 	],
