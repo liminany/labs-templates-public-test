@@ -210,5 +210,6 @@ if($isRequiredSSH)
 
 #save file
 echo $parametersFileContent
+echo $parametersFileContent2
 out-File -FilePath $parametersFilePath -InputObject $parametersFileContent
 out-File -FilePath $parametersFilePath2 -InputObject $parametersFileContent2
