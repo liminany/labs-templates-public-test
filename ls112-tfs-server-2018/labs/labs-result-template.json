@@ -17,6 +17,15 @@
 					"port": 8080
 				}
 			]
+		},
+        {
+			"displayname": "linuxAgent",
+			"protocol": "ssh",
+			"hostname": "#hostnameLinux",
+			"username": "#adminUsernameLinux",
+			"password": "#adminPasswordLinux",
+			"privatekey": "",
+			"port": 22
 		}
 	],
 	"Info": {

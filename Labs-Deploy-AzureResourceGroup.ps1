@@ -146,7 +146,7 @@ if ($ValidateOnly) {
                                                                                   @OptionalParameters)
 
     
-    if (Test-Path $TemplateFile) {
+    if (Test-Path $TemplateFile2) {
      $ErrorMessages = Format-ValidationOutput (Test-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName `
                                                                                   @TemplateArgs2 `
                                                                                   @OptionalParameters2)
@@ -169,7 +169,7 @@ else {
                                        @OptionalParameters `
                                        -Force -Verbose `
                                        -ErrorVariable ErrorMessages
-    if (Test-Path $TemplateFile) {
+    if (Test-Path $TemplateFile2) {
           $result2=New-AzureRmResourceGroupDeployment -Name ((Get-ChildItem $TemplateFile).BaseName + '-' + ((Get-Date).ToUniversalTime()).ToString('MMdd-HHmm')) `
                                        -ResourceGroupName $ResourceGroupName `
                                        @TemplateArgs2 `
@@ -180,7 +180,7 @@ else {
     #replace all output string
     $resultTemplateFilePath=$ArtifactStagingDirectory + '\labs\labs-result-template.json'
     $resultFilePath=$ArtifactStagingDirectory + '\labs\result.json'
-    $outputs=$result.Outputs | ConvertTo-Json
+    $outputs=$result.Outputs | ConvertTo-Json  
     echo "outputs json"
     echo $outputs
     $outputsObj=$outputs | ConvertFrom-Json
@@ -193,6 +193,23 @@ else {
         $result=$result.Replace("$replacePara", $replaceValue);
     
     }
+
+   if (Test-Path $TemplateFile2){
+         $outputs2=$result2.Outputs | ConvertTo-Json  
+          echo "outputs json"
+          echo $outputs2
+          $outputsObj2=$outputs2 | ConvertFrom-Json
+          $result = Get-Content $resultTemplateFilePath | Out-String 
+          ForEach ($i in $outputsObj2.psobject.properties) 
+          {
+            
+                $replacePara="#"+$i.Name;
+                $replaceValue=$i.Value.Value;
+                $result=$result.Replace("$replacePara", $replaceValue);
+            
+          }
+    }
+
     
     out-File -FilePath $resultFilePath -InputObject $result
     echo $result

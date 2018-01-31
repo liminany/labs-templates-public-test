@@ -155,9 +155,17 @@
         }
     ],
     "outputs": {
-        "adminUsername": {
-            "type": "string",
-            "value": "[parameters('adminUsername')]"
-        }
+            "adminUsernameLinux": {
+                "type": "string",
+                "value": "[parameters('adminUsername')]"
+                },
+            "adminPasswordLinux": {
+                "type": "string",
+                "value": "[parameters('adminPassword')]"
+            },
+            "hostnameLinux": {
+                "type": "string",
+                "value": "[reference(parameters('publicIpAddressName')).dnsSettings.fqdn]"
+            }
     }
 }
