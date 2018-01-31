@@ -118,7 +118,7 @@
 				},
 				"storageProfile": {
 					"imageReference": {
-						"id": "/subscriptions/72c9703f-60d5-47aa-b7a7-ec0fc7ce1a43/resourceGroups/tfs-2018-images/providers/Microsoft.Compute/images/tfs2018-image-20180130111636"
+						"id": "/subscriptions/72c9703f-60d5-47aa-b7a7-ec0fc7ce1a43/resourceGroups/labs-template-tfs2018-images/providers/Microsoft.Compute/images/tfs2018-image-20180131210803"
 					},
 					"osDisk": {
 						"createOption": "fromImage",
@@ -248,7 +248,7 @@
 				},
 				"storageProfile": {
 					"imageReference": {
-						"id": "/subscriptions/72c9703f-60d5-47aa-b7a7-ec0fc7ce1a43/resourceGroups/tfs-2018-images/providers/Microsoft.Compute/images/linux-image-20180130212951"
+						"id": "/subscriptions/72c9703f-60d5-47aa-b7a7-ec0fc7ce1a43/resourceGroups/labs-template-tfs2018-images/providers/Microsoft.Compute/images/linux-image-20180131210822"
 					},
 					"osDisk": {
 						"createOption": "fromImage",
