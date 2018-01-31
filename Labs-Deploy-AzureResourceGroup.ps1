@@ -173,7 +173,6 @@ else {
           $result2=New-AzureRmResourceGroupDeployment -Name ((Get-ChildItem $TemplateFile).BaseName + '-' + ((Get-Date).ToUniversalTime()).ToString('MMdd-HHmm')) `
                                        -ResourceGroupName $ResourceGroupName `
                                        @TemplateArgs2 `
-                                       @OptionalParameters2 `
                                        -Force -Verbose `
                                        -ErrorVariable ErrorMessages
     }
