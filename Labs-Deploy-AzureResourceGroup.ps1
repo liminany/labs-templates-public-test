@@ -199,7 +199,6 @@ else {
           echo "outputs json"
           echo $outputs2
           $outputsObj2=$outputs2 | ConvertFrom-Json
-          $result = Get-Content $resultTemplateFilePath | Out-String 
           ForEach ($i in $outputsObj2.psobject.properties) 
           {
             
