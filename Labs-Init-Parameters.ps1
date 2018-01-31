@@ -161,8 +161,8 @@ $parametersFileContent=$parametersFileContent.Replace("%{adminPassword}%", $pass
 
 if (Test-Path $parametersFilePath2)
 {
-    $parametersFileContent2 = Get-Content $parametersFilePath | Out-String 
-    $parametersFileContent2=$parametersFileContent.Replace("%{adminPassword}%", $password);
+    $parametersFileContent2 = Get-Content $parametersFilePath2 | Out-String 
+    $parametersFileContent2=$parametersFileContent2.Replace("%{adminPassword}%", $password);
 }
 
 
@@ -174,7 +174,7 @@ $parametersFileContent=$parametersFileContent.Replace("%{dnsLabelPrefix}%", $dns
 if (Test-Path $parametersFilePath2) {
     $dns2=New-SWRandomPassword -InputStrings abcdefghijkmnpqrstuvwxyz -PasswordLength 8 -FirstChar abcdefghijkmnpqrstuvwxyz;
     $dns2=$dns+$buildId
-    $parametersFileContent2=$parametersFileContent.Replace("%{dnsLabelPrefix}%", $dns2);
+    $parametersFileContent2=$parametersFileContent2.Replace("%{dnsLabelPrefix}%", $dns2);
 }
 
 
