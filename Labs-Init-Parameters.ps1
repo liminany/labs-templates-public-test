@@ -173,7 +173,7 @@ $parametersFileContent=$parametersFileContent.Replace("%{dnsLabelPrefix}%", $dns
 
 if (Test-Path $parametersFilePath2) {
     $dns2=New-SWRandomPassword -InputStrings abcdefghijkmnpqrstuvwxyz -PasswordLength 8 -FirstChar abcdefghijkmnpqrstuvwxyz;
-    $dns2=$dns+$buildId
+    $dns2=$dns2+$buildId
     $parametersFileContent2=$parametersFileContent2.Replace("%{dnsLabelPrefix}%", $dns2);
 }
 
