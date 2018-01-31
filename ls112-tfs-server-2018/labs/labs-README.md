@@ -14,7 +14,7 @@
 
 #### Team Foundation Server
 
-![](https://github.com/lean-soft/labs-templates/raw/master/ls110-tfs-server-2017/labs/images/image1.png)
-![](https://github.com/lean-soft/labs-templates/raw/master/ls110-tfs-server-2017/labs/images/image2.png)
-![](https://github.com/lean-soft/labs-templates/raw/master/ls110-tfs-server-2017/labs/images/image3.png)
-![](https://github.com/lean-soft/labs-templates/raw/master/ls110-tfs-server-2017/labs/images/image4.png)
+![](https://raw.githubusercontent.com/lean-soft/labs-templates/master/ls112-tfs-server-2018/labs/images/image1.png)
+![](https://raw.githubusercontent.com/lean-soft/labs-templates/master/ls112-tfs-server-2018/labs/images/image2.png)
+![](https://raw.githubusercontent.com/lean-soft/labs-templates/master/ls112-tfs-server-2018/labs/images/image3.png)
+![](https://raw.githubusercontent.com/lean-soft/labs-templates/master/ls112-tfs-server-2018/labs/images/image4.png)
