@@ -320,7 +320,7 @@
             "name": "[parameters('networkSecurityGroupNameLinux')]",
             "type": "Microsoft.Network/networkSecurityGroups",
             "apiVersion": "2017-06-01",
-            "location": "[parameters('locationLinux')]",
+            "location": "[parameters('location')]",
             "properties": {
                 "securityRules": [
                     {
