@@ -46,6 +46,45 @@
         },
         "dnsLabelPrefix": {
             "value": "%{dnsLabelPrefix}%"
+        },
+        "locationLinux": {
+            "value": "chinanorth"
+        },
+        "virtualMachineNameLinux": {
+            "value": "linuxagent"
+        },
+        "virtualMachineSizeLinux": {
+            "value": "Standard_DS2_v2"
+        },
+        "adminUsernameLinux": {
+            "value": "azureuser"
+        },
+        "virtualNetworkNameLinux": {
+            "value": "tfs2018-vnet"
+        },
+        "networkInterfaceNameLinux": {
+            "value": "linuxagent83"
+        },
+        "networkSecurityGroupNameLinux": {
+            "value": "linuxagent-nsg"
+        },
+        "adminPasswordLinux": {
+            "value": "P2ssw0rd@123"
+        },
+        "subnetNameLinux": {
+            "value": "default"
+        },
+        "publicIpAddressNameLinux": {
+            "value": "linuxagent-ip"
+        },
+        "publicIpAddressTypeLinux": {
+            "value": "Dynamic"
+        },
+        "publicIpAddressSkuLinux": {
+            "value": "Basic"
+        },
+        "dnsLabelPrefixLinux": {
+            "value": "%{dnsLabelPrefixLinux}%"
         }
     }
 }
