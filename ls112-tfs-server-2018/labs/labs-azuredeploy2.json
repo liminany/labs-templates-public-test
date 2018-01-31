@@ -155,15 +155,15 @@
         }
     ],
     "outputs": {
-            "LinuxAdminUsername": {
+            "linuxAdminUsername": {
                 "type": "string",
                 "value": "[parameters('adminUsername')]"
                 },
-            "LinuxAdminPassword": {
+            "linuxAdminPassword": {
                 "type": "string",
                 "value": "[parameters('adminPassword')]"
             },
-            "LinuxHostname": {
+            "linuxHostname": {
                 "type": "string",
                 "value": "[reference(parameters('publicIpAddressName')).dnsSettings.fqdn]"
             }
