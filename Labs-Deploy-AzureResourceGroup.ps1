@@ -9,10 +9,10 @@ Param(
     [switch] $UploadArtifacts,
     [string] $StorageAccountName,
     [string] $StorageContainerName = $ResourceGroupName.ToLowerInvariant(),
-    [string] $azureDeployFileName,
-    [string] $azureDeployParametersFileName,
-    [string] $TemplateFile = $ArtifactStagingDirectory + '\labs\'+$azureDeployFileName,
-    [string] $TemplateParametersFile = $ArtifactStagingDirectory + '.\labs\'+$azureDeployParametersFileName,
+    [string] $TemplateFile = $ArtifactStagingDirectory + '\labs\labs-azuredeploy.json',
+    [string] $TemplateParametersFile = $ArtifactStagingDirectory + '.\labs\labs-azuredeploy.parameters.json',
+    [string] $TemplateFile2 = $ArtifactStagingDirectory + '\labs\labs-azuredeploy2.json',
+    [string] $TemplateParametersFile2 = $ArtifactStagingDirectory + '.\labs\labs-azuredeploy2.parameters.json',
     [string] $DSCSourceFolder = $ArtifactStagingDirectory + '.\DSC',
     [switch] $ValidateOnly,
     [string] $DebugOptions = "None",
@@ -48,6 +48,8 @@ function Format-ValidationOutput {
 
 $OptionalParameters = New-Object -TypeName Hashtable
 $TemplateArgs = New-Object -TypeName Hashtable
+$TemplateArgs2 = New-Object -TypeName Hashtable
+
 
 if ($Dev) {
     $TemplateParametersFile = $TemplateParametersFile.Replace('azuredeploy.parameters.json', 'azuredeploy.parameters.dev.json')
@@ -62,6 +64,10 @@ if (!$ValidateOnly) {
 
 $TemplateFile = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine($PSScriptRoot, $TemplateFile))
 $TemplateParametersFile = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine($PSScriptRoot, $TemplateParametersFile))
+
+$TemplateFile2 = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine($PSScriptRoot, $TemplateFile2))
+$TemplateParametersFile2 = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine($PSScriptRoot, $TemplateParametersFile2))
+
 
 $ArtifactStagingDirectory = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine($PSScriptRoot, $ArtifactStagingDirectory))
 $ScriptsFolder=$ArtifactStagingDirectory+"\labs\scripts"
@@ -115,16 +121,20 @@ if ($UploadArtifacts) {
 
    
     $TemplateArgs.Add('TemplateFile', $TemplateFile)
+    $TemplateArgs2.Add('TemplateFile', $TemplateFile2)
+
 
 
 }
 else {
 
     $TemplateArgs.Add('TemplateFile', $TemplateFile)
+    $TemplateArgs2.Add('TemplateFile', $TemplateFile2)
 
 }
 
 $TemplateArgs.Add('TemplateParameterFile', $TemplateParametersFile)
+$TemplateArgs2.Add('TemplateParameterFile', $TemplateParametersFile2)
 
 
 # Create or update the resource group using the specified template file and template parameters file
@@ -134,12 +144,23 @@ if ($ValidateOnly) {
     $ErrorMessages = Format-ValidationOutput (Test-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName `
                                                                                   @TemplateArgs `
                                                                                   @OptionalParameters)
+
+    
+    if (Test-Path $TemplateFile) {
+     $ErrorMessages = Format-ValidationOutput (Test-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName `
+                                                                                  @TemplateArgs2 `
+                                                                                  @OptionalParameters2)
+    }
+
     if ($ErrorMessages) {
         Write-Output '', 'Validation returned the following errors:', @($ErrorMessages), '', 'Template is invalid.'
     }
     else {
         Write-Output '', 'Template is valid.'
     }
+
+
+
 }
 else {
     $result=New-AzureRmResourceGroupDeployment -Name ((Get-ChildItem $TemplateFile).BaseName + '-' + ((Get-Date).ToUniversalTime()).ToString('MMdd-HHmm')) `
@@ -148,6 +169,15 @@ else {
                                        @OptionalParameters `
                                        -Force -Verbose `
                                        -ErrorVariable ErrorMessages
+    if (Test-Path $TemplateFile) {
+          $result2=New-AzureRmResourceGroupDeployment -Name ((Get-ChildItem $TemplateFile).BaseName + '-' + ((Get-Date).ToUniversalTime()).ToString('MMdd-HHmm')) `
+                                       -ResourceGroupName $ResourceGroupName `
+                                       @TemplateArgs2 `
+                                       @OptionalParameters2 `
+                                       -Force -Verbose `
+                                       -ErrorVariable ErrorMessages
+    }
+  
     #replace all output string
     $resultTemplateFilePath=$ArtifactStagingDirectory + '\labs\labs-result-template.json'
     $resultFilePath=$ArtifactStagingDirectory + '\labs\result.json'
