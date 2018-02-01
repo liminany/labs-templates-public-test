@@ -2,7 +2,7 @@
 	"Services": [
 		{
 			"displayname": "App Insight",
-			"appName":"#name",
+			"appName":"#appName",
 			"instrumentationKey": "#instrumentationKey"
 		}
 	],
