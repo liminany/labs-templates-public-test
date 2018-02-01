@@ -1,0 +1,18 @@
+{
+	"Services": [
+		{
+			"displayname": "App Insight",
+			"name":"#name",
+			"instrumentationKey": "#instrumentationKey"
+		}
+	],
+	"Info": {
+		"Subscription": {
+			"Id": "#subscriptionId"
+		},
+		"ResourceGroup": {
+			"Name": "#resourceGroupName",
+			"Location": "#resourceGroupLocation"
+		}
+	}
+}
