@@ -6,7 +6,7 @@
       "value": "#{acrName}#"
     },
     "acrAdminUserEnabled": {
-      "value": false
+      "value": true
     },
     "acrStorageType": {
       "value": "Standard_LRS"
