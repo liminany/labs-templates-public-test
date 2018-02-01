@@ -1,0 +1,25 @@
+{
+  "itemDisplayName": "Team Foudation Server",
+  "icon": "ubuntu",
+  "description": "提供一组协作软件开发工具，它与你现有的 IDE 或编辑器集成，从而使你的跨功能团队可以在所有大小的软件项目上高效工作。",
+  "summary": "提供一组协作软件开发工具，它与你现有的 IDE 或编辑器集成，从而使你的跨功能团队可以在所有大小的软件项目上高效工作。",
+  "githubUsername": "azure-devops",
+  "dateUpdated": "2017-06-21",
+  "services":[
+    {
+      "type":"env",
+      "name":"Team Foudation Server 2018",
+      "folder":"ls112-tfs-server-2018"
+    },
+    {
+      "type":"acr",
+      "name":"Azure Container Registry",
+      "folder":"101-container-registry"
+    },
+    {
+      "type":"appInsights",
+      "name":"Application Insight",
+      "folder":"ls113-app-insights"
+    }
+  ]
+}
