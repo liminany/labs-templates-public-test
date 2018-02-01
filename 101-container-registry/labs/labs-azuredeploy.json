@@ -73,6 +73,18 @@
     }
   ],
   "outputs": {
+    "subscriptionId": {
+			"type": "string",
+			"value": "[subscription().subscriptionId]"
+		},
+		"resourceGroupName": {
+			"type": "string",
+			"value": "[resourceGroup().name]"
+		},
+		"resourceGroupLocation": {
+			"type": "string",
+			"value": "[resourceGroup().location]"
+		},
     "registryServer": {
       "value": "[reference(resourceId('Microsoft.ContainerRegistry/registries',parameters('acrName')),'2016-06-27-preview').loginServer]",
       "type": "string"

@@ -1,3 +1,19 @@
 {
-	
+	"Services": [
+		{
+			"displayname": "Azure Container Registry",
+			"registryServer": "#registryServer",
+			"registryUsername": "#registryUsername",
+			"registryPassword": "#registryPassword"
+		}
+	],
+	"Info": {
+		"Subscription": {
+			"Id": "#subscriptionId"
+		},
+		"ResourceGroup": {
+			"Name": "#resourceGroupName",
+			"Location": "#resourceGroupLocation"
+		}
+	}
 }
