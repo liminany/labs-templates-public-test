@@ -1,10 +1,10 @@
 {
 	"Services": [
 		{
-			"displayname": "应用监控（Application Insight）",
+			"displayname": "Application Insights",
 			"properties":[
 				{
-					"key":"服务名称",
+					"key":"Application Name",
 					"value":"#appName"
 				},
 				{

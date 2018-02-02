@@ -1,18 +1,18 @@
 {
 	"Services": [
 		{
-			"displayname": "Azure镜像仓库",
+			"displayname": "Azure Container Registry",
 			"properties":[
 				{
-					"key":"镜像地址",
+					"key":"Server",
 					"value":"#registryServer"
 				},
 				{
-					"key":"用户名",
+					"key":"Username",
 					"value":"#registryUsername"
 				},
 				{
-					"key":"密码",
+					"key":"PassWord",
 					"value":"#registryPassword"
 				}
 			]
