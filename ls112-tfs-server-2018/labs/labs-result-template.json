@@ -26,7 +26,24 @@
 			"password": "#linuxAdminPassword",
 			"privatekey": "",
             "external": true,
-			"port": 22
+			"port": 22,
+			"apps": [{
+					"name": "80",
+					"port": 80
+				},
+				{
+					"name": "81",
+					"port": 81
+				},
+				{
+					"name": "5000",
+					"port": 5000
+				},
+				{
+					"name": "5001",
+					"port": 5001
+				}
+			]
 		}
 	],
 	"Info": {

@@ -323,6 +323,71 @@
 						"destinationAddressPrefix": "*",
 						"destinationPortRange": "22"
 					}
+				},
+				{
+					"name": "app01",
+					"properties": {
+						"priority": 1001,
+						"protocol": "TCP",
+						"access": "Allow",
+						"direction": "Inbound",
+						"sourceAddressPrefix": "*",
+						"sourcePortRange": "*",
+						"destinationAddressPrefix": "*",
+						"destinationPortRange": "5000"
+					}
+				},
+				{
+					"name": "app02",
+					"properties": {
+						"priority": 1002,
+						"protocol": "TCP",
+						"access": "Allow",
+						"direction": "Inbound",
+						"sourceAddressPrefix": "*",
+						"sourcePortRange": "*",
+						"destinationAddressPrefix": "*",
+						"destinationPortRange": "5001"
+					}
+				},
+				{
+					"name": "app03",
+					"properties": {
+						"priority": 1003,
+						"protocol": "TCP",
+						"access": "Allow",
+						"direction": "Inbound",
+						"sourceAddressPrefix": "*",
+						"sourcePortRange": "*",
+						"destinationAddressPrefix": "*",
+						"destinationPortRange": "8080"
+					}
+				},
+				{
+					"name": "app04",
+					"properties": {
+						"priority": 1004,
+						"protocol": "TCP",
+						"access": "Allow",
+						"direction": "Inbound",
+						"sourceAddressPrefix": "*",
+						"sourcePortRange": "*",
+						"destinationAddressPrefix": "*",
+						"destinationPortRange": "80"
+					}
+				},
+				{
+					"name": "app05",
+					"properties": {
+						"priority": 1005,
+						"protocol": "TCP",
+						"access": "Allow",
+						"direction": "Inbound",
+						"sourceAddressPrefix": "*",
+						"sourcePortRange": "*",
+						"destinationAddressPrefix": "*",
+						"destinationPortRange": "81"
+					}
 				}]
 			}
 		}
