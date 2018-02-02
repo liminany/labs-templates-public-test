@@ -2,9 +2,20 @@
 	"Services": [
 		{
 			"displayname": "Azure Container Registry",
-			"registryServer": "#registryServer",
-			"registryUsername": "#registryUsername",
-			"registryPassword": "#registryPassword"
+			"properties":[
+				{
+					"key":"registryServer",
+					"value":"#registryServer"
+				},
+				{
+					"key":"registryUsername",
+					"value":"#registryUsername"
+				},
+				{
+					"key":"registryPassword",
+					"value":"#registryPassword"
+				}
+			]
 		}
 	],
 	"Info": {
