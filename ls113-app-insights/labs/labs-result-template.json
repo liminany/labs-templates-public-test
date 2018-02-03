@@ -1,6 +1,7 @@
 {
 	"Services": [
 		{
+			"uniqueName":"AppInsights",
 			"displayname": "Application Insights",
 			"properties":[
 				{

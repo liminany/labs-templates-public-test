@@ -1,6 +1,7 @@
 {
 	"Services": [
 		{
+			"uniqueName":"ACR",
 			"displayname": "Azure Container Registry",
 			"properties":[
 				{
