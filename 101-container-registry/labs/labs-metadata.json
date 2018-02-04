@@ -1,8 +1,8 @@
 {
   "itemDisplayName": "Azure镜像仓库",
   "icon": "ubuntu",
-  "description": "使用完全托管的 Kubernetes 容器业务流程服务或选择其他业务流程协调程序。",
-  "summary": "使用完全托管的 Kubernetes 容器业务流程服务或选择其他业务流程协调程序。",
+  "description": "Azure 容器注册表允许存储各种类型的容器部署映像，包括 DC/OS、Docker Swarm、Kubernetes，以及应用服务、Batch、Service Fabric 等 Azure 服务。DevOps 团队可将应用的配置和托管环境的配置独立分开管理。",
+  "summary": "Azure 容器注册表允许存储各种类型的容器部署映像，包括 DC/OS、Docker Swarm、Kubernetes，以及应用服务、Batch、Service Fabric 等 Azure 服务。DevOps 团队可将应用的配置和托管环境的配置独立分开管理。",
   "githubUsername": "azure-devops",
   "dateUpdated": "2017-06-21"
 }
