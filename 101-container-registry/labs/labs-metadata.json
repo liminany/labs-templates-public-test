@@ -1,0 +1,8 @@
+{
+  "itemDisplayName": "Azure镜像仓库",
+  "icon": "ubuntu",
+  "description": "使用完全托管的 Kubernetes 容器业务流程服务或选择其他业务流程协调程序。",
+  "summary": "使用完全托管的 Kubernetes 容器业务流程服务或选择其他业务流程协调程序。",
+  "githubUsername": "azure-devops",
+  "dateUpdated": "2017-06-21"
+}
