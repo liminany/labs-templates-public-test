@@ -181,5 +181,5 @@ if (Test-Path $ScriptsFolder) {
 
 
 # Add permission to ResourceGroup
- echo "Add permission to ResourceGroup"
- New-AzureRmRoleAssignment -ResourceGroupName $ResourceGroupName -SignInName "jackyzhou@lean-soft.cn" -RoleDefinitionName Reader
+# echo "Add permission to ResourceGroup"
+# New-AzureRmRoleAssignment -ResourceGroupName $ResourceGroupName -SignInName "jackyzhou@lean-soft.cn" -RoleDefinitionName Reader
