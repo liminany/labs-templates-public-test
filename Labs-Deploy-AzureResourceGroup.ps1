@@ -181,8 +181,5 @@ if (Test-Path $ScriptsFolder) {
 
 
 # Add permission to ResourceGroup
-if($ArtifactStagingDirectory -eq "ls113-app-insights")
-{
-     echo "Add permission to ResourceGroup"
-     New-AzureRmRoleAssignment -ResourceGroupName $ResourceGroupName -SignInName "471152@qq.com" -RoleDefinitionName Reader -AllowDelegation
-}
+ echo "Add permission to ResourceGroup"
+ New-AzureRmRoleAssignment -ResourceGroupName $ResourceGroupName -SignInName "471152@qq.com" -RoleDefinitionName Reader -AllowDelegation
