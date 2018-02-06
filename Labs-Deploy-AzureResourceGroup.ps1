@@ -178,3 +178,11 @@ $TempStorageAccount = (Get-AzureRmStorageAccount | Where-Object{$_.StorageAccoun
 if (Test-Path $ScriptsFolder) {
     Remove-AzureStorageContainer -Name $StorageContainerName -Context $TempStorageAccount.Context -Force
 }
+
+
+# Add permission to ResourceGroup
+if($ArtifactStagingDirectory -eq "ls113-app-insights")
+{
+     echo "Add permission to ResourceGroup"
+     New-AzureRmRoleAssignment -ResourceGroupName $ResourceGroupName -SignInName "471152@qq.com" -RoleDefinitionName Reader -AllowDelegation
+}
