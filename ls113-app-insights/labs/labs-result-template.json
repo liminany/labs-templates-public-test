@@ -11,6 +11,14 @@
 				{
 					"key":"Instrumentation Key",
 					"value":"#instrumentationKey"
+				},
+				{
+					"key":"Portal Username",
+					"value":"#portalUsername"
+				},
+				{
+					"key":"Portal Password",
+					"value":"#portalPassword"
 				}
 			]
 		}
