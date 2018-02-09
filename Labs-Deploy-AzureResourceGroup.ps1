@@ -186,7 +186,7 @@ $UserPrincipalName=$ResourceGroupName+"@lean-soft.cn"
 $PlainPassword = "P2ssw0rd@123"
 $SecureString = ConvertTo-SecureString $PlainPassword -AsPlainText -Force
 
-New-AzureRmADUser -DisplayName $ResourceGroupName -Password $SecureString -UserPrincipalName $UserPrincipalName
+New-AzureRmADUser -DisplayName $ResourceGroupName -Password $SecureString -UserPrincipalName $UserPrincipalName -MailNickname $UserPrincipalName
 
 echo "Add permission to ResourceGroup"
-New-AzureRmRoleAssignment -ResourceGroupName $ResourceGroupName -SignInName $SignInName -RoleDefinitionName Reader
+New-AzureRmRoleAssignment -ResourceGroupName $ResourceGroupName -SignInName $UserPrincipalName -RoleDefinitionName Reader
