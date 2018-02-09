@@ -186,7 +186,7 @@ if (Test-Path $ScriptsFolder) {
 Add-Type -Path 'C:\Program Files\WindowsPowerShell\Modules\AzureAD\2.0.0.131\Microsoft.Open.Azure.AD.CommonLibrary.dll'
 
 
-if($GithubPath eq "ls113-app-insights"){
+if($GithubPath -eq "ls113-app-insights"){
 
     echo "Connect AzureAD"
     Connect-AzureAD -Credential $psCred
