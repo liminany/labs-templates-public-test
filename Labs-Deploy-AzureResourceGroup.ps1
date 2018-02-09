@@ -19,6 +19,8 @@ Param(
 
 )
 
+$GithubPath=$ArtifactStagingDirectory
+
 $azurePassword = ConvertTo-SecureString $azurePasswordString -AsPlainText -Force
 $psCred = New-Object System.Management.Automation.PSCredential($azureAccountName, $azurePassword)
 
@@ -183,15 +185,20 @@ if (Test-Path $ScriptsFolder) {
 # Add permission to ResourceGroup 
 Add-Type -Path 'C:\Program Files\WindowsPowerShell\Modules\AzureAD\2.0.0.131\Microsoft.Open.Azure.AD.CommonLibrary.dll'
 
-echo "Connect"
 
-Connect-AzureAD -Credential $psCred
+if($GithubPath eq "ls113-app-insights"){
 
-echo "Create new aure user"
-$SignInName=$ResourceGroupName+"@lean-soft.cn"
-$Password = "" | Select-Object password
-$Password.password = "P2ssw0rd@123"
-New-AzureADUser -AccountEnabled $True -DisplayName $ResourceGroupName -PasswordProfile $Password -MailNickName $ResourceGroupName -UserPrincipalName $SignInName
+    echo "Connect AzureAD"
+    Connect-AzureAD -Credential $psCred
 
-echo "Add permission to ResourceGroup"
-New-AzureRmRoleAssignment -ResourceGroupName $ResourceGroupName -SignInName $SignInName -RoleDefinitionName Reader
+    echo "Create new aure user"
+    $SignInName=$ResourceGroupName+"@lean-soft.cn"
+    $Password = "" | Select-Object password
+    $Password.password = "P2ssw0rd@123"
+    New-AzureADUser -AccountEnabled $True -DisplayName $ResourceGroupName -PasswordProfile $Password -MailNickName $ResourceGroupName -UserPrincipalName $SignInName
+
+    echo "Add permission to ResourceGroup"
+    New-AzureRmRoleAssignment -ResourceGroupName $ResourceGroupName -SignInName $SignInName -RoleDefinitionName Reader
+
+
+}
