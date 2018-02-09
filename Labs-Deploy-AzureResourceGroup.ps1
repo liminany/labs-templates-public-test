@@ -183,6 +183,10 @@ if (Test-Path $ScriptsFolder) {
 # Add permission to ResourceGroup 
 Add-Type -Path 'C:\Program Files\WindowsPowerShell\Modules\AzureAD\2.0.0.131\Microsoft.Open.Azure.AD.CommonLibrary.dll'
 
+echo "Connect"
+
+Connect-AzureAD -Credential $psCred
+
 echo "Create new aure user"
 $SignInName=$ResourceGroupName+"@lean-soft.cn"
 $Password = "" | Select-Object password
