@@ -13,6 +13,10 @@
 					"value":"#instrumentationKey"
 				},
 				{
+					"key":"Portal URL",
+					"value":"http://portal.azure.com"
+				},
+				{
 					"key":"Portal Username",
 					"value":"#portalUsername"
 				},
