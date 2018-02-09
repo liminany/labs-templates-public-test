@@ -182,11 +182,10 @@ if (Test-Path $ScriptsFolder) {
 
 # Add permission to ResourceGroup 
 echo "Create new aure user"
-$UserPrincipalName=$ResourceGroupName+"@lean-soft.cn"
-$PlainPassword = "P2ssw0rd@123"
-$SecureString = ConvertTo-SecureString $PlainPassword -AsPlainText -Force
-
-New-AzureRmADUser -DisplayName $ResourceGroupName -Password $SecureString -UserPrincipalName $UserPrincipalName -MailNickname $UserPrincipalName
+$SignInName=$ResourceGroupName+"@lean-soft.cn"
+$PasswordProfile = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile
+$PasswordProfile.Password = "P2ssw0rd@123"
+New-AzureADUser -AccountEnabled $True -DisplayName $ResourceGroupName -PasswordProfile $PasswordProfile -MailNickName $ResourceGroupName -UserPrincipalName $SignInName
 
 echo "Add permission to ResourceGroup"
-New-AzureRmRoleAssignment -ResourceGroupName $ResourceGroupName -SignInName $UserPrincipalName -RoleDefinitionName Reader
+New-AzureRmRoleAssignment -ResourceGroupName $ResourceGroupName -SignInName $SignInName -RoleDefinitionName Reader
