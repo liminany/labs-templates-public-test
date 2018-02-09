@@ -201,8 +201,7 @@ if($GithubPath -eq "ls113-app-insights"){
     #replace all output string
     $resultTemplateFilePath=$ArtifactStagingDirectory + '\labs\labs-result-template.json'
     $resultFilePath=$ArtifactStagingDirectory + '\labs\result.json'
-    $outputs=$result.Outputs | ConvertTo-Json
-    $result = Get-Content $resultTemplateFilePath | Out-String 
+    $result = Get-Content $resultFilePath | Out-String 
     $result=$result.Replace("#portalUsername", $SignInName);
     $result=$result.Replace("#portalPassword", $Password.password);
     out-File -FilePath $resultFilePath -InputObject $result
