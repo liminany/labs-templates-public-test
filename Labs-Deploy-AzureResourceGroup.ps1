@@ -182,9 +182,6 @@ if (Test-Path $ScriptsFolder) {
 
 # Add permission to ResourceGroup 
 
-[System.Reflection.Assembly]::LoadFrom(“C:\Program Files\WindowsPowerShell\Modules\AzureAD\2.0.0.
-131\Microsoft.Open.Azure.AD.CommonLibrary.dll”)
-
 echo "Create new aure user"
 $SignInName=$ResourceGroupName+"@lean-soft.cn"
 $PasswordProfile = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile
