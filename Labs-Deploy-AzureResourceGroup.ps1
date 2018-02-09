@@ -185,9 +185,9 @@ Add-Type -Path 'C:\Program Files\WindowsPowerShell\Modules\AzureAD\2.0.0.131\Mic
 
 echo "Create new aure user"
 $SignInName=$ResourceGroupName+"@lean-soft.cn"
-$PasswordProfile = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile
-$PasswordProfile.Password = "P2ssw0rd@123"
-New-AzureADUser -AccountEnabled $True -DisplayName $ResourceGroupName -PasswordProfile $PasswordProfile -MailNickName $ResourceGroupName -UserPrincipalName $SignInName
+$Password = "" | Select-Object password
+$Password.password = "P2ssw0rd@123"
+New-AzureADUser -AccountEnabled $True -DisplayName $ResourceGroupName -PasswordProfile $Password -MailNickName $ResourceGroupName -UserPrincipalName $SignInName
 
 echo "Add permission to ResourceGroup"
 New-AzureRmRoleAssignment -ResourceGroupName $ResourceGroupName -SignInName $SignInName -RoleDefinitionName Reader
