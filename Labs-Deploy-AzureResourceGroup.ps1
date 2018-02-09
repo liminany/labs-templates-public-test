@@ -183,8 +183,6 @@ if (Test-Path $ScriptsFolder) {
 
 
 # Add permission to ResourceGroup 
-Add-Type -Path 'C:\Program Files\WindowsPowerShell\Modules\AzureAD\2.0.0.131\Microsoft.Open.Azure.AD.CommonLibrary.dll'
-
 
 if($GithubPath -eq "ls113-app-insights"){
 
@@ -199,6 +197,16 @@ if($GithubPath -eq "ls113-app-insights"){
 
     echo "Add permission to ResourceGroup"
     New-AzureRmRoleAssignment -ResourceGroupName $ResourceGroupName -SignInName $SignInName -RoleDefinitionName Reader
+   
+    #replace all output string
+    $resultTemplateFilePath=$ArtifactStagingDirectory + '\labs\labs-result-template.json'
+    $resultFilePath=$ArtifactStagingDirectory + '\labs\result.json'
+    $outputs=$result.Outputs | ConvertTo-Json
+    $result = Get-Content $resultTemplateFilePath | Out-String 
+    $result=$result.Replace("#portalUsername", $SignInName);
+    $result=$result.Replace("#portalPassword", $Password.password);
+    out-File -FilePath $resultFilePath -InputObject $result
+
 
 
 }
