@@ -14,7 +14,8 @@
 			"apps": [
 				{
 					"name": "tfs",
-					"port": 8080
+					"port": 8080,
+					"virtualPath":"/tfs"
 				}
 			]
 		},
