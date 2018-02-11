@@ -6,23 +6,29 @@
 			"properties":[
 				{
 					"key":"Application Name",
-					"value":"#appName"
+					"value":"#appName",
+					"type":"text"
 				},
 				{
 					"key":"Instrumentation Key",
-					"value":"#instrumentationKey"
+					"value":"#instrumentationKey",
+					"type":"text"
 				},
 				{
 					"key":"Portal URL",
-					"value":"http://portal.azure.com"
+					"value":"http://portal.azure.com",
+					"type":"url"
 				},
 				{
 					"key":"Portal Username",
-					"value":"#portalUsername"
+					"value":"#portalUsername",
+					"type":"text"
 				},
 				{
 					"key":"Portal Password",
-					"value":"#portalPassword"
+					"value":"#portalPassword",
+					"type":"text"
+					
 				}
 			]
 		}
