@@ -6,15 +6,18 @@
 			"properties":[
 				{
 					"key":"Server",
-					"value":"#registryServer"
+					"value":"#registryServer",
+					"type":"text"
 				},
 				{
 					"key":"Username",
-					"value":"#registryUsername"
+					"value":"#registryUsername",
+					"type":"text"
 				},
 				{
 					"key":"PassWord",
-					"value":"#registryPassword"
+					"value":"#registryPassword",
+					"type":"text"
 				}
 			]
 		}
