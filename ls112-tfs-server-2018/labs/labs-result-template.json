@@ -4,7 +4,11 @@
 			"displayname": "tfs2018",
 			"master": true,
 			"external": true,
+			"hostname": "#hostname",
+			"username": "#adminUsername",
+			"password": "#adminPassword",
 			"protocol":"rdp",
+			"port": 3389,
 			"properties": [{
 					"key": "displayname",
 					"value": "tfs2018",
@@ -51,7 +55,11 @@
 			"uniqueName": "linuxAgent",
 			"displayname": "linuxAgent",
 			"external": true,
+			"hostname": "#linuxHostname",
+			"username": "#linuxAdminUsername",
+			"password": "#linuxAdminPassword",
 			"protocol":"ssh",
+			"port": 22,
 			"properties": [{
 					"key": "displayname",
 					"value": "linuxAgent",
