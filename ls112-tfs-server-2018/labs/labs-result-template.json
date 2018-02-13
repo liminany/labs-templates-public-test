@@ -1,33 +1,91 @@
 {
-	"enviroments": [
-
-		{
+	"enviroments": [{
+			"uniqueName": "tfs2018",
 			"displayname": "tfs2018",
-			"protocol": "rdp",
-			"hostname": "#hostname",
-			"username": "#adminUsername",
-			"password": "#adminPassword",
-			"privatekey": "",
-			"port": 3389,
 			"master": true,
 			"external": true,
-			"apps": [
+			"properties": [{
+					"key": "displayname",
+					"value": "tfs2018",
+					"type": "text"
+				},
 				{
-					"name": "tfs",
-					"port": 8080,
-					"virtualPath":"/tfs"
+					"key": "protocol",
+					"value": "rdp",
+					"type": "text"
+				},
+				{
+					"key": "hostname",
+					"value": "#hostname",
+					"type": "text"
+				},
+				{
+					"key": "username",
+					"value": "#adminUsername",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "#adminPassword",
+					"type": "text"
+				},
+				{
+					"key": "privatekey",
+					"value": "",
+					"type": "text"
+				},
+				{
+					"key": "port",
+					"value": "22",
+					"type": "text"
 				}
-			]
+			],
+			"apps": [{
+				"name": "tfs",
+				"port": 8080,
+				"virtualPath": "/tfs"
+			}]
 		},
-        {
+		{
+			"uniqueName": "linuxAgent",
 			"displayname": "linuxAgent",
-			"protocol": "ssh",
-			"hostname": "#linuxHostname",
-			"username": "#linuxAdminUsername",
-			"password": "#linuxAdminPassword",
-			"privatekey": "",
-            "external": true,
-			"port": 22,
+			"external": true,
+			"properties": [{
+					"key": "displayname",
+					"value": "linuxAgent",
+					"type": "text"
+				},
+				{
+					"key": "protocol",
+					"value": "ssh",
+					"type": "text"
+				},
+				{
+					"key": "hostname",
+					"value": "#linuxHostname",
+					"type": "text"
+				},
+				{
+					"key": "username",
+					"value": "#linuxUsername",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "#linuxPassword",
+					"type": "text"
+				},
+				{
+					"key": "privatekey",
+					"value": "",
+					"type": "text"
+				},
+				{
+					"key": "port",
+					"value": "3389",
+					"type": "text"
+				}
+			],
 			"apps": [{
 					"name": "80",
 					"port": 80
@@ -45,6 +103,7 @@
 					"port": 5001
 				}
 			]
+
 		}
 	],
 	"Info": {
