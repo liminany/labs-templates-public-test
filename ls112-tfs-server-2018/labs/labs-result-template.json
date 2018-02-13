@@ -67,12 +67,12 @@
 				},
 				{
 					"key": "username",
-					"value": "#linuxUsername",
+					"value": "#linuxAdminUsername",
 					"type": "text"
 				},
 				{
 					"key": "password",
-					"value": "#linuxPassword",
+					"value": "#linuxAdminPassword",
 					"type": "text"
 				},
 				{
