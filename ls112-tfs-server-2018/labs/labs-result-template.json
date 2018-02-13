@@ -4,6 +4,7 @@
 			"displayname": "tfs2018",
 			"master": true,
 			"external": true,
+			"protocol":"rdp",
 			"properties": [{
 					"key": "displayname",
 					"value": "tfs2018",
@@ -50,6 +51,7 @@
 			"uniqueName": "linuxAgent",
 			"displayname": "linuxAgent",
 			"external": true,
+			"protocol":"ssh",
 			"properties": [{
 					"key": "displayname",
 					"value": "linuxAgent",
