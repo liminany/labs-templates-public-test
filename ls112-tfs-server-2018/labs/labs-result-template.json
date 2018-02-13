@@ -1,5 +1,5 @@
 {
-	"enviroments": [{
+	"Services": [{
 			"uniqueName": "tfs2018",
 			"displayname": "tfs2018",
 			"master": true,
