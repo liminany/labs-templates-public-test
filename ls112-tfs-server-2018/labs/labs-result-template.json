@@ -35,11 +35,6 @@
 					"type": "text"
 				},
 				{
-					"key": "privatekey",
-					"value": "",
-					"type": "text"
-				},
-				{
 					"key": "port",
 					"value": "22",
 					"type": "text"
@@ -83,11 +78,6 @@
 				{
 					"key": "password",
 					"value": "#linuxAdminPassword",
-					"type": "text"
-				},
-				{
-					"key": "privatekey",
-					"value": "",
 					"type": "text"
 				},
 				{
