@@ -1,15 +1,41 @@
 {
-	"enviroments": [{
+	"Services": [{
+		"uniqueName": "linux",
 		"displayname": "linux",
 		"protocol": "ssh",
 		"hostname": "#hostname",
 		"username": "#adminUsername",
 		"password": "#adminPassword",
-		"privatekey": "",
 		"port": 22,
 		"master": true,
 		"external": true,
-        "vmName":"#vmName"
+		"properties": [
+				{
+					"key": "hostname",
+					"value": "#hostname",
+					"type": "text"
+				},
+				{
+					"key": "username",
+					"value": "#adminUsername",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "#adminPassword",
+					"type": "text"
+				},
+				{
+					"key": "protocol",
+					"value": "ssh",
+					"type": "text"
+				},
+				{
+					"key": "port",
+					"value": "22",
+					"type": "text"
+				}
+			]
 	}],
 	"Info": {
 		"Subscription":{
