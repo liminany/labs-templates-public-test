@@ -15,9 +15,15 @@ Param(
     [switch] $ValidateOnly,
     [string] $DebugOptions = "None",
     [switch] $Dev,
-    [string] $EnvironmentName
+    [string] $EnvironmentName,
+    [string] $groupId
 
 )
+
+if(![String]::IsNullOrEmpty($groupId))
+{
+    $ResourceGroupName=$ResourceGroupName+"-"+"g"+$groupId
+}
 
 $GithubPath=$ArtifactStagingDirectory
 
