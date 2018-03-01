@@ -198,11 +198,12 @@ $SignInName=$azureUserName+"@lean-soft.cn"
 
 echo "Check is user exist"
 $AzureUser=Get-AzureADUser -Filter "userPrincipalName eq '$SignInName'"
+$Password = "" | Select-Object password
+$Password.password = "P2ssw0rd@123"
+
 If ($AzureUser -eq $Null)
 {
     echo "Create new aure user"
-    $Password = "" | Select-Object password
-    $Password.password = "P2ssw0rd@123"
     New-AzureADUser -AccountEnabled $True -DisplayName $ResourceGroupName -PasswordProfile $Password -MailNickName $ResourceGroupName -UserPrincipalName $SignInName
 }
 
