@@ -16,7 +16,9 @@ Param(
     [string] $DebugOptions = "None",
     [switch] $Dev,
     [string] $EnvironmentName,
-    [string] $groupId
+    [string] $groupId,
+    [string] $azureUserName
+
 
 )
 
@@ -188,30 +190,24 @@ if (Test-Path $ScriptsFolder) {
 }
 
 
-# Add permission to ResourceGroup 
+# Create azure user and add permission to ResourceGroup 
 
-if($GithubPath -eq "ls113-app-insights"){
+echo "Connect AzureAD"
+Connect-AzureAD -Credential $psCred
 
-    echo "Connect AzureAD"
-    Connect-AzureAD -Credential $psCred
+echo "Create new aure user"
+$SignInName=$azureUserName+"@lean-soft.cn"
+$Password = "" | Select-Object password
+$Password.password = "P2ssw0rd@123"
+New-AzureADUser -AccountEnabled $True -DisplayName $ResourceGroupName -PasswordProfile $Password -MailNickName $ResourceGroupName -UserPrincipalName $SignInName
 
-    echo "Create new aure user"
-    $SignInName=$ResourceGroupName+"@lean-soft.cn"
-    $Password = "" | Select-Object password
-    $Password.password = "P2ssw0rd@123"
-    New-AzureADUser -AccountEnabled $True -DisplayName $ResourceGroupName -PasswordProfile $Password -MailNickName $ResourceGroupName -UserPrincipalName $SignInName
+echo "Add permission to ResourceGroup"
+New-AzureRmRoleAssignment -ResourceGroupName $ResourceGroupName -SignInName $SignInName -RoleDefinitionName Reader
 
-    echo "Add permission to ResourceGroup"
-    New-AzureRmRoleAssignment -ResourceGroupName $ResourceGroupName -SignInName $SignInName -RoleDefinitionName Reader
-   
-    #replace all output string
-    $resultTemplateFilePath=$ArtifactStagingDirectory + '\labs\labs-result-template.json'
-    $resultFilePath=$ArtifactStagingDirectory + '\labs\result.json'
-    $result = Get-Content $resultFilePath | Out-String 
-    $result=$result.Replace("#portalUsername", $SignInName);
-    $result=$result.Replace("#portalPassword", $Password.password);
-    out-File -FilePath $resultFilePath -InputObject $result
-
-
-
-}
+#replace all output string
+$resultTemplateFilePath=$ArtifactStagingDirectory + '\labs\labs-result-template.json'
+$resultFilePath=$ArtifactStagingDirectory + '\labs\result.json'
+$result = Get-Content $resultFilePath | Out-String 
+$result=$result.Replace("#portalUsername", $SignInName);
+$result=$result.Replace("#portalPassword", $Password.password);
+out-File -FilePath $resultFilePath -InputObject $result
