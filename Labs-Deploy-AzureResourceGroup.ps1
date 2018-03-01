@@ -194,11 +194,10 @@ if (Test-Path $ScriptsFolder) {
 
 echo "Connect AzureAD"
 Connect-AzureAD -Credential $psCred
-
 $SignInName=$azureUserName+"@lean-soft.cn"
 
 echo "Check is user exist"
-$AzureUser=Get-AzureADUser -Filter "userPrincipalName eq $SignInName"
+$AzureUser=Get-AzureADUser -Filter "userPrincipalName eq '$SignInName'"
 If ($AzureUser -eq $Null)
 {
     echo "Create new aure user"
