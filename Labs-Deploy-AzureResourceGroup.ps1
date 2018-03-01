@@ -213,7 +213,7 @@ $Password.password = "P2ssw0rd@123"
 If ($AzureUser -eq $Null)
 {
     echo "Create new aure user"
-    New-AzureADUser -AccountEnabled $True -DisplayName $AzureUser -PasswordProfile $Password -MailNickName $AzureUser -UserPrincipalName $SignInName
+    New-AzureADUser -AccountEnabled $True -DisplayName $azureUserName -PasswordProfile $Password -MailNickName $azureUserName -UserPrincipalName $SignInName
 }
 
 echo "Add permission to ResourceGroup"
