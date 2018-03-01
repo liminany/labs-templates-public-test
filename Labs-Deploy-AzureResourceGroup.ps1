@@ -195,11 +195,17 @@ if (Test-Path $ScriptsFolder) {
 echo "Connect AzureAD"
 Connect-AzureAD -Credential $psCred
 
-echo "Create new aure user"
 $SignInName=$azureUserName+"@lean-soft.cn"
-$Password = "" | Select-Object password
-$Password.password = "P2ssw0rd@123"
-New-AzureADUser -AccountEnabled $True -DisplayName $ResourceGroupName -PasswordProfile $Password -MailNickName $ResourceGroupName -UserPrincipalName $SignInName
+
+echo "Check is user exist"
+$AzureUser=Get-AzureADUser -Filter "userPrincipalName eq $SignInName"
+If ($AzureUser -eq $Null)
+{
+    echo "Create new aure user"
+    $Password = "" | Select-Object password
+    $Password.password = "P2ssw0rd@123"
+    New-AzureADUser -AccountEnabled $True -DisplayName $ResourceGroupName -PasswordProfile $Password -MailNickName $ResourceGroupName -UserPrincipalName $SignInName
+}
 
 echo "Add permission to ResourceGroup"
 New-AzureRmRoleAssignment -ResourceGroupName $ResourceGroupName -SignInName $SignInName -RoleDefinitionName Reader
