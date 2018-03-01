@@ -193,8 +193,17 @@ if (Test-Path $ScriptsFolder) {
 # Create azure user and add permission to ResourceGroup 
 
 echo "Connect AzureAD"
-Connect-AzureAD -Credential $psCred
-$SignInName=$azureUserName+"@lean-soft.cn"
+
+if ($EnvironmentName -eq 'china') {
+    Connect-AzureAD -Credential $psCred -AzureEnvironmentName AzureChinaCloud
+    $SignInName=$azureUserName+"@leixu.partner.onmschina.cn"
+}
+else{
+    Connect-AzureAD -Credential $psCred
+    $SignInName=$azureUserName+"@lean-soft.cn"
+}
+
+
 
 echo "Check is user exist"
 $AzureUser=Get-AzureADUser -Filter "userPrincipalName eq '$SignInName'"
