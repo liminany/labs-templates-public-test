@@ -215,8 +215,6 @@ If ($AzureUser -eq $Null)
     echo "Create new aure user"
     New-AzureADUser -AccountEnabled $True -DisplayName $azureUserName -PasswordProfile $Password -MailNickName $azureUserName -UserPrincipalName $SignInName
     Start-Sleep -Seconds 60
-    Connect-MsolService
-    Set-MsolCompanySettings -UsersPermissionToReadOtherUsersEnabled $false
 }
 
 echo "Add permission to ResourceGroup"
