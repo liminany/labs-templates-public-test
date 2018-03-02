@@ -16,7 +16,7 @@
 				},
 				{
 					"key":"Portal URL",
-					"value":"http://portal.azure.com",
+					"value":"#portalURL",
 					"type":"url"
 				},
 				{

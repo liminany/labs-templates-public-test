@@ -197,10 +197,12 @@ echo "Connect AzureAD"
 if ($EnvironmentName -eq 'china') {
     Connect-AzureAD -Credential $psCred -AzureEnvironmentName AzureChinaCloud
     $SignInName=$azureUserName+"@leixu.partner.onmschina.cn"
+    $portalURL="http://portal.azure.cn"
 }
 else{
     Connect-AzureAD -Credential $psCred
     $SignInName=$azureUserName+"@lean-soft.cn"
+    $portalURL="http://portal.azure.com"
 }
 
 
@@ -224,6 +226,7 @@ New-AzureRmRoleAssignment -ResourceGroupName $ResourceGroupName -SignInName $Sig
 $resultTemplateFilePath=$ArtifactStagingDirectory + '\labs\labs-result-template.json'
 $resultFilePath=$ArtifactStagingDirectory + '\labs\result.json'
 $result = Get-Content $resultFilePath | Out-String 
+$result=$result.Replace("#portalURL", $portalURL);
 $result=$result.Replace("#portalUsername", $SignInName);
 $result=$result.Replace("#portalPassword", $Password.password);
 out-File -FilePath $resultFilePath -InputObject $result

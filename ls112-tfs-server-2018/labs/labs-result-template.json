@@ -38,6 +38,22 @@
 					"key": "port",
 					"value": "22",
 					"type": "text"
+				},
+				{
+					"key":"Portal URL",
+					"value":"#portalURL",
+					"type":"url"
+				},
+				{
+					"key":"Portal Username",
+					"value":"#portalUsername",
+					"type":"text"
+				},
+				{
+					"key":"Portal Password",
+					"value":"#portalPassword",
+					"type":"text"
+					
 				}
 			],
 			"apps": [{
