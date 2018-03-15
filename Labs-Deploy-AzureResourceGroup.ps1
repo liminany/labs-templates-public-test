@@ -24,7 +24,11 @@ Param(
 
 if(![String]::IsNullOrEmpty($groupId))
 {
-    $ResourceGroupName=$ResourceGroupName+"-"+"g"+$groupId
+    $ResourceGroupName=$ResourceGroupName+"-"+"g"+$groupId+"-"+"b"+$buildId
+}
+else
+{
+    $ResourceGroupName=$ResourceGroupName+"-"+"b"+$buildId
 }
 
 $GithubPath=$ArtifactStagingDirectory
