@@ -223,8 +223,8 @@ If ($AzureUser -eq $Null)
     Start-Sleep -Seconds 60
 }
 
-#echo "Add permission to ResourceGroup"
-#New-AzureRmRoleAssignment -ResourceGroupName $ResourceGroupName -SignInName $SignInName -RoleDefinitionName Reader
+echo "Add permission to ResourceGroup"
+New-AzureRmRoleAssignment -ResourceGroupName $ResourceGroupName -SignInName $SignInName -RoleDefinitionName Reader
 
 #replace all output string
 $resultTemplateFilePath=$ArtifactStagingDirectory + '\labs\labs-result-template.json'
