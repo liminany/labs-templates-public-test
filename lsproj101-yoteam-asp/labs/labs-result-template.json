@@ -3,41 +3,41 @@
 		{
 			"uniqueName":"YoTeamAsp",
 			"displayname": "Generate Asp.Net Core Project CI/CD Demo",
-			"hostname": "%{tfs",			
+			"hostname": "#{tfs}#",			
 			"properties":[				
 				{
 					"key":"type",
-					"value":"%{type}%",
+					"value":"#{type}#",
 					"type":"text"
 				},
 				{
 					"key":"Application Name",
-					"value":"%{applicationName}%",
+					"value":"#{applicationName}#",
 					"type":"text"
 				},
 				{
 					"key":"Project Home",
-					"value":"%{tfs}%/%{applicationName}%/_home",
+					"value":"#{tfs}#/#{applicationName}#/_home",
 					"type":"url"
 				},
 				{
 					"key":"Git Rep URL",
-					"value":"%{tfs}%/_git/%{applicationName}%",
+					"value":"#{tfs}#/_git/#{applicationName}#",
 					"type":"url"
 				},
 				{
 					"key":"Build Pipelines",
-					"value":"%{tfs}%/%{applicationName}%/_build",
+					"value":"#{tfs}#/#{applicationName}#/_build",
 					"type":"url"
 				},
 				{
 					"key":"Release Pipelines",
-					"value":"%{tfs}%/%{applicationName}%/_release",
+					"value":"#{tfs}#/#{applicationName}#/_release",
 					"type":"url"
 				},
 				{
 					"key":"Application endpoint",
-					"value":"http://%{applicationName}%.azurewebsites.net",
+					"value":"http://#{applicationName}#.azurewebsites.net",
 					"type":"url"
 				},
 				
@@ -46,10 +46,10 @@
 	],
 	"Info": {
 		"Subscription": {
-			"Id": "%{azureSubId}%",
+			"Id": "#{azureSubId}#",
 		},
 		"ResourceGroup": {
-			"Name": "%{applicationName}%",
+			"Name": "#{applicationName}#",
 			"Location": ""
 		}
 	}
