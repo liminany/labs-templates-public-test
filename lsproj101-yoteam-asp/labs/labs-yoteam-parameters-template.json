@@ -4,7 +4,7 @@
       "tfs": "#{tfs}#",
       "queue": "#{queue}#",
       "type": "#{type}#",
-      "applicationName": "#{applicationName}#",
+      "applicationName": "#{applicationName}##{Build.BuildId}#",
 	  
       "azureSub": "#{azureSub}#",
 	  "azureSubId": "#{azureSubId}#",	 
