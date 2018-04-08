@@ -1,0 +1,8 @@
+{
+  "itemDisplayName": "Generate Asp.Net Core Project CI/CD Demo",
+  "icon": "ubuntu",
+  "description": "自动创建 Asp.Net Core 项目 持续交付流水线",
+  "summary": "自动创建 Asp.Net Core 项目 持续交付流水线",
+  "githubUsername": "azure-devops",
+  "dateUpdated": "2018-04-07"
+}
