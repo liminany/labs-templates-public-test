@@ -1,6 +1,7 @@
 {
   "generator-team": {
     "promptValues": {
+	  "envFolder": "#{envFolder}#",
       "tfs": "#{tfs}#",
       "queue": "#{queue}#",
       "type": "#{type}#",

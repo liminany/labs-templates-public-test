@@ -2,8 +2,7 @@
 	"Services": [
 		{
 			"uniqueName":"YoTeamAsp",
-			"displayname": "Generate Asp.Net Core Project CI/CD Demo",
-			"hostname": "#{tfs}#",			
+			"displayname": "Generate Asp.Net Core Project CI/CD Demo",					
 			"properties":[				
 				{
 					"key":"type",
