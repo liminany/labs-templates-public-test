@@ -8,7 +8,6 @@
 | Asp.Net Core 源代码  | 使用Visual Studio 的Asp.Net Core 默认项目模板创建的一套Demo程序 |
 | 生成定义：项目名-CI(YoTeamAspDemoApp5049-CI) | 自动创建的生成定义 |
 | 发布定义：项目名-CD(YoTeamAspDemoApp5049-CD) | 自动创建的发布定义 |
-| 发布定义：项目名-CD(YoTeamAspDemoApp5049-CD) | 自动创建的发布定义 |
 | Azure 资源管理器(订阅名称)| 通过此通道将程序部署到Azure App Service |
 
 
