@@ -1,8 +1,8 @@
 {
 	"Services": [
 		{
-			"uniqueName":"YoTeamAsp",
-			"displayname": "Generate Asp.Net Core Project CI/CD Demo",					
+			"uniqueName":"YoTeamAspApp",
+			"displayname": "ASP.NET Core with App Service CI/CD",					
 			"properties":[				
 				{
 					"key":"type",
