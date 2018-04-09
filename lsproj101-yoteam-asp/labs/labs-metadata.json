@@ -1,5 +1,5 @@
 {
-  "itemDisplayName": "Generate Asp.Net Core Project CI/CD Demo",
+  "itemDisplayName": "ASP.NET Core with App Service CI/CD",
   "icon": "ubuntu",
   "description": "自动创建 Asp.Net Core 项目 持续交付流水线",
   "summary": "自动创建 Asp.Net Core 项目 持续交付流水线",
