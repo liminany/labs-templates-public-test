@@ -35,8 +35,18 @@
 					"type":"url"
 				},
 				{
-					"key":"Application endpoint",
-					"value":"http://#{applicationName}##{Build.BuildId}#.azurewebsites.net",
+					"key":"Application Dev Env",
+					"value":"http://#{applicationName}##{Build.BuildId}#Dev.azurewebsites.net",
+					"type":"url"
+				},
+				{
+					"key":"Application QA Env",
+					"value":"http://#{applicationName}##{Build.BuildId}#QA.azurewebsites.net",
+					"type":"url"
+				},
+				{
+					"key":"Application Prod Env",
+					"value":"http://#{applicationName}##{Build.BuildId}#Prod.azurewebsites.net",
 					"type":"url"
 				},
 				
