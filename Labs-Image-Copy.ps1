@@ -8,11 +8,9 @@ Param(
     [string] [Parameter(Mandatory=$false)] $storageAccountContainer = "vhds", # 3 and 24 characters in length and use numbers and lower-case letters 
 
     [string] [Parameter(Mandatory=$true)] $sourceVhdUrl,
-    [string] $targetVhdName = ([guid]::NewGuid()).ToString()+".vhd", 
+    [string] $targetVhdName = "vhd", #([guid]::NewGuid()).ToString()+".vhd", 
     [string] $azEnvName = "AzureChinaCloud", # global(AzureCloud) or china(AzureChinaCloud)  Get-AzureRmEnvironment | Select-Object Name
-    [string] $azEnvLocation = "chinanorth"
-
-    
+    [string] $azEnvLocation = "chinanorth" 
 
     # powershell build task args(Mandatory):
     # -azureAccountName $(azureAccountName)  -azurePasswordString $(azurePasswordString) -uniqueSeed $(Build.BuildId) -sourceVhdUrl "$(sourceVhdUrl-tfs2018-ag-linux-snapshot)"
@@ -21,7 +19,7 @@ Param(
     # -azureAccountName $(azureAccountName)  -azurePasswordString $(azurePasswordString) -uniqueSeed "" -sourceVhdUrl "$(sourceVhdUrl-tfs2018-ag-linux-snapshot)" -resourceGroupName $(resourceGroupName) -storageAccountName $storageAccountName -storageAccountContainer $(storageAccountContainer)
 
     # powershell build task args(Mandatory)£¬and copy to global(AzureCloud):
-    # -azureAccountName $(azureAccountName)  -azurePasswordString $(azurePasswordString) -uniqueSeed $(Build.BuildId) -sourceVhdUrl "$(sourceVhdUrl-tfs2018-ag-linux-snapshot)" -azEnvName  $(azEnvName) -azEnvLocation $(azEnvLocation) 
+    # -azureAccountName $(azureAccountName)  -azurePasswordString $(azurePasswordString) -uniqueSeed $(Build.BuildId) -sourceVhdUrl "$(sourceVhdUrl-tfs2018-ag-linux-snapshot)" -azEnvName  $(azEnvName) -azEnvLocation $(azEnvLocation) -targetVhdName $(targetVhdName)
 )
 
 $resourceGroupName = $resourceGroupName+$uniqueSeed
@@ -30,6 +28,10 @@ $storageAccountContainer = $storageAccountContainer+$uniqueSeed
 
 $azurePassword = ConvertTo-SecureString $azurePasswordString -AsPlainText -Force
 $psCred = New-Object System.Management.Automation.PSCredential($azureAccountName, $azurePassword)
+
+$targetVhdName =  $targetVhdName + (Get-Date -Format fff) + ".vhd"   
+
+"vhd Name is: $targetVhdName"
 
 Login-AzureRmAccount -Credential $psCred -EnvironmentName $azEnvName #AzureChinaCloud
 
