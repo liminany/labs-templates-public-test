@@ -42,7 +42,7 @@ if($accountAvailable.NameAvailable) {
     "start copy image"
     $copyBlob = Start-AzureStorageBlobCopy -AbsoluteUri $sourceVhdUrl -DestContainer $storageAccountContainer -DestContext $destStorageAccount.Context -DestBlob $targetVhdName;
     $copyBlob
-    "wait copy complete(mybe need 20 Minutes ~40 Minutes)..."
+    "wait copy complete(maybe need 20 Minutes ~40 Minutes)..."
     $copyBlob | Get-AzureStorageBlobCopyState -Blob $targetVhdName -Container $storageAccountContainer  -WaitForComplete
     
     "copy complate!"
