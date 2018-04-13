@@ -280,18 +280,6 @@
 		"hostname": {
 			"type": "string",
 			"value": "[reference(parameters('publicIpAddressName')).dnsSettings.fqdn]"
-		},
-		"linuxAdminUsername": {
-			"type": "string",
-			"value": "[parameters('adminUsernameLinux')]"
-		},
-		"linuxAdminPassword": {
-			"type": "string",
-			"value": "[parameters('adminPasswordLinux')]"
-		},
-		"linuxHostname": {
-			"type": "string",
-			"value": "[reference(parameters('publicIpAddressNameLinux')).dnsSettings.fqdn]"
 		}
 	}
 }
