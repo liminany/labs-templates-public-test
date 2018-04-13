@@ -1,0 +1,134 @@
+{
+	"Services": [{
+			"uniqueName": "tfs2018",
+			"displayname": "tfs2018",
+			"master": true,
+			"external": true,
+			"hostname": "#hostname",
+			"username": "#adminUsername",
+			"password": "#adminPassword",
+			"protocol":"rdp",
+			"port": 3389,
+			"properties": [{
+					"key": "displayname",
+					"value": "tfs2018",
+					"type": "text"
+				},
+				{
+					"key": "protocol",
+					"value": "rdp",
+					"type": "text"
+				},
+				{
+					"key": "hostname",
+					"value": "#hostname",
+					"type": "text"
+				},
+				{
+					"key": "username",
+					"value": "#adminUsername",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "#adminPassword",
+					"type": "text"
+				},
+				{
+					"key": "port",
+					"value": "22",
+					"type": "text"
+				},
+				{
+					"key":"Portal URL",
+					"value":"#portalURL",
+					"type":"url"
+				},
+				{
+					"key":"Portal Username",
+					"value":"#portalUsername",
+					"type":"text"
+				},
+				{
+					"key":"Portal Password",
+					"value":"#portalPassword",
+					"type":"text"
+					
+				}
+			],
+			"apps": [{
+				"name": "tfs",
+				"port": 8080,
+				"virtualPath": "/tfs"
+			}]
+		},
+		{
+			"uniqueName": "linuxAgent",
+			"displayname": "linuxAgent",
+			"external": true,
+			"hostname": "#linuxHostname",
+			"username": "#linuxAdminUsername",
+			"password": "#linuxAdminPassword",
+			"protocol":"ssh",
+			"port": 22,
+			"properties": [{
+					"key": "displayname",
+					"value": "linuxAgent",
+					"type": "text"
+				},
+				{
+					"key": "protocol",
+					"value": "ssh",
+					"type": "text"
+				},
+				{
+					"key": "hostname",
+					"value": "#linuxHostname",
+					"type": "text"
+				},
+				{
+					"key": "username",
+					"value": "#linuxAdminUsername",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "#linuxAdminPassword",
+					"type": "text"
+				},
+				{
+					"key": "port",
+					"value": "3389",
+					"type": "text"
+				}
+			],
+			"apps": [{
+					"name": "80",
+					"port": 80
+				},
+				{
+					"name": "81",
+					"port": 81
+				},
+				{
+					"name": "5000",
+					"port": 5000
+				},
+				{
+					"name": "5001",
+					"port": 5001
+				}
+			]
+
+		}
+	],
+	"Info": {
+		"Subscription": {
+			"Id": "#subscriptionId"
+		},
+		"ResourceGroup": {
+			"Name": "#resourceGroupName",
+			"Location": "#resourceGroupLocation"
+		}
+	}
+}
