@@ -15,13 +15,13 @@ Param(
     
 
     # powershell build task args(Mandatory):
-    # -azureAccountName $(azureAccountName)  -azurePasswordString $(azurePasswordString) -uniqueSeed $(Build.BuildId) -sourceVhdUrl "$(sourceVhdUrl-tfs2018-Snapshot-0329)"
+    # -azureAccountName $(azureAccountName)  -azurePasswordString $(azurePasswordString) -uniqueSeed $(Build.BuildId) -sourceVhdUrl "$(sourceVhdUrl-tfs2018-ag-linux-snapshot)"
 
     # powershell build task args(multi vhd copy to a resource group/storage account):
-    # -azureAccountName $(azureAccountName)  -azurePasswordString $(azurePasswordString) -uniqueSeed "" -sourceVhdUrl "$(sourceVhdUrl-tfs2018-Snapshot-0329)" -resourceGroupName $(resourceGroupName) -storageAccountName $storageAccountName -storageAccountContainer $(storageAccountContainer)
+    # -azureAccountName $(azureAccountName)  -azurePasswordString $(azurePasswordString) -uniqueSeed "" -sourceVhdUrl "$(sourceVhdUrl-tfs2018-ag-linux-snapshot)" -resourceGroupName $(resourceGroupName) -storageAccountName $storageAccountName -storageAccountContainer $(storageAccountContainer)
 
     # powershell build task args(Mandatory)£¬and copy to global(AzureCloud):
-    # -azureAccountName $(azureAccountName)  -azurePasswordString $(azurePasswordString) -uniqueSeed $(Build.BuildId) -sourceVhdUrl "$(sourceVhdUrl-tfs2018-Snapshot-0329)" -azEnvName  $(azEnvName) -azEnvLocation $(azEnvLocation) 
+    # -azureAccountName $(azureAccountName)  -azurePasswordString $(azurePasswordString) -uniqueSeed $(Build.BuildId) -sourceVhdUrl "$(sourceVhdUrl-tfs2018-ag-linux-snapshot)" -azEnvName  $(azEnvName) -azEnvLocation $(azEnvLocation) 
 )
 
 $resourceGroupName = $resourceGroupName+$uniqueSeed
@@ -60,11 +60,20 @@ else {
 
 $destStorageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName;
 
-"start copy image"
-#$copyBlob = Start-AzureStorageBlobCopy -AbsoluteUri $sourceVhdUrl -DestContainer $storageAccountContainer -DestContext $destStorageAccount.Context -DestBlob $targetVhdName;
-#$copyBlob
+"start copy image"#$copyBlob = Start-AzureStorageBlobCopy -AbsoluteUri $sourceVhdUrl -DestContainer $storageAccountContainer -DestContext $destStorageAccount.Context -DestBlob $targetVhdName;
+$copyBlob
 "wait copy complete(maybe need 5 Minutes ~60 Minutes)..."
-#$copyBlob | Get-AzureStorageBlobCopyState -Blob $targetVhdName -Container $storageAccountContainer  -WaitForComplete
+$copyBlob | Get-AzureStorageBlobCopyState -Blob $targetVhdName -Container $storageAccountContainer  -WaitForComplete
 
 "copy complate!"
 #Get-AzureStorageBlob -Container $storageAccountContainer | Stop-AzureStorageBlobCopy -Force
+
+#$vmName = "tfs2018"
+#$rgName = "tfs2018"
+#$location = "ChinaNorth"
+#$imageName = "tfs2018"
+#$osVhdUri = "https://imagestorage3.blob.core.chinacloudapi.cn/vhds/tfs20183.vhd"
+
+#$imageConfig = New-AzureRmImageConfig -Location $location
+#$imageConfig = Set-AzureRmImageOsDisk -Image $imageConfig -OsType Windows -OsState Generalized -BlobUri $osVhdUri
+#$image = New-AzureRmImage -ImageName $imageName -ResourceGroupName $rgName -Image $imageConfig
