@@ -18,7 +18,7 @@ Param(
     [string] $EnvironmentName,
     [string] $groupId,
     [string] $azureUserName,
-    [string] $createAzureUser = true
+    [bool] $createAzureUser = $true
 )
 
 if(![String]::IsNullOrEmpty($groupId))
