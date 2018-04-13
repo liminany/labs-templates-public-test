@@ -1,0 +1,75 @@
+{
+	"Services": [{
+			"uniqueName": "vsalm",
+			"displayname": "vsalm",
+			"master": true,
+			"external": true,
+			"hostname": "#hostname",
+			"username": "#adminUsername",
+			"password": "#adminPassword",
+			"protocol":"rdp",
+			"port": 3389,
+			"properties": [{
+					"key": "displayname",
+					"value": "vsalm",
+					"type": "text"
+				},
+				{
+					"key": "protocol",
+					"value": "rdp",
+					"type": "text"
+				},
+				{
+					"key": "hostname",
+					"value": "#hostname",
+					"type": "text"
+				},
+				{
+					"key": "username",
+					"value": "#adminUsername",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "#adminPassword",
+					"type": "text"
+				},
+				{
+					"key": "port",
+					"value": "22",
+					"type": "text"
+				},
+				{
+					"key":"Portal URL",
+					"value":"#portalURL",
+					"type":"url"
+				},
+				{
+					"key":"Portal Username",
+					"value":"#portalUsername",
+					"type":"text"
+				},
+				{
+					"key":"Portal Password",
+					"value":"#portalPassword",
+					"type":"text"
+					
+				}
+			],
+			"apps": [{
+				"name": "tfs",
+				"port": 8080,
+				"virtualPath": "/tfs"
+			}]
+		}
+	],
+	"Info": {
+		"Subscription": {
+			"Id": "#subscriptionId"
+		},
+		"ResourceGroup": {
+			"Name": "#resourceGroupName",
+			"Location": "#resourceGroupLocation"
+		}
+	}
+}

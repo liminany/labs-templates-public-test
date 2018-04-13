@@ -1,0 +1,87 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "chinanorth"
+        },
+        "virtualMachineName": {
+            "value": "vsalm"
+        },
+        "virtualMachineSize": {
+            "value": "Standard_D2"
+        },
+        "adminUsername": {
+            "value": "azureuser"
+        },
+        "virtualNetworkName": {
+            "value": "vsalm-vnet"
+        },
+        "networkInterfaceName": {
+            "value": "vsalm633"
+        },
+        "networkSecurityGroupName": {
+            "value": "vsalm-nsg"
+        },
+        "adminPassword": {
+            "value": "P2ssw0rd@123"
+        },
+        "addressPrefix": {
+            "value": "10.1.1.0/24"
+        },
+        "subnetName": {
+            "value": "default"
+        },
+        "subnetPrefix": {
+            "value": "10.1.1.0/24"
+        },
+        "publicIpAddressName": {
+            "value": "vsalm-ip"
+        },
+        "publicIpAddressType": {
+            "value": "Dynamic"
+        },
+        "publicIpAddressSku": {
+            "value": "Basic"
+        },
+        "dnsLabelPrefix": {
+            "value": "%{dnsLabelPrefix}%"
+        },
+        "virtualMachineNameLinux": {
+            "value": "linux"
+        },
+        "virtualMachineSizeLinux": {
+            "value": "Standard_D1"
+        },
+        "adminUsernameLinux": {
+            "value": "azureuser"
+        },
+        "virtualNetworkNameLinux": {
+            "value": "vsalm-vnet"
+        },
+        "networkInterfaceNameLinux": {
+            "value": "linuxagent83"
+        },
+        "networkSecurityGroupNameLinux": {
+            "value": "linuxagent-nsg"
+        },
+        "adminPasswordLinux": {
+            "value": "P2ssw0rd@123"
+        },
+        "subnetNameLinux": {
+            "value": "default"
+        },
+        "publicIpAddressNameLinux": {
+            "value": "linuxagent-ip"
+        },
+        "publicIpAddressTypeLinux": {
+            "value": "Dynamic"
+        },
+        "publicIpAddressSkuLinux": {
+            "value": "Basic"
+        },
+        "dnsLabelPrefixLinux": {
+            "value": "%{dnsLabelPrefix2}%"
+        }
+    }
+}
