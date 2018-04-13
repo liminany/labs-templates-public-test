@@ -17,9 +17,8 @@ Param(
     [switch] $Dev,
     [string] $EnvironmentName,
     [string] $groupId,
-    [string] $azureUserName
-
-
+    [string] $azureUserName,
+    [bool] $createAzureUser = $true
 )
 
 if(![String]::IsNullOrEmpty($groupId))
@@ -195,7 +194,6 @@ if (Test-Path $ScriptsFolder) {
 
 
 # Create azure user and add permission to ResourceGroup 
-
 echo "Connect AzureAD"
 
 if ($EnvironmentName -eq 'china') {
@@ -208,23 +206,25 @@ else{
     $SignInName=$azureUserName+"@lean-soft.cn"
     $portalURL="http://portal.azure.com"
 }
-
-
-
-echo "Check is user exist"
-$AzureUser=Get-AzureADUser -Filter "userPrincipalName eq '$SignInName'"
 $Password = "" | Select-Object password
 $Password.password = "P2ssw0rd@123"
 
-If ($AzureUser -eq $Null)
+if($createAzureUser)
 {
-    echo "Create new aure user"
-    New-AzureADUser -AccountEnabled $True -DisplayName $azureUserName -PasswordProfile $Password -MailNickName $azureUserName -UserPrincipalName $SignInName
-    Start-Sleep -Seconds 60
-}
+    echo "Check is user exist"
+    $AzureUser=Get-AzureADUser -Filter "userPrincipalName eq '$SignInName'"
 
-echo "Add permission to ResourceGroup"
-New-AzureRmRoleAssignment -ResourceGroupName $ResourceGroupName -SignInName $SignInName -RoleDefinitionName Reader
+
+    If ($AzureUser -eq $Null)
+    {
+        echo "Create new aure user"
+        New-AzureADUser -AccountEnabled $True -DisplayName $azureUserName -PasswordProfile $Password -MailNickName $azureUserName -UserPrincipalName $SignInName
+        Start-Sleep -Seconds 60
+    }
+
+    echo "Add permission to ResourceGroup"
+    New-AzureRmRoleAssignment -ResourceGroupName $ResourceGroupName -SignInName $SignInName -RoleDefinitionName Reader
+}
 
 #replace all output string
 $resultTemplateFilePath=$ArtifactStagingDirectory + '\labs\labs-result-template.json'

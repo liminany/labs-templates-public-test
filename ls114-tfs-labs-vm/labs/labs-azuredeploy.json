@@ -1,0 +1,285 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"location": {
+			"type": "string"
+		},
+		"virtualMachineName": {
+			"type": "string"
+		},
+		"virtualMachineSize": {
+			"type": "string"
+		},
+		"adminUsername": {
+			"type": "string"
+		},
+		"virtualNetworkName": {
+			"type": "string"
+		},
+		"networkInterfaceName": {
+			"type": "string"
+		},
+		"networkSecurityGroupName": {
+			"type": "string"
+		},
+		"adminPassword": {
+			"type": "securestring"
+		},
+		"addressPrefix": {
+			"type": "string"
+		},
+		"subnetName": {
+			"type": "string"
+		},
+		"subnetPrefix": {
+			"type": "string"
+		},
+		"publicIpAddressName": {
+			"type": "string"
+		},
+		"publicIpAddressType": {
+			"type": "string"
+		},
+		"publicIpAddressSku": {
+			"type": "string"
+		},
+		"dnsLabelPrefix": {
+			"type": "string",
+			"metadata": {
+				"description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
+			}
+		},
+		"virtualMachineNameLinux": {
+			"type": "string"
+		},
+		"virtualMachineSizeLinux": {
+			"type": "string"
+		},
+		"adminUsernameLinux": {
+			"type": "string"
+		},
+		"virtualNetworkNameLinux": {
+			"type": "string"
+		},
+		"networkInterfaceNameLinux": {
+			"type": "string"
+		},
+		"networkSecurityGroupNameLinux": {
+			"type": "string"
+		},
+		"adminPasswordLinux": {
+			"type": "securestring"
+		},
+		"subnetNameLinux": {
+			"type": "string"
+		},
+		"publicIpAddressNameLinux": {
+			"type": "string"
+		},
+		"publicIpAddressTypeLinux": {
+			"type": "string"
+		},
+		"publicIpAddressSkuLinux": {
+			"type": "string"
+		},
+		"dnsLabelPrefixLinux": {
+			"type": "string",
+			"metadata": {
+				"description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
+			}
+		}
+	},
+	"variables": {
+		"vnetId": "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
+		"subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]",
+		"storageAccountName": "[concat(uniquestring(resourceGroup().id), 'vm')]"
+
+	},
+	"resources": [{
+			"name": "[parameters('virtualMachineName')]",
+			"type": "Microsoft.Compute/virtualMachines",
+			"apiVersion": "2016-04-30-preview",
+			"location": "[parameters('location')]",
+			"dependsOn": [
+				"[concat('Microsoft.Network/networkInterfaces/', parameters('networkInterfaceName'))]"
+			],
+			"properties": {
+				"osProfile": {
+					"computerName": "[parameters('virtualMachineName')]",
+					"adminUsername": "[parameters('adminUsername')]",
+					"adminPassword": "[parameters('adminPassword')]",
+					"windowsConfiguration": {
+						"provisionVmAgent": "true"
+					}
+				},
+				"hardwareProfile": {
+					"vmSize": "[parameters('virtualMachineSize')]"
+				},
+				"storageProfile": {
+					"imageReference": {
+						"id": "/subscriptions/9b26957f-5a38-47aa-a0fa-cd97f1dfdb12/resourceGroups/tfs-labs-genorator/providers/Microsoft.Compute/images/TFSLabs"
+					},
+					"osDisk": {
+						"createOption": "fromImage",
+						"managedDisk": {
+							"storageAccountType": "Standard_LRS"
+						}
+					}
+				},
+				"networkProfile": {
+					"networkInterfaces": [{
+						"id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaceName'))]"
+					}]
+				}
+			}
+		},
+		{
+			"name": "[parameters('virtualNetworkName')]",
+			"type": "Microsoft.Network/virtualNetworks",
+			"apiVersion": "2017-08-01",
+			"location": "[parameters('location')]",
+			"properties": {
+				"addressSpace": {
+					"addressPrefixes": [
+						"[parameters('addressPrefix')]"
+					]
+				},
+				"subnets": [{
+					"name": "[parameters('subnetName')]",
+					"properties": {
+						"addressPrefix": "[parameters('subnetPrefix')]"
+					}
+				}]
+			}
+		},
+		{
+			"name": "[parameters('networkInterfaceName')]",
+			"type": "Microsoft.Network/networkInterfaces",
+			"apiVersion": "2017-10-01",
+			"location": "[parameters('location')]",
+			"dependsOn": [
+				"[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]",
+				"[concat('Microsoft.Network/publicIpAddresses/', parameters('publicIpAddressName'))]",
+				"[concat('Microsoft.Network/networkSecurityGroups/', parameters('networkSecurityGroupName'))]"
+			],
+			"properties": {
+				"ipConfigurations": [{
+					"name": "ipconfig1",
+					"properties": {
+						"subnet": {
+							"id": "[variables('subnetRef')]"
+						},
+						"privateIPAllocationMethod": "Dynamic",
+						"publicIpAddress": {
+							"id": "[resourceId('Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName'))]"
+						}
+					}
+				}],
+				"networkSecurityGroup": {
+					"id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]"
+				}
+			}
+		},
+		{
+			"name": "[parameters('publicIpAddressName')]",
+			"type": "Microsoft.Network/publicIpAddresses",
+			"apiVersion": "2017-08-01",
+			"location": "[parameters('location')]",
+			"properties": {
+				"publicIPAllocationMethod": "Dynamic",
+				"dnsSettings": {
+					"domainNameLabel": "[parameters('dnsLabelPrefix')]"
+				}
+			}
+
+		},
+		{
+			"name": "[parameters('networkSecurityGroupName')]",
+			"type": "Microsoft.Network/networkSecurityGroups",
+			"apiVersion": "2017-10-01",
+			"location": "[parameters('location')]",
+			"properties": {
+				"securityRules": [{
+						"name": "default-allow-rdp",
+						"properties": {
+							"priority": 1000,
+							"protocol": "TCP",
+							"access": "Allow",
+							"direction": "Inbound",
+							"sourceAddressPrefix": "*",
+							"sourcePortRange": "*",
+							"destinationAddressPrefix": "*",
+							"destinationPortRange": "3389"
+						}
+					},
+					{
+						"name": "default-allow-tfs",
+						"properties": {
+							"priority": 1001,
+							"protocol": "TCP",
+							"access": "Allow",
+							"direction": "Inbound",
+							"sourceAddressPrefix": "*",
+							"sourcePortRange": "*",
+							"destinationAddressPrefix": "*",
+							"destinationPortRange": "8080"
+						}
+					},
+					{
+						"name": "allow-ff-qa",
+						"properties": {
+							"priority": 1002,
+							"protocol": "TCP",
+							"access": "Allow",
+							"direction": "Inbound",
+							"sourceAddressPrefix": "*",
+							"sourcePortRange": "*",
+							"destinationAddressPrefix": "*",
+							"destinationPortRange": "9000"
+						}
+					},
+					{
+						"name": "allow-ff-prod",
+						"properties": {
+							"priority": 1003,
+							"protocol": "TCP",
+							"access": "Allow",
+							"direction": "Inbound",
+							"sourceAddressPrefix": "*",
+							"sourcePortRange": "*",
+							"destinationAddressPrefix": "*",
+							"destinationPortRange": "10000"
+						}
+					}
+				]
+			}
+		}		
+	],
+	"outputs": {
+		"subscriptionId": {
+			"type": "string",
+			"value": "[subscription().subscriptionId]"
+		},
+		"resourceGroupName": {
+			"type": "string",
+			"value": "[resourceGroup().name]"
+		},
+		"resourceGroupLocation": {
+			"type": "string",
+			"value": "[resourceGroup().location]"
+		},
+		"adminUsername": {
+			"type": "string",
+			"value": "[parameters('adminUsername')]"
+		},
+		"adminPassword": {
+			"type": "string",
+			"value": "[parameters('adminPassword')]"
+		},
+		"hostname": {
+			"type": "string",
+			"value": "[reference(parameters('publicIpAddressName')).dnsSettings.fqdn]"
+		}
+	}
+}
