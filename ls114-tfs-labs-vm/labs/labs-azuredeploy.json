@@ -118,7 +118,7 @@
 				},
 				"storageProfile": {
 					"imageReference": {
-						"id": "/subscriptions/9b26957f-5a38-47aa-a0fa-cd97f1dfdb12/resourceGroups/tfs-labs-genorator/providers/Microsoft.Compute/images/TFSLabs"
+						"id": "/subscriptions/9b26957f-5a38-47aa-a0fa-cd97f1dfdb12/resourceGroups/tfs-labs-genorator/providers/Microsoft.Compute/images/tfs-labs-vm-v2"
 					},
 					"osDisk": {
 						"createOption": "fromImage",
