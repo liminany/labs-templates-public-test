@@ -2,7 +2,7 @@ Param(
     [string] [Parameter(Mandatory=$true)] $azureAccountName,
     [string] [Parameter(Mandatory=$true)] $azurePasswordString,
 
-    [int] [Parameter(Mandatory=$true)] $uniqueSeed, # maybe a buildid
+    [string] [Parameter(Mandatory=$true)] $uniqueSeed, # maybe a buildid
     [string] [Parameter(Mandatory=$false)] $resourceGroupName = "tfs-labs-image-copy",   
     [string] [Parameter(Mandatory=$false)] $storageAccountName = "tfslabsimagecopy", # 3 and 24 characters in length and use numbers and lower-case letters
     [string] [Parameter(Mandatory=$false)] $storageAccountContainer = "vhds", # 3 and 24 characters in length and use numbers and lower-case letters 
@@ -55,7 +55,7 @@ elseif($accountAvailable.Reason -eq "AlreadyExists") {
     
 }
 else {
-    throw $accountAvailable.Message
+    throw "Reason:" + $accountAvailable.Reason +","+ $accountAvailable.Message
 }
 
 $destStorageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName;
