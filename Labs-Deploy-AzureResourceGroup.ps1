@@ -194,27 +194,26 @@ if (Test-Path $ScriptsFolder) {
 
 
 # Create azure user and add permission to ResourceGroup 
+echo "Connect AzureAD"
+
+if ($EnvironmentName -eq 'china') {
+    Connect-AzureAD -Credential $psCred -AzureEnvironmentName AzureChinaCloud
+    $SignInName=$azureUserName+"@leixu.partner.onmschina.cn"
+    $portalURL="http://portal.azure.cn"
+}
+else{
+    Connect-AzureAD -Credential $psCred
+    $SignInName=$azureUserName+"@lean-soft.cn"
+    $portalURL="http://portal.azure.com"
+}
+$Password = "" | Select-Object password
+$Password.password = "P2ssw0rd@123"
+
 if($createAzureUser)
 {
-    echo "Connect AzureAD"
-
-    if ($EnvironmentName -eq 'china') {
-        Connect-AzureAD -Credential $psCred -AzureEnvironmentName AzureChinaCloud
-        $SignInName=$azureUserName+"@leixu.partner.onmschina.cn"
-        $portalURL="http://portal.azure.cn"
-    }
-    else{
-        Connect-AzureAD -Credential $psCred
-        $SignInName=$azureUserName+"@lean-soft.cn"
-        $portalURL="http://portal.azure.com"
-    }
-
-
-
     echo "Check is user exist"
     $AzureUser=Get-AzureADUser -Filter "userPrincipalName eq '$SignInName'"
-    $Password = "" | Select-Object password
-    $Password.password = "P2ssw0rd@123"
+
 
     If ($AzureUser -eq $Null)
     {
