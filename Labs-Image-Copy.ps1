@@ -41,6 +41,8 @@ if($resourceGroupName -ne $findRSName){
 }
 
 $accountAvailable = Get-AzureRmStorageAccountNameAvailability -Name $storageAccountName
+"resourceGroupName is $resourceGroupName, storageAccountName is $storageAccountName, accountAvailable is: "
+ $accountAvailable 
 
 if($accountAvailable.NameAvailable) {
     #throw "storageAccountName£º $storageAccountName not Exists £¡" 
@@ -50,7 +52,7 @@ if($accountAvailable.NameAvailable) {
     New-AzureStorageContainer -Name $storageAccountContainer      
 }
 elseif($accountAvailable.Reason -eq "AlreadyExists") {
-
+    
 }
 else {
     throw $accountAvailable.Message
