@@ -6,7 +6,7 @@
             "value": "chinanorth"
         },
         "virtualMachineName": {
-            "value": "tfs2018"
+            "value": "vsalm"
         },
         "virtualMachineSize": {
             "value": "Standard_D2"
@@ -15,13 +15,13 @@
             "value": "azureuser"
         },
         "virtualNetworkName": {
-            "value": "tfs2018-vnet"
+            "value": "vsalm-vnet"
         },
         "networkInterfaceName": {
-            "value": "tfs2018633"
+            "value": "vsalm633"
         },
         "networkSecurityGroupName": {
-            "value": "tfs2018-nsg"
+            "value": "vsalm-nsg"
         },
         "adminPassword": {
             "value": "P2ssw0rd@123"
@@ -36,7 +36,7 @@
             "value": "10.1.1.0/24"
         },
         "publicIpAddressName": {
-            "value": "tfs2018-ip"
+            "value": "vsalm-ip"
         },
         "publicIpAddressType": {
             "value": "Dynamic"
@@ -57,7 +57,7 @@
             "value": "azureuser"
         },
         "virtualNetworkNameLinux": {
-            "value": "tfs2018-vnet"
+            "value": "vsalm-vnet"
         },
         "networkInterfaceNameLinux": {
             "value": "linuxagent83"
