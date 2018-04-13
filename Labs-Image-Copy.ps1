@@ -2,7 +2,7 @@ Param(
     [string] [Parameter(Mandatory=$true)] $azureAccountName,
     [string] [Parameter(Mandatory=$true)] $azurePasswordString,
 
-    [string] [Parameter(Mandatory=$true)] $uniqueSeed, # maybe a buildid
+    [string] [Parameter(Mandatory=$false)] $uniqueSeed, # maybe a buildid
     [string] [Parameter(Mandatory=$false)] $resourceGroupName = "tfs-labs-image-copy",   
     [string] [Parameter(Mandatory=$false)] $storageAccountName = "tfslabsimagecopy", # 3 and 24 characters in length and use numbers and lower-case letters
     [string] [Parameter(Mandatory=$false)] $storageAccountContainer = "vhds", # 3 and 24 characters in length and use numbers and lower-case letters 
