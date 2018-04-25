@@ -5,7 +5,7 @@
 	    "destAzEnvLocation": "#{destAzEnvLocation}#",
 		"destAzEnvName": "#{destAzEnvName}#",
 		"destAzureAccountName": "#{destAzureAccountName}#",
-		"destAzurePasswordString": "#{destAzurePasswordString}#",
+		"destAzurePasswordString": "hide",
 		"destResourceGroupName": "#{destResourceGroupName}#",
 		"destStorageAccountName": "#{destStorageAccountName}#",
 		"destSubscriptionId": "#{destSubscriptionId}#",
@@ -13,7 +13,7 @@
 		"resourceGroupName": "#{resourceGroupName}#",
 		"sourceAzEnvName": "#{sourceAzEnvName}#",
 		"sourceAzureAccountName": "#{sourceAzureAccountName}#",
-		"sourceAzurePasswordString": "#{sourceAzurePasswordString}#"
+		"sourceAzurePasswordString": "hide"
 		"sourceSnapshotName": "#{sourceSnapshotName}#",
 		"sourceSnapshotName-linux": "#{sourceSnapshotName-linux}#",
 		"sourceStorageAccountName": "#{sourceStorageAccountName}#",

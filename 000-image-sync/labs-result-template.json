@@ -18,12 +18,7 @@
 					"key":"sourceResourceGroupName",
 					"value":"#{resourceGroupName}#",
 					"type":"text"
-				},	
-				{
-					"key":"sourceSnapshotName",
-					"value":"#{sourceSnapshotName}#",
-					"type":"text"
-				},		
+				},					
 				{
 					"key":"sourceSnapshotName",
 					"value":"#{sourceSnapshotName}#,#{sourceSnapshotName-linux}#",
@@ -51,7 +46,7 @@
 				},	
 				{
 					"key":"ImageName",
-					"value":"#{sourceSnapshotName}#->#{imageName}#",
+					"value":"#{sourceSnapshotName}#, #{imageName}#",
 					"type":"text"
 				},					
 			]
