@@ -1,0 +1,26 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {       
+	    "destAzEnvLocation": "#{destAzEnvLocation}#",
+		"destAzEnvName": "#{destAzEnvName}#",
+		"destAzureAccountName": "#{destAzureAccountName}#",
+		"destAzurePasswordString": "#{destAzurePasswordString}#",
+		"destResourceGroupName": "#{destResourceGroupName}#",
+		"destStorageAccountName": "#{destStorageAccountName}#",
+		"destSubscriptionId": "#{destSubscriptionId}#",
+		"destVhdName": "#{destVhdName}#",
+		"resourceGroupName": "#{resourceGroupName}#",
+		"sourceAzEnvName": "#{sourceAzEnvName}#",
+		"sourceAzureAccountName": "#{sourceAzureAccountName}#",
+		"sourceAzurePasswordString": "#{sourceAzurePasswordString}#"
+		"sourceSnapshotName": "#{sourceSnapshotName}#",
+		"sourceSnapshotName-linux": "#{sourceSnapshotName-linux}#",
+		"sourceStorageAccountName": "#{sourceStorageAccountName}#",
+		"sourceSubscriptionId": "#{sourceSubscriptionId}#",
+		"sourceVhdUrl": "#{sourceVhdUrl}#",
+		"storageAccountContainer": "#{storageAccountContainer}#",
+		"uniqueSeed": "#{uniqueSeed}#"
+    }
+  }
+}

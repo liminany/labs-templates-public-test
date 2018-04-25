@@ -1,0 +1,69 @@
+{
+	"Services": [
+		{
+			"uniqueName":"LabsVMImageCopy",
+			"displayname": "LabsVMImageCopy",					
+			"properties":[				
+				{
+					"key":"sourceAzureAccountName",
+					"value":"#{sourceAzureAccountName}#",
+					"type":"text"
+				},
+				{
+					"key":"sourceSubscriptionId",
+					"value":"#{sourceSubscriptionId}#",
+					"type":"text"
+				},
+				{
+					"key":"sourceResourceGroupName",
+					"value":"#{resourceGroupName}#",
+					"type":"text"
+				},	
+				{
+					"key":"sourceSnapshotName",
+					"value":"#{sourceSnapshotName}#",
+					"type":"text"
+				},		
+				{
+					"key":"sourceSnapshotName",
+					"value":"#{sourceSnapshotName}#,#{sourceSnapshotName-linux}#",
+					"type":"text"
+				},
+				{
+					"key":"destinationSubscriptionId",
+					"value":"#{destinationSubscriptionId}#",
+					"type":"text"
+				},	
+				{
+					"key":"destResourceGroupName",
+					"value":"#{destResourceGroupName}#",
+					"type":"text"
+				},				
+				{
+					"key":"destStorageAccountName",
+					"value":"#{destStorageAccountName}#",
+					"type":"text"
+				},		
+				{
+					"key":"destVhdName",
+					"value":"#{destVhdName}#",
+					"type":"text"
+				},	
+				{
+					"key":"ImageName",
+					"value":"#{sourceSnapshotName}#->#{imageName}#",
+					"type":"text"
+				},					
+			]
+		}
+	],
+	"Info": {
+		"Subscription": {
+			"Id": "#{destinationSubscriptionId}#",
+		},
+		"ResourceGroup": {
+			"Name": "#{resourceGroupName}#",
+			"Location": ""
+		}
+	}
+}
