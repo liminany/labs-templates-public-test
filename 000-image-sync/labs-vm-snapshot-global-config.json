@@ -28,7 +28,7 @@
 },
 {
 	"Tenant": "global",
-	"EnviromentName": "ls112-tfs-server-2018",
+	"EnviromentName": "ls114-tfs-labs-vm",
 	"BuildDefinedId": "81",
 	"SourceConfigUrl": "https://raw.githubusercontent.com/lean-soft/labs-templates/master/000-image-sync/labs-vm-snapshot-global-config.json",
 	"SourceSnapshot": {
