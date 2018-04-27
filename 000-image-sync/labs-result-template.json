@@ -1,64 +1,28 @@
 {
-	"Services": [
-		{
-			"uniqueName":"LabsVMImageCopy",
-			"displayname": "LabsVMImageCopy",					
-			"properties":[				
-				{
-					"key":"sourceAzureAccountName",
-					"value":"#{sourceAzureAccountName}#",
-					"type":"text"
-				},
-				{
-					"key":"sourceSubscriptionId",
-					"value":"#{sourceSubscriptionId}#",
-					"type":"text"
-				},
-				{
-					"key":"sourceResourceGroupName",
-					"value":"#{resourceGroupName}#",
-					"type":"text"
-				},					
-				{
-					"key":"sourceSnapshotName",
-					"value":"#{sourceSnapshotName}#,#{sourceSnapshotName-linux}#",
-					"type":"text"
-				},
-				{
-					"key":"destinationSubscriptionId",
-					"value":"#{destinationSubscriptionId}#",
-					"type":"text"
-				},	
-				{
-					"key":"destResourceGroupName",
-					"value":"#{destResourceGroupName}#",
-					"type":"text"
-				},				
-				{
-					"key":"destStorageAccountName",
-					"value":"#{destStorageAccountName}#",
-					"type":"text"
-				},		
-				{
-					"key":"destVhdName",
-					"value":"#{destVhdName}#",
-					"type":"text"
-				},	
-				{
-					"key":"ImageName",
-					"value":"#{sourceSnapshotName}#, #{imageName}#",
-					"type":"text"
-				},					
-			]
-		}
-	],
-	"Info": {
-		"Subscription": {
-			"Id": "#{destinationSubscriptionId}#",
-		},
-		"ResourceGroup": {
-			"Name": "#{resourceGroupName}#",
-			"Location": ""
-		}
+	"Tenant": "global",
+	"EnviromentName": "#{githubPath}#",
+	"BuildDefinedId": "#{BuildDefinedId}#"
+	"SourceConfigUrl": "https://raw.githubusercontent.com/lean-soft/labs-templates/master/000-image-sync/labs-vm-snapshot-global-config.json",
+	"SourceSnapshot": {
+		"UserGlobalOrSelf":"global",
+		"ResourceGroupName": "#{resourceGroupName}#",
+		"SourceAzEnvName": "#{sourceAzEnvName}#",
+		"SourceAzureAccountName": "#{sourceAzureAccountName}#",
+		"SourceAzurePasswordString": "#{sourceAzurePasswordString}#",
+		"sourceSubscriptionId": "#{sourceSubscriptionId}#",
+		"Snapshots": ["#{sourceSnapshotName}#"]
+	},
+	"DestImage": {
+		"DestAzEnvName": "#{destAzEnvName}#",
+		"DestAzEnvLocation": "#{destAzEnvLocation}#",
+		"DestAzureAccountName": "#{destAzureAccountName}#",
+		"DestAzurePasswordString": "#{destAzurePasswordString}#"
+		"DestResourceGroupName": "#{destResourceGroupName}#",
+		"DestStorageAccountName": "#{destStorageAccountName}#",
+		"DestSubscriptionId": "#{destSubscriptionId}#",
+		"OutTfsBuildUrl":"#{tfsBuildUrl}#",
+		"OutImageName": "#{imageName}#",
+		"OutImageId": "#{imageId}#",
+		"OutSyncDataTime": "#{syncDataTime}#"
 	}
 }

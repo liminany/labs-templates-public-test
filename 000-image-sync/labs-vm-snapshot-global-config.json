@@ -1,0 +1,57 @@
+[{
+	"Tenant": "global",
+	"EnviromentName": "ls112-tfs-server-2018",
+	"BuildDefinedId": "81"
+	"SourceConfigUrl": "https://raw.githubusercontent.com/lean-soft/labs-templates/master/000-image-sync/labs-vm-snapshot-global-config.json",
+	"SourceSnapshot": {
+		"UserGlobalOrSelf":"global",
+		"ResourceGroupName": "ls112-tfs-server-2018-chinanorth-master-rg",
+		"SourceAzEnvName": "chinanorth",
+		"SourceAzureAccountName": "lixiaoming@leixu.partner.onmschina.cn",
+		"SourceAzurePasswordString": "**************",
+		"sourceSubscriptionId": "9c147847-d93d-4174-9fd8-1c04057acf82",
+		"Snapshots": ["ls112-tfs-server-2018-tfs2018-windows-snapshot-20180423.2", "ls112-tfs-server-2018-linuxagent-linux-snapshot-20180423.1"]
+	},
+	"DestImage": {
+		"DestAzEnvName": "AzureChinaCloud",
+		"DestAzEnvLocation": "chinanorth",
+		"DestAzureAccountName": "lixiaoming@leixu.partner.onmschina.cn",
+		"DestAzurePasswordString": "**************"
+		"DestResourceGroupName": "ls-vm-templates-chinanorth-public-rg",
+		"DestStorageAccountName": "labstemplatestorage",
+		"DestSubscriptionId": "72c9703f-60d5-47aa-b7a7-ec0fc7ce1a43",
+		"OutTfsBuildUrl":"#{tfsBuildUrl}#",
+		"OutImageName": "#{OutImageName}#",
+		"OutImageId": "#{OutImageId}#",
+		"OutSyncDataTime": "#{OutSyncDataTime}#"
+	}
+},
+{
+	"Tenant": "global",
+	"EnviromentName": "ls112-tfs-server-2018",
+	"BuildDefinedId": "81"
+	"SourceConfigUrl": "https://raw.githubusercontent.com/lean-soft/labs-templates/master/000-image-sync/labs-vm-snapshot-global-config.json",
+	"SourceSnapshot": {
+		"UserGlobalOrSelf":"global",
+		"ResourceGroupName": "ls114-tfs-labs-vm-chinanorth-master-rg",
+		"SourceAzEnvName": "chinanorth",
+		"SourceAzureAccountName": "lixiaoming@leixu.partner.onmschina.cn",
+		"SourceAzurePasswordString": "**************",
+		"sourceSubscriptionId": "9c147847-d93d-4174-9fd8-1c04057acf82",
+		"Snapshots": ["ls114-tfs-labs-vm-vsalm-windows-snapshot-20180424.1"]
+	},
+	"DestImage": {
+		"DestAzEnvName": "AzureChinaCloud",
+		"DestAzEnvLocation": "chinanorth",
+		"DestAzureAccountName": "lixiaoming@leixu.partner.onmschina.cn",
+		"DestAzurePasswordString": "**************"
+		"DestResourceGroupName": "ls-vm-templates-chinanorth-public-rg",
+		"DestStorageAccountName": "labstemplatestorage",
+		"DestSubscriptionId": "72c9703f-60d5-47aa-b7a7-ec0fc7ce1a43",
+		"OutTfsBuildUrl":"#{tfsBuildUrl}#",
+		"OutImageName": "#{OutImageName}#",
+		"OutImageId": "#{OutImageId}#",
+		"OutSyncDataTime": "#{OutSyncDataTime}#"
+	}
+}
+]
