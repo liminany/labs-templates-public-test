@@ -3,15 +3,13 @@
 	"EnviromentName": "#{githubPath}#",
 	"BuildDefinedId": "#{BuildDefinedId}#",
 	"SourceConfigUrl": "https://raw.githubusercontent.com/lean-soft/labs-templates/master/000-image-sync/labs-vm-snapshot-global-config.json",
-	"SourceSnapshot": {
-		"UserGlobalOrSelf":"global",
-		"ResourceGroupName": "#{resourceGroupName}#",
-		"SourceAzEnvName": "#{sourceAzEnvName}#",
-		"SourceAzureAccountName": "#{sourceAzureAccountName}#",
-		"SourceAzurePasswordString": "#{sourceAzurePasswordString}#",
-		"SourceSubscriptionId": "#{sourceSubscriptionId}#",
-		"Snapshots": ["#{sourceSnapshotName}#"]
-	},
+	"UserGlobalOrSelf":"global",
+	"ResourceGroupName": "#{resourceGroupName}#",
+	"SourceAzEnvName": "#{sourceAzEnvName}#",
+	"SourceAzureAccountName": "#{sourceAzureAccountName}#",
+	"SourceAzurePasswordString": "#{sourceAzurePasswordString}#",
+	"SourceSubscriptionId": "#{sourceSubscriptionId}#",
+	"SourceSnapshotName":"#{SourceSnapshotName}#",
 	"DestImage": {
 		"DestAzEnvName": "#{destAzEnvName}#",
 		"DestAzEnvLocation": "#{destAzEnvLocation}#",
@@ -23,6 +21,6 @@
 		"OutTfsBuildUrl":"#{tfsBuildUrl}#",
 		"OutImageName": "#{imageName}#",
 		"OutImageId": "#{imageId}#",
-		"OutSyncDataTime": ["#{syncDataTime}#"]
+		"OutSyncDataTime": "#{syncDataTime}#"
 	}
 }
