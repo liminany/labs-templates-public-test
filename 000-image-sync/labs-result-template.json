@@ -1,7 +1,7 @@
 {
 	"Tenant": "global",
 	"EnviromentName": "#{githubPath}#",
-	"BuildDefinedId": "#{BuildDefinedId}#"
+	"BuildDefinedId": "#{BuildDefinedId}#",
 	"SourceConfigUrl": "https://raw.githubusercontent.com/lean-soft/labs-templates/master/000-image-sync/labs-vm-snapshot-global-config.json",
 	"SourceSnapshot": {
 		"UserGlobalOrSelf":"global",
@@ -9,14 +9,14 @@
 		"SourceAzEnvName": "#{sourceAzEnvName}#",
 		"SourceAzureAccountName": "#{sourceAzureAccountName}#",
 		"SourceAzurePasswordString": "#{sourceAzurePasswordString}#",
-		"sourceSubscriptionId": "#{sourceSubscriptionId}#",
+		"SourceSubscriptionId": "#{sourceSubscriptionId}#",
 		"Snapshots": ["#{sourceSnapshotName}#"]
 	},
 	"DestImage": {
 		"DestAzEnvName": "#{destAzEnvName}#",
 		"DestAzEnvLocation": "#{destAzEnvLocation}#",
 		"DestAzureAccountName": "#{destAzureAccountName}#",
-		"DestAzurePasswordString": "#{destAzurePasswordString}#"
+		"DestAzurePasswordString": "#{destAzurePasswordString}#",
 		"DestResourceGroupName": "#{destResourceGroupName}#",
 		"DestStorageAccountName": "#{destStorageAccountName}#",
 		"DestSubscriptionId": "#{destSubscriptionId}#",
