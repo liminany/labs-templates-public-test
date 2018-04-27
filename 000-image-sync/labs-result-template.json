@@ -23,6 +23,6 @@
 		"OutTfsBuildUrl":"#{tfsBuildUrl}#",
 		"OutImageName": "#{imageName}#",
 		"OutImageId": "#{imageId}#",
-		"OutSyncDataTime": "#{syncDataTime}#"
+		"OutSyncDataTime": ["#{syncDataTime}#"]
 	}
 }
