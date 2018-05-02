@@ -62,7 +62,7 @@
 	"SourceAzureAccountName": "lixiaoming@leixu.partner.onmschina.cn",
 	"SourceAzurePasswordString": "**************",
 	"SourceSubscriptionId": "9c147847-d93d-4174-9fd8-1c04057acf82",
-	"SourceSnapshotName":"-tfs-labs-vm-vsalm-windows-snapshot-20180427.1",
+	"SourceSnapshotName":"ls114-tfs-labs-vm-vsalm-windows-snapshot-20180424.1",
 	
 	"DestImage": {
 		"DestAzEnvName": "AzureChinaCloud",
