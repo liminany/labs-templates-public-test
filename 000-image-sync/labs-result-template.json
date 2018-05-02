@@ -18,9 +18,9 @@
 		"DestResourceGroupName": "#{destResourceGroupName}#",
 		"DestStorageAccountName": "#{destStorageAccountName}#",
 		"DestSubscriptionId": "#{destSubscriptionId}#",
-		"OutTfsBuildUrl":"#{tfsBuildUrl}#",
-		"OutImageName": "#{imageName}#",
-		"OutImageId": "#{imageId}#",
-		"OutSyncDataTime": "#{syncDataTime}#"
+		"OutTfsBuildUrl":"#tfsBuildUrl#",
+		"OutImageName": "#imageName#",
+		"OutImageId": "#imageId#",
+		"OutSyncDataTime": "#syncDataTime#"
 	}
 }
