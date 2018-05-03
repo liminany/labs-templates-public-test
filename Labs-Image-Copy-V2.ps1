@@ -163,7 +163,8 @@ $image
 "start replece output result.json"
  #replace all output string
 $needReplaceVars = "#imageName#","#imageId#"
-$resultTemplateFilePath=$ArtifactStagingDirectory + '\labs-result-template.json'
+$resultTemplateFilePath=$env:BUILD_SOURCESDIRECTORY + '\000-image-sync\labs-result-template.json'
+echo $resultTemplateFilePath
 $resultJsonContent = Get-Content $resultTemplateFilePath | Out-String 
 $resultJsonContent=$resultJsonContent.Replace($needReplaceVars[0], $imageName);
 $resultJsonContent=$resultJsonContent.Replace($needReplaceVars[1], $image.Id);
