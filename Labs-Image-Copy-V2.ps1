@@ -50,7 +50,9 @@ if($resourceGroupName -ne $findRSName){
 # get snapshot,if pass a snapshot url,use this url as sourceVhdUrl
 if($sourceVhdUrl -eq "") {
     $sourceSnap = Get-AzureRmSnapshot -ResourceGroupName $resourceGroupName -SnapshotName $sourceSnapshotName
+    $sourceSnap
     $snapSasUrl = Grant-AzureRmSnapshotAccess -ResourceGroupName $resourceGroupName -SnapshotName $sourceSnapshotName -DurationInSecond 315360000 -Access Read  # 315360000s = 10 year
+    $snapSasUrl
     # todo get vhd name from snap name
     $sourceVhdUrl = $snapSasUrl.AccessSAS;
     "snapSasUrl: $sourceVhdUrl"
