@@ -18,10 +18,10 @@
 		"DestResourceGroupName": "ls-vm-templates-chinanorth-public-rg",
 		"DestStorageAccountName": "labstemplatestorage",
 		"DestSubscriptionId": "72c9703f-60d5-47aa-b7a7-ec0fc7ce1a43",
-		"OutTfsBuildUrl":"#{tfsBuildUrl}#",
-		"OutImageName": "#{OutImageName}#",
-		"OutImageId": "#{OutImageId}#",
-		"OutSyncDataTime": "#{OutSyncDataTime}#"
+		"OutTfsBuildUrl":"#tfsBuildUrl#",
+		"OutImageName": "#imageName#",
+		"OutImageId": "#imageId#",
+		"OutSyncDataTime": "#syncDataTime#"
 	}
 },
 {
@@ -45,10 +45,10 @@
 		"DestResourceGroupName": "ls-vm-templates-chinanorth-public-rg",
 		"DestStorageAccountName": "labstemplatestorage",
 		"DestSubscriptionId": "72c9703f-60d5-47aa-b7a7-ec0fc7ce1a43",
-		"OutTfsBuildUrl":"#{tfsBuildUrl}#",
-		"OutImageName": "#{OutImageName}#",
-		"OutImageId": "#{OutImageId}#",
-		"OutSyncDataTime": "#{OutSyncDataTime}#"
+		"OutTfsBuildUrl":"#tfsBuildUrl#",
+		"OutImageName": "#imageName#",
+		"OutImageId": "#imageId#",
+		"OutSyncDataTime": "#syncDataTime#"
 	}
 },
 {
@@ -72,10 +72,10 @@
 		"DestResourceGroupName": "ls-vm-templates-chinanorth-public-rg",
 		"DestStorageAccountName": "labstemplatestorage",
 		"DestSubscriptionId": "72c9703f-60d5-47aa-b7a7-ec0fc7ce1a43",
-		"OutTfsBuildUrl":"#{tfsBuildUrl}#",
-		"OutImageName": "#{OutImageName}#",
-		"OutImageId": "#{OutImageId}#",
-		"OutSyncDataTime": "#{OutSyncDataTime}#"
+		"OutTfsBuildUrl":"#tfsBuildUrl#",
+		"OutImageName": "#imageName#",
+		"OutImageId": "#imageId#",
+		"OutSyncDataTime": "#syncDataTime#"
 	}
 }
 ]

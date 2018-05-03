@@ -159,3 +159,14 @@ $imageName = $destVhdName.Replace(".vhd","").Replace("snapshot","image")
 $image = New-AzureRmImage -ImageName $imageName -ResourceGroupName $destResourceGroupName -Image $imageConfig
 $image
 "create new vm image completed"
+
+"start replece output result.json"
+ #replace all output string
+$needReplaceVars = "#imageName#","#imageId#"
+$resultTemplateFilePath=$ArtifactStagingDirectory + '\labs-result-template.json'
+$resultJsonContent = Get-Content $resultTemplateFilePath | Out-String 
+$resultJsonContent=$resultJsonContent.Replace($needReplaceVars[0], $imageName);
+$resultJsonContent=$resultJsonContent.Replace($needReplaceVars[1], $image.Id);
+
+out-File -FilePath $resultTemplateFilePath -InputObject $resultJsonContent
+echo $resultJsonContent
