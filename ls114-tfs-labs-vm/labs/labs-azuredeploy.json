@@ -3,8 +3,8 @@
 	"contentVersion": "1.0.0.0",
 	"parameters": {
 		"imageId1": {
-+		    	"type": "string"
-+		},
+		    	"type": "string"
+		},
 		"location": {
 			"type": "string"
 		},
